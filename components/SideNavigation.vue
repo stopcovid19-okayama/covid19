@@ -11,9 +11,11 @@
       <nuxt-link :to="localePath('/')" class="SideNavigation-HeadingLink">
         <h1 class="SideNavigation-Heading">
           <div class="SideNavigation-Logo">
-            <img src="/logo.svg" :alt="$t('東京都')" />
+            <img src="/logo.svg" :alt="$t('岡山県')" />
           </div>
-          {{ $t('新型コロナウイルス感染症') }}<br />{{ $t('対策サイト') }}
+          {{ $t('新型コロナウイルス感染症') }}<br />{{
+            $t('対策サイト(非公式)')
+          }}
         </h1>
       </nuxt-link>
     </header>
@@ -38,55 +40,8 @@
             <v-divider v-show="item.divider" class="SideNavigation-Divider" />
           </v-container>
         </v-list>
-        <div class="SideNavigation-LanguageMenu">
-          <LanguageSelector />
-        </div>
       </nav>
-      <v-footer class="SideNavigation-Footer">
-        <div class="SideNavigation-SocialLinkContainer">
-          <a
-            href="https://line.me/R/ti/p/%40822sysfc"
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="/line.png" alt="LINE" />
-          </a>
-          <a
-            href="https://twitter.com/tokyo_bousai"
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="/twitter.png" alt="Twitter" />
-          </a>
-          <a
-            href="https://www.facebook.com/tochokoho"
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="/facebook.png" alt="Facebook" />
-          </a>
-          <a
-            href="https://github.com/tokyo-metropolitan-gov/covid19"
-            target="_blank"
-            rel="noopener"
-          >
-            <img src="/github.png" alt="GitHub" />
-          </a>
-        </div>
-        <small class="SideNavigation-Copyright">
-          {{ $t('このサイトの内容物は') }}
-          <a
-            rel="license"
-            target="_blank"
-            :href="$t('https://creativecommons.org/licenses/by/4.0/deed.ja')"
-          >
-            {{ $t('クリエイティブ・コモンズ 表示 4.0 ライセンス') }}
-          </a>
-          {{ $t('の下に提供されています。') }}
-          <br />
-          2020 Tokyo Metropolitan Government
-        </small>
-      </v-footer>
+      <v-footer class="SideNavigation-Footer" />
     </div>
   </div>
 </template>
@@ -95,12 +50,10 @@
 
 <script>
 import ListItem from '@/components/ListItem'
-import LanguageSelector from '@/components/LanguageSelector.vue'
 
 export default {
   components: {
-    ListItem,
-    LanguageSelector
+    ListItem
   },
   props: {
     isNaviOpen: {
@@ -113,14 +66,13 @@ export default {
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('都内の最新感染動向'),
+          title: this.$t('県内の最新感染動向'),
           link: this.localePath('/')
         },
         {
           icon: 'covid',
-          title: this.$t('新型コロナウイルス感染症が心配なときに'),
-          link: this.localePath('/flow'),
-          divider: true
+          title: this.$t('感染予防と相談窓口'),
+          link: 'https://www.pref.okayama.jp/page/644784.html'
         },
         {
           icon: 'parent',
@@ -129,8 +81,8 @@ export default {
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('都民の皆様へ'),
-          link: 'https://www.metro.tokyo.lg.jp/tosei/tosei/news/2019-ncov.html'
+          title: this.$t('県民の皆様へ'),
+          link: 'https://www.pref.okayama.jp/page/645925.html#kenmin'
         },
         {
           icon: 'mdi-domain',
@@ -139,27 +91,16 @@ export default {
           divider: true
         },
         {
-          title: this.$t('東京都新型コロナウイルス感染症対策本部報'),
-          link:
-            'https://www.bousai.metro.tokyo.lg.jp/taisaku/saigai/1007261/index.html'
-        },
-        {
-          title: this.$t('東京都主催等 中止又は延期するイベント等'),
-          link:
-            'https://www.seisakukikaku.metro.tokyo.lg.jp/information/event00.html'
-        },
-        {
           title: this.$t('知事からのメッセージ'),
-          link:
-            'https://www.metro.tokyo.lg.jp/tosei/governor/governor/katsudo/2020/03/03_00.html'
+          link: 'https://www.youtube.com/watch?v=Mm-xFX7Csf8'
         },
         {
           title: this.$t('当サイトについて'),
           link: this.localePath('/about')
         },
         {
-          title: this.$t('東京都公式ホームページ'),
-          link: 'https://www.metro.tokyo.lg.jp/',
+          title: this.$t('岡山県公式ホームページ'),
+          link: 'https://www.pref.okayama.jp/',
           divider: true
         }
       ]

@@ -1,7 +1,7 @@
 <template>
   <v-app class="app">
     <div v-if="loading" class="loader">
-      <img src="/logo.svg" alt="東京都" />
+      <img src="/logo.svg" alt="岡山県" />
       <scale-loader color="#00A040" />
     </div>
     <div v-else-if="hasNavigation" class="appContainer">
@@ -92,7 +92,6 @@ export default Vue.extend({
   background-color: inherit !important;
 }
 .embed {
-
   .container {
     padding: 0 !important;
   }
