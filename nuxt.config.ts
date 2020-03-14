@@ -66,7 +66,7 @@ const config: Configuration = {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://covid19-okayama.netlify.com/ogp.png'
+        content: 'https://covid19-okayama.netlify.com/ogp.jpg'
       }
     ],
     link: [
