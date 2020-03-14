@@ -22,8 +22,8 @@
       )
       <br />
       ・ルサカ (
-      <a href="//twitter.com/Lusaca_" target="_blank">
-        {{ $t('@Lusaca_') }}
+      <a href="//twitter.com/Luscaca_" target="_blank">
+        {{ $t('@Luscaca_') }}
       </a>
       )
       <br /><br />
