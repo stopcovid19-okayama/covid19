@@ -21,7 +21,7 @@
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import Data from '@/data/data.json'
-import formatGraph from '@/utils/formatGraph'
+// import formatGraph from '@/utils/formatGraph'
 // import formatTable from '@/utils/formatTable'
 import News from '@/data/news.json'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     // 退院者グラフ
-    const dischargesGraph = formatGraph(Data.discharges_summary.data)
+    // const dischargesGraph = formatGraph(Data.discharges_summary.data)
     // 死亡者数
     // #MEMO: 今後使う可能性あるので一時コメントアウト
     // const fatalitiesTable = formatTable(
@@ -49,10 +49,9 @@ export default {
 
     const data = {
       Data,
-      dischargesGraph,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
-        title: this.$t('県内の最新感染動向'),
+        title: this.$t('岡山県内の最新感染動向'),
         date: Data.lastUpdate
       },
       newsItems: News.newsItems
@@ -61,7 +60,7 @@ export default {
   },
   head() {
     return {
-      title: this.$t('県内の最新感染動向')
+      title: this.$t('岡山県内の最新感染動向')
     }
   }
 }

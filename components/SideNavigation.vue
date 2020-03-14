@@ -9,12 +9,12 @@
         mdi-menu
       </v-icon>
       <nuxt-link :to="localePath('/')" class="SideNavigation-HeadingLink">
+        <div class="SideNavigation-Logo">
+          <img src="/logo.svg" :alt="$t('東京都')" />
+        </div>
         <h1 class="SideNavigation-Heading">
-          <div class="SideNavigation-Logo">
-            <img src="/logo.svg" :alt="$t('岡山県')" />
-          </div>
           {{ $t('新型コロナウイルス感染症') }}<br />{{
-            $t('対策サイト(非公式)')
+            $t('対策サイト (非公式)')
           }}
         </h1>
       </nuxt-link>
@@ -66,7 +66,7 @@ export default {
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('県内の最新感染動向'),
+          title: this.$t('岡山県内の最新感染動向'),
           link: this.localePath('/')
         },
         {
@@ -81,7 +81,7 @@ export default {
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('県民の皆様へ'),
+          title: this.$t('岡山県民の皆様へ'),
           link: 'https://www.pref.okayama.jp/page/645925.html#kenmin'
         },
         {
@@ -151,7 +151,7 @@ export default {
     padding: 2px 20px;
   }
   &-Logo {
-    margin: 5px 16px 15px 0;
+    margin: 20px 16px 0px 0;
     width: 110px;
     @include lessThan($small) {
       margin-top: 0;

@@ -9,6 +9,11 @@
       :options="displayOption"
       :height="240"
     />
+    <div>
+      <p style="color: #808080; font-size: 14px;">
+        {{ comment }}
+      </p>
+    </div>
     <template v-slot:infoPanel>
       <data-view-basic-info-panel
         :l-text="displayInfo.lText"
@@ -62,6 +67,11 @@ export default {
       default: ''
     },
     url: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    comment: {
       type: String,
       required: false,
       default: ''
