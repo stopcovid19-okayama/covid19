@@ -32,11 +32,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .PrinterButton {
   &-Text {
     @include lessThan($small) {
-      display: none;
+      position: absolute !important;
+      height: 1px !important;
+      width: 1px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      clip: rect(1px, 1px, 1px, 1px) !important;
+      clip-path: inset(50%) !important;
     }
   }
   &-PrinterIcon {
@@ -44,6 +52,9 @@ export default {
 
     @include largerThan($small) {
       padding-right: 7px;
+    }
+    svg {
+      width: auto;
     }
   }
 }

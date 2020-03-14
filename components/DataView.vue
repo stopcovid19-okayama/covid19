@@ -24,72 +24,23 @@
               target="_blank"
               rel="noopener"
             >
-              {{ $t('オープンデータを入手') }}
-              <v-icon class="ExternalLinkIcon" size="15">
+              {{ $t('出典: 岡山県公式HP') }}
+              <v-icon
+                class="ExternalLinkIcon"
+                size="15"
+                aria-label="別タブで開く"
+                role="img"
+                :aria-hidden="false"
+              >
                 mdi-open-in-new
               </v-icon>
             </a>
           </div>
-          <div>
-            <a class="Permalink" :href="permalink()">
-              <time :datetime="formattedDate">
-                {{ $t('{date} 更新', { date }) }}
-              </time>
-            </a>
-          </div>
         </div>
-
-        <div v-if="this.$route.query.embed != 'true'" class="Footer-Right">
-          <div v-if="displayShare" class="DataView-Share-Buttons py-2">
-            <div class="Close-Button">
-              <v-icon @click="closeShareMenu">
-                mdi-close
-              </v-icon>
-            </div>
-
-            <h4>埋め込み用コード</h4>
-
-            <div class="EmbedCode">
-              <v-icon
-                v-if="isCopyAvailable()"
-                class="EmbedCode-Copy"
-                @click="copyEmbedCode"
-              >
-                far fa-clipboard
-              </v-icon>
-              {{ graphEmbedValue }}
-            </div>
-
-            <div class="Buttons">
-              <button @click="line">
-                <img src="/line.png" class="icon-resize line" />
-              </button>
-
-              <button @click="twitter">
-                <img src="/twitter.png" class="icon-resize twitter" />
-              </button>
-
-              <button @click="facebook">
-                <img src="/facebook.png" class="icon-resize facebook" />
-              </button>
-            </div>
-          </div>
-          <div class="DataView-Share-Opener" @click="toggleShareMenu">
-            <svg
-              width="14"
-              height="16"
-              viewBox="0 0 14 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M7.59999 3.5H9.5L7 0.5L4.5 3.5H6.39999V11H7.59999V3.5ZM8.5 5.75H11.5C11.9142 5.75 12.25 6.08579 12.25 6.5V13.5C12.25 13.9142 11.9142 14.25 11.5 14.25H2.5C2.08579 14.25 1.75 13.9142 1.75 13.5V6.5C1.75 6.08579 2.08579 5.75 2.5 5.75H5.5V4.5H2.5C1.39543 4.5 0.5 5.39543 0.5 6.5V13.5C0.5 14.6046 1.39543 15.5 2.5 15.5H11.5C12.6046 15.5 13.5 14.6046 13.5 13.5V6.5C13.5 5.39543 12.6046 4.5 11.5 4.5H8.5V5.75Z"
-                fill="#808080"
-              />
-            </svg>
-          </div>
+        <div class="Footer-Right">
+          <time :datetime="formattedDate">
+            {{ $t('{date} 更新', { date }) }}
+          </time>
         </div>
       </div>
     </div>
