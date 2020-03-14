@@ -17,6 +17,7 @@
       <div class="DataView-Footer">
         <div class="Footer-Left">
           <div>
+            出典:
             <a
               v-if="url"
               class="OpenDataLink"
@@ -24,7 +25,7 @@
               target="_blank"
               rel="noopener"
             >
-              {{ $t('出典: 岡山県公式HP') }}
+              {{ $t('岡山県公式HP') }}
               <v-icon
                 class="ExternalLinkIcon"
                 size="15"
