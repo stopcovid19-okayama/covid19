@@ -6,19 +6,46 @@
     <TextCard>
       {{
         $t(
-          '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、東京都が開設したものです。'
+          '当サイトは岡山県内の新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために作成されました。'
+        )
+      }}<br />
+      {{
+        $t(
+          '運営・開発は以下の学生エンジニアによってボランティアで行われています。'
         )
       }}<br />
       <br />
+      ・藤原出帆 (
+      <a href="//twitter.com/fujiwaraizuho" target="_blank">
+        {{ $t('@fujiwaraizuho') }}
+      </a>
+      )
+      <br />
+      ・ルサカ (
+      <a href="//twitter.com/Lusaca_" target="_blank">
+        {{ $t('@Lusaca_') }}
+      </a>
+      )
+      <br /><br />
+      複製・改変が許されたオープンソースライセンスで公開されている、
+      <a href="//stopcovid19.metro.tokyo.lg.jp/" target="_blank">
+        {{ $t('東京都公式新型コロナウイルス対策サイト') }}
+      </a>
+      の
+      <a href="//github.com/tokyo-metropolitan-gov/covid19" target="_blank">
+        {{ $t('仕組み') }}
+      </a>
+      を利用しています
+      <br />
+      <br />
       {{
         $t(
-          '東京都による公式情報と客観的な数値をわかりやすく伝えることで、東京都にお住まいの方や、東京都内に拠点を持つ企業の方、東京都を訪れる方が、現状を把握して適切な対策を取れるようにすることを目的としています。'
+          '岡山県による公式情報と客観的な数値をわかりやすく伝えることで、岡山県にお住まいの方や、岡山県内に拠点を持つ企業の方、岡山県を訪れる方が、現状を把握して適切な対策を取れるようにすることを目的としています。'
         )
       }}
     </TextCard>
     <TextCard :title="$t('ブラウザ環境について')">
       {{ $t('当サイトは以下の環境でご覧いただくことを推奨いたします。') }}<br />
-      <br />
       <ul class="About-Browser-List">
         <li>{{ $t('Microsoft Edge 最新版') }}</li>
         <li>{{ $t('Mozilla Firefox 最新版') }}</li>
@@ -122,7 +149,7 @@
     <TextCard :title="$t('免責事項')">
       {{
         $t(
-          '当サイトに掲載されている情報の正確性については万全を期していますが、東京都は利用者が当サイトの情報を用いて行う一切の行為について責任を負うものではありません。'
+          '当サイトに掲載されている情報の正確性については万全を期していますが、岡山県やサイト運営者は利用者が当サイトの情報を用いて行う一切の行為について責任を負うものではありません。'
         )
       }}<br />
       <br />
@@ -138,42 +165,10 @@
         )
       }}
     </TextCard>
-    <TextCard :title="$t('データについて')">
-      <i18n
-        tag="p"
-        path="本サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。（データは順次追加予定です）"
-      >
-        <a
-          href="https://portal.data.metro.tokyo.lg.jp/"
-          target="_blank"
-          rel="noopener"
-          place="catalogWebsite"
-        >
-          {{ $t('東京都オープンデータカタログサイト') }}
-        </a>
-      </i18n>
-    </TextCard>
-    <TextCard :title="$t('ソースコードについて')">
-      {{
-        $t(
-          '当サイトのソースコードはMITライセンスで公開されており、誰でも自由に利用することができます。'
-        )
-      }}
-      <i18n path="詳しくは、{githubRepo}をご確認ください。">
-        <a
-          href="https://github.com/tokyo-metropolitan-gov/covid19"
-          target="_blank"
-          rel="noopener"
-          place="githubRepo"
-        >
-          {{ $t('GitHub リポジトリ') }}
-        </a>
-      </i18n>
-    </TextCard>
-    <TextCard :title="$t('お問い合わせ先（都のHPサイトポリシーについて）')">
-      {{ $t('東京都生活文化局広報広聴部広報課') }}<br />
-      {{ $t('電話') }}:
-      <a href="tel:03-5388-3085">03-5388-3085</a>
+    <TextCard :title="$t('お問い合わせ先')">
+      {{ $t('岡山県 新型コロナウイルス感染症 対策サイト 運営者代表') }}<br />
+      {{ $t('メール') }}:
+      <a href="mail:contact@fujishan.jp">contact@fujishan.jp</a>
     </TextCard>
   </div>
 </template>

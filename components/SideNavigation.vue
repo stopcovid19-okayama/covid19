@@ -13,7 +13,9 @@
           <img src="/logo.svg" :alt="$t('東京都')" />
         </div>
         <h1 class="SideNavigation-Heading">
-          {{ $t('新型コロナウイルス感染症') }}<br />{{ $t('対策サイト') }}
+          {{ $t('新型コロナウイルス感染症') }}<br />{{
+            $t('対策サイト (非公式)')
+          }}
         </h1>
       </nuxt-link>
     </header>
@@ -64,7 +66,7 @@ export default {
       return [
         {
           icon: 'mdi-chart-timeline-variant',
-          title: this.$t('県内の最新感染動向'),
+          title: this.$t('岡山県内の最新感染動向'),
           link: this.localePath('/')
         },
         {
@@ -79,7 +81,7 @@ export default {
         },
         {
           icon: 'mdi-account-multiple',
-          title: this.$t('県民の皆様へ'),
+          title: this.$t('岡山県民の皆様へ'),
           link: 'https://www.pref.okayama.jp/page/645925.html#kenmin'
         },
         {
