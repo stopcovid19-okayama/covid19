@@ -61,17 +61,17 @@ export default {
       required: true,
       default: ''
     },
+    comment: {
+      type: String,
+      required: false,
+      default: ''
+    },
     unit: {
       type: String,
       required: false,
       default: ''
     },
     url: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    comment: {
       type: String,
       required: false,
       default: ''

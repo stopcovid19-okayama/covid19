@@ -4,7 +4,7 @@
       :title="$t('検査実施数')"
       :title-id="'number-of-tested'"
       :chart-id="'time-bar-chart-inspections'"
-      :chart-data="contracrsGraph"
+      :chart-data="contractsGraph"
       :date="Data.inspections_summary.date"
       comment="※ 3月12日のデータは岡山県が1日ごとの実施値の推移を公開していないため、その日までの累計を入力しています。"
       :unit="$t('件.tested')"
@@ -78,12 +78,13 @@ export default {
     TimeBarChart
   },
   data() {
-    const contracrsGraph = formatGraph(Data.inspections_summary.data)
+    const contractsGraph = formatGraph(Data.inspections_summary.data)
 
     const data = {
       Data,
-      contracrsGraph
+      contractsGraph
     }
+
     return data
   }
 }
