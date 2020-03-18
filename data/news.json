@@ -1,9 +1,24 @@
 {
     "newsItems": [
         {
-            "date": "2020\/03\/13",
-            "url": "https:\/\/www.youtube.com\/watch?v=Mm-xFX7Csf8",
-            "text": "新型コロナウイルス感染症に関する知事メッセージ動画が公開されました。"
+          "date": "2020\/03\/18",
+          "url": "http:\/\/www.okayama-opendata.jp\/opendata\/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48&datasetId=e6b3c1d2-2f1f-4735-b36e-e45d36d94761",
+          "text": "新型コロナウイルス感染症に関する詳細なデータオープンデータになりました！"
+        },
+        {
+          "date": "2020\/03\/18",
+          "url": "https:\/\/www.pref.okayama.jp\/page\/654835.html",
+          "text": "小学校休業等対応助成金・支援金の申請受付開始について"
+        },
+        {
+          "date": "2020\/03\/18",
+          "url": "https:\/\/www.pref.okayama.jp\/page\/654174.html",
+          "text": "県税の措置等について（申告期限等の延長、納税の猶予、県税の手続きについて）"
+        },
+        {
+            "date": "2020\/03\/17",
+            "url": "https:\/\/www.pref.okayama.jp\/page\/653950.html",
+            "text": "岡山県産の畜産物を食べて体力をつけ元気を出そう！"
         }
     ]
 }
