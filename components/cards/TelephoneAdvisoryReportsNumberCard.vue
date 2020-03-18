@@ -7,7 +7,7 @@
       :chart-data="contactsGraph"
       :date="Data.contacts.date"
       :unit="$t('件.reports')"
-      comment="※ 3月11日のデータは岡山県が1日ごとの相談件数の推移を公開していないため、その日までの累計を入力しています。"
+      comment="※ 週休日（又は休日）及びその前日の件数は、合計して記載しています。"
       :url="'https://www.pref.okayama.jp/page/645925.html#kennaijoukyou'"
     />
     <!-- 件.reports = 窓口相談件数 -->
