@@ -172,7 +172,7 @@ const config: Configuration = {
     id: 'UA-98485251-15'
   },
   sitemap: {
-    hostname: 'https://okayama.stopcovid.jp'
+    hostname: 'https://okayama.stopcovid19.jp'
   },
   build: {
     postcss: {
