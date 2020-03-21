@@ -114,6 +114,7 @@ const config: Configuration = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     [
@@ -169,6 +170,9 @@ const config: Configuration = {
   },
   googleAnalytics: {
     id: 'UA-98485251-15'
+  },
+  sitemap: {
+    hostname: 'https://okayama.stopcovid.jp'
   },
   build: {
     postcss: {
