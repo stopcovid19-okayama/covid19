@@ -12,7 +12,7 @@
           class="WhatsNew-list-item-anchor"
           :href="item.url"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <time
             class="WhatsNew-list-item-anchor-time px-2"
@@ -21,7 +21,7 @@
             {{ item.date }}
           </time>
           <span class="WhatsNew-list-item-anchor-link">
-            {{ $t(item.text) }}
+            {{ item.text }}
             <v-icon
               v-if="!isInternalLink(item.url)"
               class="WhatsNew-item-ExternalLinkIcon"
@@ -36,12 +36,11 @@
   </div>
 </template>
 
-<i18n src="./WhatsNew.i18n.json"></i18n>
-
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { convertDateToISO8601Format } from '@/utils/formatDate'
 
-export default {
+export default Vue.extend({
   props: {
     items: {
       type: Array,
@@ -49,19 +48,20 @@ export default {
     }
   },
   methods: {
-    isInternalLink(path) {
+    isInternalLink(path: string): boolean {
       return !/^https?:\/\//.test(path)
     },
-    formattedDate(dateString) {
+    formattedDate(dateString: string) {
       return convertDateToISO8601Format(dateString)
     }
   }
-}
+})
 </script>
 
 <style lang="scss">
 .WhatsNew {
   @include card-container();
+
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -69,7 +69,9 @@ export default {
 .WhatsNew-heading {
   display: flex;
   align-items: center;
+
   @include card-h2();
+
   margin-bottom: 12px;
   color: $gray-2;
   margin-left: 12px;
@@ -80,31 +82,36 @@ export default {
 }
 
 .WhatsNew .WhatsNew-list {
-  padding-left: 0px;
+  padding-left: 0;
   list-style-type: none;
 
   &-item {
     &-anchor {
-      display: inline-flex;
+      display: inline-block;
       text-decoration: none;
       margin: 5px;
       font-size: 14px;
 
       @include lessThan($medium) {
+        display: flex;
         flex-wrap: wrap;
       }
 
       &-time {
         flex: 0 0 90px;
+
         @include lessThan($medium) {
           flex: 0 0 100%;
         }
+
         color: $gray-1;
       }
 
       &-link {
         flex: 0 1 auto;
+
         @include text-link();
+
         @include lessThan($medium) {
           padding-left: 8px;
         }

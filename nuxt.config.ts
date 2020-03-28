@@ -1,6 +1,10 @@
 import { Configuration } from '@nuxt/types'
+import { Configuration as WebpackConfiguration } from 'webpack'
+import i18n from './nuxt-i18n.config'
+const webpack = require('webpack')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const autoprefixer = require('autoprefixer')
+const environment = process.env.NODE_ENV || 'development'
 
 const config: Configuration = {
   mode: 'universal',
@@ -46,7 +50,7 @@ const config: Configuration = {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://okayama.stopcovid19.jp/ogp.jpg'
+        content: 'https://okayama.stopcovid19.jp/ogp.png'
       },
       {
         hid: 'twitter:card',
@@ -66,7 +70,17 @@ const config: Configuration = {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https:///okayama.stopcovid19.jp/ogp.jpg'
+        content: 'https:///okayama.stopcovid19.jp/ogp.png'
+      },
+      {
+        hid: 'fb:app_id',
+        property: 'fb:app_id',
+        content: '798578557330092'
+      },
+      {
+        hid: 'note:card',
+        property: 'note:card',
+        content: 'summary_large_image'
       }
     ],
     link: [
@@ -95,6 +109,10 @@ const config: Configuration = {
       ssr: true
     },
     {
+      src: '@/plugins/axe',
+      ssr: true
+    },
+    {
       src: '@/plugins/vuetify.ts',
       ssr: true
     }
@@ -103,6 +121,7 @@ const config: Configuration = {
    ** Nuxt.js dev-modules
    */
   buildModules: [
+    '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
     '@nuxtjs/google-analytics'
@@ -111,53 +130,14 @@ const config: Configuration = {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/sitemap',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    [
-      'nuxt-i18n',
-      {
-        strategy: 'prefix_except_default',
-        detectBrowserLanguage: {
-          useCookie: true,
-          cookieKey: 'i18n_redirected'
-        },
-        locales: [
-          {
-            code: 'ja',
-            name: '日本語',
-            iso: 'ja-JP'
-          }
-          // ,
-          // #1126, #872 (comment)
-          // ポルトガル語は訳が揃っていないため非表示
-          // 「やさしい日本語」はコンポーネントが崩れるため非表示
-          // {
-          //   code: 'pt-BR',
-          //   name: 'Portuguese',
-          //   iso: 'pt-BR'
-          // },
-        ],
-        defaultLocale: 'ja',
-        vueI18n: {
-          fallbackLocale: 'ja',
-          formatFallbackMessages: true
-        },
-        vueI18nLoader: true
-      }
-    ],
+    ['@nuxtjs/dotenv', { filename: `.env.${environment}` }],
+    ['nuxt-i18n', i18n],
     'nuxt-svg-loader',
     'nuxt-purgecss',
     ['vue-scrollto/nuxt', { duration: 1000, offset: -72 }]
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -171,10 +151,12 @@ const config: Configuration = {
   googleAnalytics: {
     id: 'UA-98485251-15'
   },
-  sitemap: {
-    hostname: 'https://okayama.stopcovid19.jp'
-  },
   build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        mapboxgl: 'mapbox-gl'
+      })
+    ],
     postcss: {
       plugins: [
         autoprefixer({ grid: 'autoplace' }),
@@ -191,8 +173,12 @@ const config: Configuration = {
         })
       ]
     },
+    extend(config: WebpackConfiguration, _) {
+      // default externals option is undefined
+      config.externals = [{ moment: 'moment' }]
+    }
     // https://ja.nuxtjs.org/api/configuration-build/#hardsource
-    hardSource: process.env.NODE_ENV === 'development'
+    // hardSource: process.env.NODE_ENV === 'development'
   },
   manifest: {
     name: '岡山県 新型コロナウイルス感染症対策サイト(非公式)',
@@ -209,13 +195,20 @@ const config: Configuration = {
       const locales = ['ja', 'en', 'zh-cn', 'zh-tw', 'ko', 'ja-basic']
       const pages = [
         '/cards/details-of-confirmed-cases',
+        '/cards/details-of-tested-cases',
         '/cards/number-of-confirmed-cases',
         '/cards/attributes-of-confirmed-cases',
         '/cards/number-of-tested',
+        '/cards/number-of-inspection-persons',
         '/cards/number-of-reports-to-covid19-telephone-advisory-center',
         '/cards/number-of-reports-to-covid19-consultation-desk',
         '/cards/predicted-number-of-toei-subway-passengers',
-        '/cards/agency'
+        '/cards/agency',
+        '/cards/shinjuku-visitors',
+        '/cards/chiyoda-visitors',
+        '/cards/shinjuku-st-heatmap',
+        '/cards/tokyo-st-heatmap',
+        '/cards/tokyo-city-heatmap'
       ]
 
       const routes: string[] = []

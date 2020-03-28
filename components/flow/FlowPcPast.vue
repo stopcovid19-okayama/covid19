@@ -83,9 +83,25 @@
         </template>
       </div>
       <div :class="$style.FlowCondition">
-        <em :class="$style.FlowSymptom">{{ $t('発熱') }}</em>
+        <em :class="$style.FlowSymptom">
+          {{ $t('発熱') }}
+          <img
+            :class="$style.FlowSymptomIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
+        </em>
         <span :class="$style.FlowText">{{ $t('または') }}</span>
-        <em :class="$style.FlowSymptom">{{ $t('呼吸器症状') }}</em>
+        <em :class="$style.FlowSymptom">
+          {{ $t('呼吸器症状') }}
+          <img
+            :class="$style.FlowSymptomIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
+        </em>
         <span :class="$style.FlowText">{{ $t('かつ') }}</span>
         <em :class="$style.FlowSymptom">
           <i18n tag="span" :class="$style.FlowTextSm" path="発熱{temperature}">
@@ -95,6 +111,12 @@
               </span>
             </i18n>
           </i18n>
+          <img
+            :class="$style.FlowSymptomIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
         </em>
       </div>
     </div>
@@ -114,15 +136,15 @@ export default {
 }
 </script>
 
-<i18n src="./FlowPcPast.i18n.json"></i18n>
-
 <style module lang="scss">
 .Flow {
   @include card-container($withDivider: true);
+
   position: relative;
   padding-bottom: 20px;
   color: $gray-2;
   text-align: center;
+
   &Heading {
     position: relative;
     width: calc(100% - 2px);
@@ -133,62 +155,75 @@ export default {
     font-weight: bold;
     font-size: 16px;
   }
+
   &Num {
     display: inline-block;
     padding: 0 5px;
     font-size: calc(1.5rem + ((1vw - 7.68px) * 5.4726));
+
     @include largerThan($large) {
       font-size: 42px;
       padding: 0 10px;
     }
   }
+
   &Inner {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
     border-top: 1px solid $gray-4;
   }
+
   &Item {
     display: flex;
     flex-flow: column;
     align-items: center;
     width: 50%;
     padding: 10px 5px;
+
     @include largerThan($large) {
       padding: 20px;
     }
   }
+
   &Title {
     margin-bottom: 4px;
     color: $green-1;
     font-size: calc(0.75rem + ((1vw - 7.68px) * 0.4464));
     font-weight: bold;
     display: block;
+
     @include largerThan($large) {
       font-size: 15px;
     }
   }
+
   &Person {
     font-weight: bold;
     font-size: calc(0.875rem + ((1vw - 7.68px) * 1.1905));
     line-height: 1.8;
     text-align: center;
+
     @include largerThan($large) {
       font-size: 23px;
     }
+
     &S {
       @include largerThan($large) {
         font-size: 20px;
       }
     }
   }
+
   &Line {
     border-bottom: 2px solid $green-1;
     font-style: inherit;
+
     @include largerThan($large) {
       border-width: 4px;
     }
   }
+
   &Condition {
     display: flex;
     width: 100%;
@@ -199,10 +234,12 @@ export default {
     text-align: center;
     font-weight: bold;
     font-size: 22px;
+
     @include largerThan($large) {
       padding: 0 20px;
     }
   }
+
   &Symptom {
     position: relative;
     display: flex;
@@ -217,22 +254,31 @@ export default {
     font-size: calc(0.875rem + ((1vw - 7.68px) * 0.8929));
     font-weight: bold;
     font-style: normal;
-    &::before {
-      $icon-size: 27px;
-      content: url('/flow/check_circle-24px.svg');
+
+    &Icon {
       position: absolute;
-      top: $icon-size / 2 * -1;
-      left: $icon-size / 2 * -1;
-      width: $icon-size;
-      height: $icon-size;
-      background-color: $white;
-      z-index: 1;
+      left: -8px;
+      top: -8px;
+      width: 24px;
+      height: 24px;
     }
+
+    &::before {
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      content: '';
+    }
+
     @include largerThan($large) {
       max-width: 190px;
       font-size: 20px;
     }
   }
+
   &Text {
     display: flex;
     flex-wrap: wrap;
@@ -242,21 +288,26 @@ export default {
     padding: 10px;
     font-size: calc(0.75rem + ((1vw - 7.68px) * 1.4881));
     white-space: nowrap;
+
     @include largerThan($large) {
       max-width: 190px;
       font-size: 21px;
     }
   }
+
   &LText {
     font-size: calc(1.25rem + ((1vw - 7.68px) * 0.744));
+
     @include largerThan($large) {
       font-size: 25px;
     }
   }
+
   &Temperature {
     font-size: calc(1rem + ((1vw - 7.68px) * 2.4876));
     padding-left: 2px;
     padding-right: 2px;
+
     @include largerThan($large) {
       font-size: 20px;
       padding-left: 5px;
@@ -264,6 +315,7 @@ export default {
       margin-top: -5px;
     }
   }
+
   &TextSm {
     font-size: 15px;
   }

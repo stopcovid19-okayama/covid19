@@ -2,10 +2,15 @@
   <div :class="$style.Flow">
     <div :class="$style.FlowRow">
       <div :class="$style.FlowRowRowThree">
-        <div>
-          <img src="/flow/accessibility-24px.svg" />
-          <p>{{ $t('一般の方') }}</p>
-        </div>
+        <p :class="$style.FlowRowRowThreeGeneral">
+          <img
+            :class="$style.FlowRowRowThreeGeneralIcon"
+            src="/flow/accessibility-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
+          {{ $t('一般の方') }}
+        </p>
       </div>
       <div>
         <p>
@@ -24,9 +29,6 @@
     </div>
     <div :class="[$style.FlowRow, $style.FlowRowRowCheck]">
       <div :class="$style.FlowRowCondition">
-        <i>
-          <img src="/flow/check_circle-24px.svg" />
-        </i>
         <p>
           <i18n
             tag="span"
@@ -38,11 +40,14 @@
             </span>
           </i18n>
         </p>
+        <img
+          :class="$style.FlowRowConditionIcon"
+          src="/flow/check_circle-24px.svg"
+          aria-hidden="true"
+          alt=" "
+        />
       </div>
       <div :class="$style.FlowRowCondition">
-        <i>
-          <img src="/flow/check_circle-24px.svg" />
-        </i>
         <p>
           <i18n
             tag="span"
@@ -56,31 +61,61 @@
             </i18n>
           </i18n>
         </p>
+        <img
+          :class="$style.FlowRowConditionIcon"
+          src="/flow/check_circle-24px.svg"
+          aria-hidden="true"
+          alt=" "
+        />
       </div>
       <div :class="$style.FlowRowCondition">
-        <i>
-          <img src="/flow/check_circle-24px.svg" />
-        </i>
         <p>{{ $t('強いだるさ') }}</p>
+        <img
+          :class="$style.FlowRowConditionIcon"
+          src="/flow/check_circle-24px.svg"
+          aria-hidden="true"
+          alt=" "
+        />
       </div>
       <div :class="$style.FlowRowCondition">
-        <i>
-          <img src="/flow/check_circle-24px.svg" />
-        </i>
         <p>{{ $t('息苦しさ') }}</p>
+        <img
+          :class="$style.FlowRowConditionIcon"
+          src="/flow/check_circle-24px.svg"
+          aria-hidden="true"
+          alt=" "
+        />
       </div>
     </div>
     <div :class="$style.FlowRow">
       <div :class="$style.FlowRowRowThree">
         <ul :class="$style.FlowRowRowThreeCareTargetList">
           <li :class="$style.FlowRowRowThreeCareTargetListItem">
-            <img src="/flow/directions_walk-24px.svg" />{{ $t('ご高齢な方') }}
+            <img
+              :class="$style.FlowRowRowThreeCareTargetListItemIcon"
+              src="/flow/directions_walk-24px.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+            {{ $t('ご高齢な方') }}
           </li>
           <li :class="$style.FlowRowRowThreeCareTargetListItem">
-            <img src="/flow/accessible-24px.svg" />{{ $t('基礎疾患のある方') }}
+            <img
+              :class="$style.FlowRowRowThreeCareTargetListItemIcon"
+              src="/flow/accessible-24px.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+            {{ $t('基礎疾患のある方') }}
           </li>
           <li :class="$style.FlowRowRowThreeCareTargetListItem">
-            <img src="/flow/pregnant_woman-24px.svg" />{{ $t('妊娠中の方') }}
+            <img
+              :class="$style.FlowRowRowThreeCareTargetListItemIcon"
+              src="/flow/pregnant_woman-24px.svg"
+              aria-hidden="true"
+              alt=" "
+            />
+            {{ $t('妊娠中の方') }}
           </li>
         </ul>
       </div>
@@ -102,16 +137,16 @@
   </div>
 </template>
 
-<i18n src="./FlowPcDays.i18n.json"></i18n>
-
 <style module lang="scss">
 .Flow {
   @include card-container($withDivider: true);
+
   display: flex;
   flex-direction: row;
   padding: 20px 20px !important;
   position: relative;
   color: $gray-2;
+
   &Row {
     flex-grow: 1;
     flex-shrink: 0;
@@ -119,25 +154,50 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+
     &RowCheck {
       flex-basis: calc(28% - 20px);
       margin: 0 10px;
     }
+
     &RowThree {
       flex-grow: 3;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-top: 20px;
+
+      &General {
+        &Icon {
+          display: block;
+          margin: auto;
+          width: 44px;
+          height: 44px;
+        }
+      }
+
       &CareTargetList {
         margin: 16px 0;
         text-align: left;
         list-style: none;
+
+        &Item {
+          display: flex;
+          align-items: center;
+
+          &Icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+          }
+        }
+
         &Item + &Item {
           margin-top: 14px;
         }
       }
     }
+
     &Condition {
       flex-grow: 1;
       display: flex;
@@ -149,36 +209,55 @@
       border: 2px solid $green-1 !important;
       border-radius: 2px;
       background-color: $white;
+
       p {
         text-align: center;
         display: inline-block;
         margin: 0 !important; // FIXME: IEだとv-applicationのmarginが優先される
         font-size: calc(0.875rem + ((1vw - 7.68px) * 0.8929));
         font-weight: bold;
+
         @include largerThan($large) {
           font-size: 20px;
         }
       }
+
       &Large {
         font-size: calc(1rem + ((1vw - 7.68px) * 2.4876));
+
         @include largerThan($large) {
           font-size: 25px;
         }
       }
+
       &Small {
         font-size: 15px;
       }
-      i {
+
+      &Icon {
         position: absolute;
-        top: -12px;
-        left: -12px;
-        background-color: $white;
+        left: -8px;
+        top: -8px;
+        width: 24px;
+        height: 24px;
+      }
+
+      &::before {
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        content: '';
       }
     }
+
     &Emphasis {
       font-size: 24px;
       font-weight: bold;
       border-bottom: solid 3px $green-1;
+
       &Day {
         font-size: 41px;
       }

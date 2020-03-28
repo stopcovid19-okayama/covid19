@@ -1,25 +1,49 @@
 <template>
   <div :class="$style.FlowComponent">
     <div :class="[$style.SubtleBox, $style.Box1]">
+      <img
+        :class="$style.Box1Icon"
+        src="/flow/flow_arrow.svg"
+        aria-hidden="true"
+        alt=" "
+      />
       <div :class="$style.RowItems">
-        <div>
+        <div :class="$style.RowItemsHeader">
           <img
+            :class="$style.RowItemsHeaderIcon"
             src="/flow/sentiment_very_dissatisfied-24px.svg"
-            alt="dissatisfied face icon"
+            aria-hidden="true"
+            alt=" "
           />
-        </div>
-        <div :class="$style.SmallerText">
           {{ $t('不安に思う方') }}
         </div>
       </div>
       <div :class="$style.RowItems">
         <div :class="$style.CheckBox">
+          <img
+            :class="$style.CheckBoxIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
           {{ $t('微熱') }}
         </div>
         <div :class="$style.CheckBox">
+          <img
+            :class="$style.CheckBoxIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
           {{ $t('軽い咳') }}
         </div>
         <div :class="$style.CheckBox">
+          <img
+            :class="$style.CheckBoxIcon"
+            src="/flow/check_circle-24px.svg"
+            aria-hidden="true"
+            alt=" "
+          />
           {{ $t('感染の不安') }}
         </div>
       </div>
@@ -30,20 +54,26 @@
         {{ $t('新型コロナコールセンター') }}
       </div>
       <div :class="$style.SmallerText">
-        {{ $t('午前9時から午後9時（土日祝含む）') }}
+        {{ $t('午前9時から午後9時 (平日)') }}
+      </div>
+      <div :class="$style.SmallerText">
+        {{ $t('午前9時から午後5時 (土日祝)') }}
       </div>
 
-      <div :class="$style.TelLink">
-        <a href="tel:0570550571">
-          <img src="/flow/phone-24px.svg" alt="Phone" />
-          0570-550571
+      <div :class="$style.Tel">
+        <a :class="$style.TelLink" href="tel:0862267877">
+          <img
+            :class="$style.TelLinkIcon"
+            src="/flow/phone-24px.svg"
+            aria-hidden="true"
+            :alt="$t('電話番号')"
+          />
+          086-226-7877
         </a>
       </div>
     </div>
   </div>
 </template>
-
-<i18n src="./FlowPcSuspect.i18n.json"></i18n>
 
 <style module lang="scss">
 .FlowComponent {
@@ -53,14 +83,32 @@
   justify-content: space-between;
 }
 
-.TelLink {
+.Tel {
   @include largerThan($medium) {
     font-size: larger;
   }
-  a {
-    color: $gray-2;
+}
+
+.TelLink {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    color: inherit;
     text-decoration: none;
-    font-weight: bold;
+    outline: 1px dotted $gray-3;
+  }
+
+  &Icon {
+    display: inline-block;
+    margin-right: 5px;
+    width: 26px;
+    height: 26px;
   }
 }
 
@@ -74,18 +122,20 @@
   text-align: center;
   font-weight: bold;
   font-size: calc(0.875rem + ((1vw - 7.68px) * 0.8929));
+
   @include largerThan($large) {
     font-size: 20px;
   }
 
-  &:after {
+  &Icon {
     position: absolute;
     left: -8px;
     top: -8px;
-    content: url(/flow/check_circle-24px.svg);
+    width: 24px;
+    height: 24px;
   }
 
-  &:before {
+  &::before {
     position: absolute;
     left: -4px;
     top: -4px;
@@ -98,6 +148,7 @@
 
 .SubtleBox {
   @include card-container();
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -110,8 +161,8 @@
   flex-shrink: 0;
   width: 60%;
   flex-direction: row;
-  &::after {
-    content: '';
+
+  &Icon {
     position: absolute;
     bottom: 40%;
     right: -30px;
@@ -119,7 +170,6 @@
     display: block;
     width: 46px;
     height: 46px;
-    background: url('/flow/flow_arrow.svg') no-repeat;
   }
 }
 
@@ -129,6 +179,7 @@
   width: 38%;
   flex-direction: column;
   justify-content: center;
+
   div {
     margin: 0.5em;
   }
@@ -138,8 +189,20 @@
   flex-grow: 1;
   text-align: center;
   margin: 0 4px;
+
   @include largerThan($large) {
     margin: 0 2em;
+  }
+}
+
+.RowItemsHeader {
+  font-size: smaller;
+
+  &Icon {
+    display: block;
+    margin: auto;
+    width: 45px;
+    height: 45px;
   }
 }
 
