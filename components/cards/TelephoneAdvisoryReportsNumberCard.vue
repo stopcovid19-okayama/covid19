@@ -7,8 +7,7 @@
       :chart-data="contactsGraph"
       :date="Data.contacts.date"
       :unit="$t('件.reports')"
-      comment="※ 週休日（又は休日）及びその前日の件数は、合計して記載しています。"
-      :url="'https://www.pref.okayama.jp/page/645925.html#kennaijoukyou'"
+      :url="'http://www.okayama-opendata.jp/opendata/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48&datasetId=e6b3c1d2-2f1f-4735-b36e-e45d36d94761'"
     />
     <!-- 件.reports = 窓口相談件数 -->
   </v-col>
