@@ -1,4 +1,4 @@
-Tokyo Covid-19 response site contributors
+Okayama Covid-19 response site contributors
 ============================================
 
 本サイトにご協力いただいた皆様
