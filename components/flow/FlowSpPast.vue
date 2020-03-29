@@ -111,7 +111,10 @@
       </p>
     </div>
     <a
-      v-scroll-to="'#consult'"
+      v-scroll-to="{
+        el: '#consult',
+        onDone: onDoneScroll
+      }"
       href="#consult"
       :class="[$style.button, $style.clickable]"
     >
@@ -121,9 +124,8 @@
   </div>
 </template>
 
-<i18n src="./FlowSpPast.i18n.json"></i18n>
-
 <script lang="ts">
+import { onDoneScroll } from '@/utils/vueScrollTo'
 import ArrowForwardIcon from '@/static/flow/responsive/arrow_forward.svg'
 
 export default {
@@ -135,7 +137,8 @@ export default {
     langsWithoutFlowTitle() {
       return ['en', 'zh-cn', 'zh-tw']
     }
-  }
+  },
+  methods: { onDoneScroll }
 }
 </script>
 
@@ -146,25 +149,31 @@ export default {
 .type {
   margin-top: px2vw(20);
   text-align: center;
+
   &.hr {
     margin-top: px2vw(30);
     padding-top: px2vw(30);
     border-top: 1px $gray-4 solid;
   }
+
   .source {
     display: block;
     color: $green-1;
+
     &:last-child {
       margin-top: px2vw(10);
     }
   }
+
   .behavior {
     display: block;
+
     &:last-child {
       margin-top: px2vw(5);
     }
   }
 }
+
 .rectContainer {
   // past
   .op {
@@ -175,9 +184,11 @@ export default {
   // past
   &.req {
     margin-top: px2vw(20);
+
     > .symptom {
       flex-basis: 36%;
     }
+
     > .op {
       flex-basis: 28%;
       margin-top: px2vw(30);
@@ -188,26 +199,32 @@ export default {
 
 @include largerThan($small) {
   $vw: 960;
+
   .type {
     margin-top: px2vw(20, $vw);
+
     &.hr {
       margin-top: px2vw(30, $vw);
       padding-top: px2vw(30, $vw);
     }
+
     .source {
       &:last-child {
         margin-top: px2vw(10, $vw);
       }
     }
+
     .behavior {
       &:last-child {
         margin-top: px2vw(5, $vw);
       }
     }
   }
+
   .rectContainer {
     &.req {
       margin-top: px2vw(20, $vw);
+
       > .op {
         flex-basis: 28%;
         margin-top: px2vw(30, $vw);

@@ -1,79 +1,160 @@
 <template>
   <div class="MainPage">
-    <page-header
-      :icon="headerItem.icon"
-      :title="headerItem.title"
-      :date="headerItem.date"
-    />
+    <div class="Header mb-3">
+      <page-header :icon="headerItem.icon">
+        {{ headerItem.title }}
+      </page-header>
+      <div class="UpdatedAt">
+        <span>{{ $t('最終更新') }} </span>
+        <time :datetime="updatedAt">{{ Data.lastUpdate }}</time>
+      </div>
+      <div
+        v-show="!['ja', 'ja-basic'].includes($i18n.locale)"
+        class="Annotation"
+      >
+        <span>{{ $t('注釈') }} </span>
+      </div>
+    </div>
     <whats-new class="mb-4" :items="newsItems" />
     <v-row class="DataBlock">
+      <!--
+      <confirmed-cases-details-card />
+      <tested-cases-details-card />
+      -->
       <confirmed-cases-number-card />
       <tested-number-card />
       <confirmed-cases-attributes-card />
       <telephone-advisory-reports-number-card />
+      <consultation-desk-reports-number-card />
+      <!--
+      <metro-card />
+      <agency-card />
+      <shinjuku-visitors-card />
+      <chiyoda-visitors-card />
+      -->
     </v-row>
+    <!--
+    <v-divider />
+    <v-row class="DataBlock">
+      <shinjuku-st-map-card />
+      <tokyo-st-map-card />
+    </v-row>
+    -->
   </div>
 </template>
 
-<i18n src="./index.i18n.json"></i18n>
-
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import Data from '@/data/data.json'
-// import formatGraph from '@/utils/formatGraph'
-// import formatTable from '@/utils/formatTable'
 import News from '@/data/news.json'
+/*
+import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
+import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
+*/
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
+import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
+import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
+/*
+import MetroCard from '@/components/cards/MetroCard.vue'
+import AgencyCard from '@/components/cards/AgencyCard.vue'
+*/
+import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
+/*
+import ShinjukuVisitorsCard from '@/components/cards/ShinjukuVisitorsCard.vue'
+import ChiyodaVisitorsCard from '@/components/cards/ChiyodaVisitorsCard.vue'
+import ShinjukuStMapCard from '@/components/cards/ShinjukuStMapCard.vue'
+import TokyoStMapCard from '@/components/cards/TokyoStMapCard.vue'
+*/
 
-export default {
+export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
+    /*
+    ConfirmedCasesDetailsCard,
+    TestedCasesDetailsCard,
+    */
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     TestedNumberCard,
-    TelephoneAdvisoryReportsNumberCard
+    InspectionPersonsNumberCard,
+    TelephoneAdvisoryReportsNumberCard,
+    ConsultationDeskReportsNumberCard,
+    /*
+    MetroCard,
+    AgencyCard,
+    ShinjukuVisitorsCard,
+    ChiyodaVisitorsCard,
+    ShinjukuStMapCard,
+    TokyoStMapCard
+    */
   },
   data() {
-    // 退院者グラフ
-    // const dischargesGraph = formatGraph(Data.discharges_summary.data)
-    // 死亡者数
-    // #MEMO: 今後使う可能性あるので一時コメントアウト
-    // const fatalitiesTable = formatTable(
-    //   Data.patients.data.filter(patient => patient['備考'] === '死亡')
-    // )
-
     const data = {
       Data,
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
-        title: this.$t('岡山県内の最新感染動向'),
-        date: Data.lastUpdate
+        title: this.$t('県内の最新感染動向')
       },
       newsItems: News.newsItems
     }
     return data
   },
-  head() {
+  computed: {
+    updatedAt() {
+      return convertDatetimeToISO8601Format(this.$data.Data.lastUpdate)
+    }
+  },
+  head(): MetaInfo {
     return {
-      title: this.$t('岡山県内の最新感染動向')
+      title: this.$t('県内の最新感染動向') as string
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
 .MainPage {
+  .Header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    @include lessThan($small) {
+      flex-direction: column;
+      align-items: baseline;
+    }
+  }
+
+  .UpdatedAt {
+    @include font-size(14);
+
+    color: $gray-3;
+    margin-bottom: 0.2rem;
+  }
+
+  .Annotation {
+    @include font-size(12);
+
+    color: $gray-3;
+    @include largerThan($small) {
+      margin: 0 0 0 auto;
+    }
+  }
   .DataBlock {
     margin: 20px -8px;
+
     .DataCard {
       @include largerThan($medium) {
         padding: 10px;
       }
+
       @include lessThan($small) {
         padding: 4px 8px;
       }

@@ -1,32 +1,54 @@
 <template>
   <div :class="wrapperClass">
-    <div class="PrinterButton">
-      <v-btn outlined color="#00a040" href="/print/flow" target="_blank">
-        <div class="PrinterButton-PrinterIcon">
-          <PrinterIcon />
-        </div>
-        <span class="PrinterButton-Text">
-          {{ $t('print') }}
-        </span>
-      </v-btn>
-    </div>
+    <v-btn
+      class="PrinterButton"
+      outlined
+      :to="localePath(to)"
+      target="_blank"
+      @mouseover="mouseover"
+      @mouseleave="mouseleave"
+    >
+      <div class="PrinterButton-PrinterIcon">
+        <PrinterWhiteIcon v-if="hover" aria-hidden="true" />
+        <PrinterIcon v-else aria-hidden="true" />
+      </div>
+      <span class="PrinterButton-Text">
+        {{ $t('print') }}
+      </span>
+    </v-btn>
   </div>
 </template>
 
-<i18n src="./PrinterButton.i18n.json"></i18n>
-
 <script>
 import PrinterIcon from '@/static/printer.svg'
+import PrinterWhiteIcon from '@/static/printer-white.svg'
 
 export default {
   components: {
-    PrinterIcon
+    PrinterIcon,
+    PrinterWhiteIcon
   },
   props: {
     wrapperClass: {
       type: String,
-      required: false,
       default: ''
+    },
+    to: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      hover: this.hover
+    }
+  },
+  methods: {
+    mouseover() {
+      this.hover = true
+    },
+    mouseleave() {
+      this.hover = false
     }
   }
 }
@@ -34,7 +56,15 @@ export default {
 
 <style lang="scss" scoped>
 .PrinterButton {
+  @include button-text('md');
+
+  &:hover {
+    color: $white !important;
+  }
+
   &-Text {
+    margin: 6px auto 0;
+
     @include lessThan($small) {
       position: absolute !important;
       height: 1px !important;
@@ -47,12 +77,15 @@ export default {
       clip-path: inset(50%) !important;
     }
   }
+
   &-PrinterIcon {
-    margin-top: 3px;
+    margin-top: 8px;
+    width: 25px;
 
     @include largerThan($small) {
       padding-right: 7px;
     }
+
     svg {
       width: auto;
     }
