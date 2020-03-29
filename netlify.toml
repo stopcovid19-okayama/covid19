@@ -1,9 +1,4 @@
 [[redirects]]
-  from = "http://okayama-covid19.netlify.com/*"
-  to = "http://okayama.stopcovid19.jp/:splat"
-  status = 301
-
-[[redirects]]
-  from = "https://okayama-covid19.netlify.com/*"
-  to = "https://okayama.stopcovid19.jp/:splat"
-  status = 301
+  from = "/*"
+  to = "/404.html"
+  status = 404

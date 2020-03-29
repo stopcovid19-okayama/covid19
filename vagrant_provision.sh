@@ -12,7 +12,7 @@ sudo npm install -g yarn
 # ソースのコピー
 cp -pr /vagrant/ ./covid19
 # /vagrantがホストと共有できない場合は、githubからクローンする
-#git clone https://github.com/tokyo-metropolitan-gov/covid19.git
+#git clone https://github.com/stopcovid19-okayama/covid19.git
 cd covid19
 
 # インストール
