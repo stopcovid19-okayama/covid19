@@ -1,6 +1,6 @@
 # 岡山県 新型コロナウイルス感染症対策サイト
 
-![](https://github.com/okayama-stopcovid19/covid19/workflows/production%20deploy/badge.svg)
+![production deploy](https://github.com/stopcovid19-okayama/covid19/workflows/production%20deploy/badge.svg)
 
 [![岡山県 新型コロナウイルス感染症対策サイト](https://i.imgur.com/PF7sLLm.png)](https://okayama.stopcovid19.jp/)
 

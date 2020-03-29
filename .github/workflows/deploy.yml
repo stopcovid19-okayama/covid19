@@ -54,7 +54,3 @@ jobs:
           owner: stopcovid19-okayama
           repo: covid19
           branch: production
-      - name: Create GitHub release
-        uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: patch
