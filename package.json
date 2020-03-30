@@ -28,11 +28,6 @@
     ],
     "*.{css,scss,vue}": "stylelint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "sh pre-commit.sh && lint-staged"
-    }
-  },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.0",
     "@nuxtjs/dotenv": "^1.4.0",
