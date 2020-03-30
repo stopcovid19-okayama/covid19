@@ -74,7 +74,7 @@
     <StaticCard>
       <h3>
         <a
-          href="https://jsite.mhlw.go.jp/okayama-roudoukyoku/content/contents/000611698.pdf"
+          href="https://jsite.mhlw.go.jp/okayama-roudoukyoku/hourei_seido_tetsuzuki/kakushu_joseikin/tetsuzuki/_120417_00004.html"
           target="_blank"
           rel="noopener noreferrer"
           >{{ $t('雇用調整助成金の相談窓口について (岡山労働局)') }}</a
