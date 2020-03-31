@@ -4,6 +4,13 @@
 
 [![岡山県 新型コロナウイルス感染症対策サイト](https://i.imgur.com/PF7sLLm.png)](https://okayama.stopcovid19.jp/)
 
+## ディスカッション
+Slack でディスカッションを行っています。
+
+サイトの制作・運用にご協力いただける方であれば誰でも参加可能です。[ここ](https://join.slack.com/t/okayama-stopcovid19/shared_invite/zt-d86r1ajq-ba1w0w71DGcX_fed6lufog) からご参加ください。
+
+コミュニケーションにあたっては、[行動規範](./CODE_OF_CONDUCT.md) もご確認ください。
+
 ## 貢献の仕方
 Issues にあるいろいろな修正にご協力いただけると嬉しいです。
 
