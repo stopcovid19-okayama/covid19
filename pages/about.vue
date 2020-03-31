@@ -13,7 +13,7 @@
         $t(
           '運営・開発は有志によってボランティアで行われています。'
         )
-      }}
+      }}<br />
 
       <a href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md" target="_blank">
         貢献者一覧
