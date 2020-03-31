@@ -14,7 +14,7 @@
           '運営・開発は以下の有志によってボランティアで行われています。'
         )
       }}<br />
-      <a href="https://github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md">貢献者一覧</a><br />
+      <a href="https://github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md">{{ $t(貢献者一覧) }}</a>
 
       <br /><br />
       複製・改変が許されたオープンソースライセンスで公開されている、
