@@ -14,10 +14,11 @@
           '運営・開発は有志によってボランティアで行われています。'
         )
       }}
+
       <a href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md" target="_blank">
         {{ $t('貢献者一覧') }}
       </a>
-
+      
       <br /><br />
       複製・改変が許されたオープンソースライセンスで公開されている、
       <a href="//stopcovid19.metro.tokyo.lg.jp/" target="_blank">
