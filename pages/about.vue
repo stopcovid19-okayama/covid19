@@ -16,11 +16,7 @@
       }}
 
       <a href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md" target="_blank">
-        {{
-          $t(
-            '貢献者一覧'
-        )
-      }}
+        {{ $t('貢献者一覧') }}
       </a>
 
       <br /><br />
