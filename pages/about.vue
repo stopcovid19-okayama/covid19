@@ -11,21 +11,12 @@
       }}<br />
       {{
         $t(
-          '運営・開発は以下の学生エンジニアによってボランティアで行われています。'
+          '運営・開発は有志によってボランティアで行われています。'
         )
       }}<br />
-      <br />
-      ・藤原出帆 (
-      <a href="//twitter.com/fujiwaraizuho" target="_blank">
-        {{ $t('@fujiwaraizuho') }}
+      <a href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md" target="_blank">
+        貢献者一覧
       </a>
-      )
-      <br />
-      ・ルサカ (
-      <a href="//twitter.com/Luscaca_" target="_blank">
-        {{ $t('@Luscaca_') }}
-      </a>
-      )
       <br /><br />
       複製・改変が許されたオープンソースライセンスで公開されている、
       <a href="//stopcovid19.metro.tokyo.lg.jp/" target="_blank">
