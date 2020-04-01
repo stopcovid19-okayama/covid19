@@ -17,14 +17,14 @@ EOT
 )
 
 curl -i -X POST \
-  "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fstopcovid19.metro.tokyo.lg.jp%2F&access_token=${FB_ACCESS_TOKEN}"
+  "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fokayama.stopcovid19.jp%2F&access_token=${FB_ACCESS_TOKEN}"
 
 for lang in $LANGS; do
-  echo "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fstopcovid19.metro.tokyo.lg.jp%2F${lang}%2F&access_token=${FB_ACCESS_TOKEN}"
+  echo "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fokayama.stopcovid19.jp%2F${lang}%2F&access_token=${FB_ACCESS_TOKEN}"
   for page in $PAGES; do
     curl -i -X POST \
-      "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fstopcovid19.metro.tokyo.lg.jp%2F${lang}%2Fcards%2F${page}%2F&access_token=${FB_ACCESS_TOKEN}"
+      "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fokayama.stopcovid19.jp%2F${lang}%2Fcards%2F${page}%2F&access_token=${FB_ACCESS_TOKEN}"
   done
   curl -i -X POST \
-    "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fstopcovid19.metro.tokyo.lg.jp%2F${lang}%2F&access_token=${FB_ACCESS_TOKEN}"
+    "https://graph.facebook.com/v6.0/?scrape=true&id=https%3A%2F%2Fokayama.stopcovid19.jp%2F${lang}%2F&access_token=${FB_ACCESS_TOKEN}"
 done
