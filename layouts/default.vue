@@ -104,7 +104,7 @@ export default Vue.extend({
           hid: 'description',
           name: 'description',
           content: this.$tc(
-            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
+            '当サイトは岡山県の新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
           )
         },
         {
@@ -145,7 +145,7 @@ export default Vue.extend({
           hid: 'og:description',
           property: 'og:description',
           content: this.$tc(
-            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
+            '当サイトは岡山県の新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
           )
         },
         {
