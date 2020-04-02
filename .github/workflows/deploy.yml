@@ -54,6 +54,7 @@ jobs:
           owner: stopcovid19-okayama
           repo: covid19
           branch: production
+
       - uses: 8398a7/action-slack@v2
         with:
           status: ${{ job.status }}
