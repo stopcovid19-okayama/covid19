@@ -136,7 +136,8 @@ const config: Configuration = {
     ['nuxt-i18n', i18n],
     'nuxt-svg-loader',
     'nuxt-purgecss',
-    ['vue-scrollto/nuxt', { duration: 1000, offset: -72 }]
+    ['vue-scrollto/nuxt', { duration: 1000, offset: -72 }],
+    '@nuxtjs/sitemap'
   ],
   /*
    ** vuetify module configuration
@@ -232,6 +233,14 @@ const config: Configuration = {
     webpack: {
       poll: true
     }
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://okayama.stopcovid19.jp/',
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    generate: true,
+    routes: ['/about', '/flow', '/parent', '/worker']
   }
 }
 
