@@ -1,45 +1,26 @@
-name: action-slack
-description: You can notify slack of GitHub Actions.
-author: 8398a7
-inputs:
-  status:
-    description: Specify success or failure or cancelled or custom.
-  custom_payload:
-    description: |
-      json payload
-      refs https://github.com/slackapi/node-slack-sdk/blob/v5.0.0/packages/webhook/src/IncomingWebhook.ts#L91-L106)
-  mention:
-    description: |
-      Specify channel or here or `user_id`.
-      refs: https://api.slack.com/reference/surfaces/formatting#mentioning-users
-    default: ""
-  if_mention:
-    description: |
-      Specify success or failure or cancelled or custom or always.
-      Multiple statuses can be specified in csv format.
-      e.g. success,failure
-    default: ""
-  author_name:
-    description: User name for slack notification.
-    default: 8398a7@action-slack
-  text:
-    description: You can overwrite text.
-    default: ""
-  username:
-    description: override the legacy integration's default name.
-    default: ""
-  icon_emoji:
-    description: an emoji code string to use in place of the default icon.
-    default: ""
-  icon_url:
-    description: an icon image URL string to use in place of the default icon.
-    default: ""
-  channel:
-    description: override the legacy integration's default channel. This should be an ID, such as C8UJ12P4P.
-    default: ""
-runs:
-  using: node12
-  main: dist/index.js
-branding:
-  icon: bell
-  color: blue
+name: build-test
+on: [pull_request, push]
+
+jobs:
+  check_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
