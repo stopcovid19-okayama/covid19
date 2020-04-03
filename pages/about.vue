@@ -225,6 +225,16 @@
         </i18n>
       </p>
     </StaticCard>
+    <StaticCard>
+      <h3>{{ $t('お問い合わせ先') }}</h3>
+      <a href="https://github.com/stopcovid19-okayama/covid19" target="_blank">
+        https://github.com/stopcovid19-okayama/covid19
+      </a>
+      <br />
+      <a href="mailto:stopcovid19.okayama@gmail.com">
+        {{ $t('stopcovid19-okayama運営事務局 ( stopcovid19.okayama@gmail.com )') }}
+      </a>
+    </StaticCard>
   </div>
 </template>
 
