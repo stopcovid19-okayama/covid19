@@ -249,7 +249,7 @@ export default Vue.extend({
         '&url=' +
         this.permalink(true) +
         '&' +
-        'hashtags=StopCovid19JP'
+        'hashtags=StopCovid19JP,StopCovid19Okayama,岡山コロナ情報'
       window.open(url)
     },
     facebook() {
