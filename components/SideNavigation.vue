@@ -49,6 +49,28 @@
       <footer class="SideNavigation-Footer">
         <div class="SideNavigation-Social">
           <a
+            href="https://twitter.com/covid19_okayama"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/twitter.webp" type="image/webp" />
+              <img src="/twitter.png" alt="Twitter" />
+            </picture>
+          </a>
+          <a
+            href="https://www.facebook.com/106711727658729"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="SideNavigation-SocialLink"
+          >
+            <picture>
+              <source srcset="/facebook.webp" type="image/webp" />
+              <img src="/facebook.png" alt="Facebook" />
+            </picture>
+          </a>
+          <a
             href="https://github.com/fujiwaraizuho/okayama-covid19"
             target="_blank"
             rel="noopener noreferrer"
