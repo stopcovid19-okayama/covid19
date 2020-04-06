@@ -226,12 +226,11 @@
     </StaticCard>
     <StaticCard>
       <h3>{{ $t('お問い合わせ先') }}</h3>
-      <p>{{ $t('岡山県 新型コロナウイルス感染症 対策サイト 運営組織') }}</p>
-      <a href="mailto:stopcovid19.okayama@gmail.com">
-        {{
-          $t('stopcovid19-okayama運営事務局 ( stopcovid19.okayama@gmail.com )')
-        }}
-      </a>
+      <i18n path="メール: {mail}">
+        <a href="mailto:stopcovid19.okayama@gmail.com" place="mail">
+          {{ $t('stopcovid19.okayama@gmail.com') }}
+        </a>
+      </i18n>
     </StaticCard>
   </div>
 </template>
