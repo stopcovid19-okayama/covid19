@@ -9,12 +9,11 @@
           '当サイトは岡山県内の新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために作成されました。'
         )
       }}<br />
-      {{
-        $t(
-          '運営・開発は有志によってボランティアで行われています。'
-        )
-      }}<br />
-      <a href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md" target="_blank">
+      {{ $t('運営・開発は有志によってボランティアで行われています。') }}<br />
+      <a
+        href="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md"
+        target="_blank"
+      >
         貢献者一覧
       </a>
       <br /><br />
@@ -224,6 +223,14 @@
           </a>
         </i18n>
       </p>
+    </StaticCard>
+    <StaticCard>
+      <h3>{{ $t('お問い合わせ先') }}</h3>
+      <i18n path="メール: {mail}">
+        <a href="mailto:stopcovid19.okayama@gmail.com" place="mail">
+          {{ $t('stopcovid19.okayama@gmail.com') }}
+        </a>
+      </i18n>
     </StaticCard>
   </div>
 </template>
