@@ -1,13 +1,15 @@
 <template>
   <div>
+    <!--
     <confirmed-cases-details-card
       v-if="this.$route.params.card == 'details-of-confirmed-cases'"
     />
     <tested-cases-details-card
       v-else-if="this.$route.params.card == 'details-of-tested-cases'"
     />
+    -->
     <confirmed-cases-number-card
-      v-else-if="this.$route.params.card == 'number-of-confirmed-cases'"
+      v-if="this.$route.params.card == 'number-of-confirmed-cases'"
     />
     <confirmed-cases-attributes-card
       v-else-if="this.$route.params.card == 'attributes-of-confirmed-cases'"
@@ -15,9 +17,11 @@
     <tested-number-card
       v-else-if="this.$route.params.card == 'number-of-tested'"
     />
+    <!--
     <inspection-persons-number-card
       v-else-if="this.$route.params.card == 'number-of-inspection-persons'"
     />
+    -->
     <telephone-advisory-reports-number-card
       v-else-if="
         this.$route.params.card ==
@@ -30,6 +34,7 @@
           'number-of-reports-to-covid19-consultation-desk'
       "
     />
+    <!--
     <metro-card
       v-else-if="
         this.$route.params.card == 'predicted-number-of-toei-subway-passengers'
@@ -51,23 +56,32 @@
     <tokyo-city-map-card
       v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
     />
+    -->
   </div>
 </template>
 
 <script>
-import Data from '@/data/data.json'
+import Patients from '@/data/patients.json'
+import InspectionSummary from '@/data/inspections_summary.json'
+import Contacts from '@/data/contacts.json'
+import Querents from '@/data/querents.json'
+/*
 import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
 import ShinjukuData from '@/data/13104_daily_visitors.json'
 import ChiyodaData from '@/data/13101_daily_visitors.json'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
+*/
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
+/*
 import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
+*/
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
+/*
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
 import ShinjukuVisitorsCard from '@/components/cards/ShinjukuVisitorsCard.vue'
@@ -75,17 +89,23 @@ import ChiyodaVisitorsCard from '@/components/cards/ChiyodaVisitorsCard.vue'
 import ShinjukuStMapCard from '@/components/cards/ShinjukuStMapCard.vue'
 import TokyoStMapCard from '@/components/cards/TokyoStMapCard.vue'
 import TokyoCityMapCard from '@/components/cards/TokyoCityMapCard.vue'
+*/
 
 export default {
   components: {
+    /*
     ConfirmedCasesDetailsCard,
     TestedCasesDetailsCard,
+    */
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     TestedNumberCard,
+    /*
     InspectionPersonsNumberCard,
+    */
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard,
+    /*
     MetroCard,
     AgencyCard,
     ShinjukuVisitorsCard,
@@ -93,10 +113,12 @@ export default {
     ShinjukuStMapCard,
     TokyoStMapCard,
     TokyoCityMapCard
+    */
   },
   data() {
     let title, updatedAt
     switch (this.$route.params.card) {
+      /*
       case 'details-of-confirmed-cases':
         title = this.$t('検査陽性者の状況')
         updatedAt = Data.inspections_summary.date
@@ -105,30 +127,34 @@ export default {
         title = this.$t('検査実施状況')
         updatedAt = Data.inspection_status_summary.date
         break
+      */
       case 'number-of-confirmed-cases':
         title = this.$t('陽性患者数')
-        updatedAt = Data.patients.date
+        updatedAt = Patients.date
         break
       case 'attributes-of-confirmed-cases':
         title = this.$t('陽性患者の属性')
-        updatedAt = Data.patients.date
+        updatedAt = Patients.date
         break
       case 'number-of-tested':
         title = this.$t('検査実施件数')
-        updatedAt = Data.inspections_summary.date
+        updatedAt = InspectionSummary.date
         break
+      /*
       case 'number-of-inspection-persons':
         title = this.$t('検査実施人数')
         updatedAt = Data.inspection_persons.date
         break
+      */
       case 'number-of-reports-to-covid19-telephone-advisory-center':
         title = this.$t('新型コロナコールセンター相談件数')
-        updatedAt = Data.contacts.date
+        updatedAt = Contacts.date
         break
       case 'number-of-reports-to-covid19-consultation-desk':
         title = this.$t('新型コロナ受診相談窓口相談件数')
-        updatedAt = Data.querents.date
+        updatedAt = Querents.date
         break
+      /*
       case 'predicted-number-of-toei-subway-passengers':
         title = this.$t('都営地下鉄の利用者数の推移')
         updatedAt = MetroData.date
@@ -145,6 +171,7 @@ export default {
         title = this.$t('千代田区エリアの来訪者数の推移（参考値）')
         updatedAt = ChiyodaData.date
         break
+      */
     }
 
     const data = {

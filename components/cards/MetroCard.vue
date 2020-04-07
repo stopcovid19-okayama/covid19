@@ -30,7 +30,9 @@
 </template>
 
 <script>
+/*
 import Data from '@/data/data.json'
+*/
 import MetroData from '@/data/metro.json'
 import MetroBarChart from '@/components/MetroBarChart.vue'
 
