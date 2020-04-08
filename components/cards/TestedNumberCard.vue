@@ -5,7 +5,7 @@
       :title-id="'number-of-tested'"
       :chart-id="'time-bar-chart-inspections'"
       :chart-data="patientsGraph"
-      :date="Data.inspections_summary.date"
+      :date="InspectionsSummary.date"
       :unit="$t('件.tested')"
       :url="'http://www.okayama-opendata.jp/opendata/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48&datasetId=e6b3c1d2-2f1f-4735-b36e-e45d36d94761'"
     >
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Data from '@/data/data.json'
+import InspectionsSummary from '@/data/inspections_summary.json'
 import formatGraph from '@/utils/formatGraph'
 import TimeBarChart from '@/components/TimeBarChart.vue'
 
@@ -25,10 +25,10 @@ export default {
   },
   data() {
     // 検査実施日別状況
-    const patientsGraph = formatGraph(Data.inspections_summary.data)
+    const patientsGraph = formatGraph(InspectionsSummary.data)
 
     const data = {
-      Data,
+      InspectionsSummary,
       patientsGraph
     }
     return data
