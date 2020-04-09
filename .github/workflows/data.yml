@@ -6,7 +6,7 @@ on:
 
 jobs:
   pr-development:
-    runs-os: ubuntu-18.04
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout covid19-scraping
         uses: actions/checkout@v2
