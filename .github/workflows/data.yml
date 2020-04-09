@@ -21,7 +21,7 @@ jobs:
           path: development
       - name: Copy data
         run: |
-          cp -p covid19-scraping/*.json data
+          cp -p covid19-scraping/*.json development/data
       - name: Check diff
         run: |
           git diff
