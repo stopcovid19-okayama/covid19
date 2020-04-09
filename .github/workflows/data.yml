@@ -31,8 +31,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: development
-          commit-message: "[BOT] UPDATE DATA `date '%Y-%m-%d'`"
-          title: "[BOT] UPDATE DATA to development `date '%Y-%m-%d'`"
+          commit-message: "[BOT] UPDATE DATA `date '+%Y-%m-%d'`"
+          title: "[BOT] UPDATE DATA to development `date '+%Y-%m-%d'`"
           base: development
           branch: data-bot/development
       - name: Check outputs
