@@ -1,7 +1,8 @@
 name: Update data
 
 on:
-  repository_dispatch: ["update-data"]
+  repository_dispatch:
+    types: [update-data]
 
 jobs:
   pr-development:
