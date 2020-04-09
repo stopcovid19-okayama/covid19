@@ -8,6 +8,9 @@ jobs:
   pr-development:
     runs-on: ubuntu-18.04
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Checkout covid19-scraping
         uses: actions/checkout@v2
         with:
