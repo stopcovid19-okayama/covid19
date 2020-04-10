@@ -225,6 +225,24 @@
       </p>
     </StaticCard>
     <StaticCard>
+      <h3>{{ $t('ディスカッションについて') }}</h3>
+      <p>
+        {{ $t('Slackでディスカッションを行っています。') }}<br />
+        <i18n
+          path="サイトの制作・運用にご協力いただける方であれば誰でも参加可能です。{slack} からご参加ください。"
+        >
+          <a
+            href="https://join.slack.com/t/okayama-stopcovid19/shared_invite/zt-d86r1ajq-ba1w0w71DGcX_fed6lufog"
+            target="_blank"
+            rel="noopener noreferrer"
+            place="slack"
+          >
+            {{ $t('ここ') }}
+          </a>
+        </i18n>
+      </p>
+    </StaticCard>
+    <StaticCard>
       <h3>{{ $t('お問い合わせ先') }}</h3>
       <i18n path="メール: {mail}">
         <a href="mailto:stopcovid19.okayama@gmail.com" place="mail">
