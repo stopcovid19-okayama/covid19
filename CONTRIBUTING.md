@@ -6,7 +6,7 @@
 
 何か質問があれば、Issue へのコメントや、Slack 等でお気軽に質問してください。プロジェクトへの参加方法をお伝えいたします。
 
-プロジェクトに参加する前に、本ドキュメントとプロジェクトの行動規範 をご一読ください。
+プロジェクトに参加する前に、本ドキュメントと[プロジェクトの行動規範](CODE_OF_CONDUCT.md) をご一読ください。
 
 ## プロジェクトの目的
 
@@ -23,7 +23,7 @@
 ## プロジェクト体制
 本プロジェクトは以下の体制で運営しています。
 
-サイトの制作・開発以外にも様々なタスクがございます。エンジニアやデザイナー以外の方の参加も大歓迎です
+サイトの制作・開発以外にも様々なタスクがございます。エンジニアやデザイナー以外の方の参加も大歓迎です。
 
 - プロジェクト責任者
   - [Izuho Fujiwara](https://www.facebook.com/fujiwaraizuho1222)
@@ -44,11 +44,11 @@ Slack でディスカッションを行っています。
 コミュニケーションにあたっては、[行動規範](https://github.com/stopcovid19-okayama/covid19/blob/development/CODE_OF_CONDUCT.md) もご確認ください。
 
 ## 対策サイト制作の流れ
-対策サイトサイトの制作は、Slack と GitHub を使用してオープンに進めております。
+対策サイトの制作は、Slack と GitHub を使用してオープンに進めております。
 
 1. [Slack] 新機能やコンテンツに関する企画
-2. [GitHub] 課題(issue)の追加
-3. [GitHub] 課題(PR)の対応
+2. [GitHub] 課題(Issue)の追加
+3. [GitHub] 課題(Pull Request)の対応
 4. [GitHub] 対策サイトへの反映(Merge)
 
 ## 課題管理
@@ -108,14 +108,14 @@ development ブランチを更新すると CI/CD が実行されサーバーの�
 
 master ブランチを更新すると CI/CD が実行され production ブランチのコンテンツが更新されます。
 
-さくらのクラウドでは5分に1回、productionブランチをPULLしてコンテンツを更新しています。
+さくらのクラウドでは5分に1回、productionブランチをPullしてコンテンツを更新しています。
 
 ## データ更新の作業手順
 ### 作業手順
 - 毎時 0 分 / スクレイピングスクリプトが実行され、サイト用の JSON データが生成される
 - 毎日 21:00 / 生成された JSON データを更新するための Pull Request が作成される
-- 開発環境のデータと、おかやまオープンデータカタログのデータが同じか複数人で確認
-- 問題なければ、コミッターの誰かがPRをマージし、本番環境を更新する
+- 開発環境のデータと、[おかやまオープンデータカタログ](http://www.okayama-opendata.jp/opendata/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48)のデータが同じか複数人で確認
+- 問題なければ、コミッターの誰かがPull Requestをマージし、本番環境を更新する
 
 ## CONTRIBUTORS.md への追加について
 ご協力いただいた皆様のお名前（ハンドルネーム）や役割を記す、[CONTRIBUTORS.md](https://github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md) というファイルがあります。
