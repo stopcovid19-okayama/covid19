@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [update-data]
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '15 12 * * *'
 
 jobs:
   pr-development:
@@ -39,6 +39,7 @@ jobs:
           commit-message: '[BOT] UPDATE DATA ${{ steps.date.outputs.date }}'
           title: '[BOT] UPDATE DATA to development ${{ steps.date.outputs.date }}'
           base: development
+          branch-suffix: 'short-commit-hash'
           branch: data-bot/development
       - name: Check outputs
         run: |
@@ -84,6 +85,7 @@ jobs:
           commit-message: '[BOT] UPDATE DATA ${{ steps.date.outputs.date }}'
           title: '[BOT] UPDATE DATA to master ${{ steps.date.outputs.date }}'
           base: master
+          branch-suffix: 'short-commit-hash'
           branch: data-bot/master
       - name: Check outputs
         run: |
