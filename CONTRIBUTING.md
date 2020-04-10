@@ -113,9 +113,13 @@ master ブランチを更新すると CI/CD が実行され production ブラン
 ## データ更新の作業手順
 ### 作業手順
 - 毎時 0 分 / スクレイピングスクリプトが実行され、サイト用の JSON データが生成される
-- 毎日 21:00 / 生成された JSON データを更新するための Pull Request が作成される
+- 毎日 21:15 / 生成された JSON データを更新するための Pull Request が作成される
 - 開発環境のデータと、[おかやまオープンデータカタログ](http://www.okayama-opendata.jp/opendata/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48)のデータが同じか複数人で確認
 - 問題なければ、コミッターの誰かがPull Requestをマージし、本番環境を更新する
+
+### 注意事項
+- Pull Requestをマージした際は、必ず結びついているブランチを削除してください
+- データの整合性チェックは念入りに行ってください
 
 ## CONTRIBUTORS.md への追加について
 ご協力いただいた皆様のお名前（ハンドルネーム）や役割を記す、[CONTRIBUTORS.md](https://github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md) というファイルがあります。
