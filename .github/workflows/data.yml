@@ -1,0 +1,100 @@
+name: Update data
+
+on:
+  repository_dispatch:
+    types: [update-data]
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  pr-development:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Checkout covid19-scraping
+        uses: actions/checkout@v2
+        with:
+          repository: stopcovid19-okayama/covid19-scraping
+          ref: 'gh-pages'
+          path: 'covid19-scraping'
+      - name: Checkout development
+        uses: actions/checkout@v2
+        with:
+          ref: development
+          path: development
+      - name: Copy data
+        run: |
+          cp -p covid19-scraping/*.json development/data
+      - name: Check diff
+        run: |
+          cd development
+          git diff
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: development
+          commit-message: '[BOT] UPDATE DATA ${{ steps.date.outputs.date }}'
+          title: '[BOT] UPDATE DATA to development ${{ steps.date.outputs.date }}'
+          base: development
+          branch: data-bot/development
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pr_number }}"
+      - name: Notification Slack
+        uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
+  pr-master:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Checkout covid19-scraping
+        uses: actions/checkout@v2
+        with:
+          repository: stopcovid19-okayama/covid19-scraping
+          ref: 'gh-pages'
+          path: 'covid19-scraping'
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          path: master
+      - name: Copy data
+        run: |
+          cp -p covid19-scraping/*.json master/data
+      - name: Check diff
+        run: |
+          cd master
+          git diff
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: master
+          commit-message: '[BOT] UPDATE DATA ${{ steps.date.outputs.date }}'
+          title: '[BOT] UPDATE DATA to master ${{ steps.date.outputs.date }}'
+          base: master
+          branch: data-bot/master
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pr_number }}"
+      - name: Notification Slack
+        uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
+
