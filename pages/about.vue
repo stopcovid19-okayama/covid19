@@ -35,6 +35,30 @@
       }}
     </StaticCard>
     <StaticCard>
+      <h3>{{ $t('データについて') }}</h3>
+      <p>
+        {{
+          $t('当サイトは、1日に1回、21時から24時の間に1〜2日遅れでデータを更新しています。')
+        }}<br />
+        {{
+          $t('岡山県から公開された、エビデンスのある確定データを岡山県にお住まいの方、岡山県に訪れる方に迅速かつ正確でわかりやすく伝えるためにご協力をお願いいたします。')
+        }}
+      </p>
+      <i18n
+        tag="p"
+        path="当サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。"
+      >
+        <a
+          href="http://www.okayama-opendata.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          place="catalogWebsite"
+        >
+          {{ $t('岡山県オープンデータカタログサイト') }}
+        </a>
+      </i18n>
+    </StaticCard>
+    <StaticCard>
       <h3>{{ $t('ブラウザ環境について') }}</h3>
       <p>
         {{ $t('当サイトは以下の環境でご覧いただくことを推奨いたします。') }}
@@ -187,22 +211,6 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
-      <h3>{{ $t('データについて') }}</h3>
-      <i18n
-        tag="p"
-        path="本サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。"
-      >
-        <a
-          href="http://www.okayama-opendata.jp/"
-          target="_blank"
-          rel="noopener noreferrer"
-          place="catalogWebsite"
-        >
-          {{ $t('岡山県オープンデータカタログサイト') }}
-        </a>
-      </i18n>
     </StaticCard>
     <StaticCard>
       <h3>{{ $t('ソースコードについて') }}</h3>
