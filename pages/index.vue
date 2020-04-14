@@ -23,13 +23,13 @@
       :btn-text="$t('相談の手順を見る')"
     />
     <v-row class="DataBlock">
-      <!--
       <confirmed-cases-details-card />
+      <!--
       <tested-cases-details-card />
       -->
       <confirmed-cases-number-card />
-      <tested-number-card />
       <confirmed-cases-attributes-card />
+      <tested-number-card />
       <telephone-advisory-reports-number-card />
       <consultation-desk-reports-number-card />
       <!--
@@ -57,8 +57,9 @@ import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
 import LastUpdate from '@/data/last_update.json'
 import News from '@/data/news.json'
-/*
+
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
+/*
 import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 */
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
@@ -84,8 +85,8 @@ export default Vue.extend({
     PageHeader,
     WhatsNew,
     StaticInfo,
-    /*
     ConfirmedCasesDetailsCard,
+    /*
     TestedCasesDetailsCard,
     */
     ConfirmedCasesNumberCard,
