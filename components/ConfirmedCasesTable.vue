@@ -5,8 +5,7 @@
         <div :class="$style.content">
           <span>
             {{ $t('検査実施') }}
-            <br />{{ $t('人数') }}
-            <br />({{ $t('累計') }})
+            <br />{{ $t('人数') }} <br />({{ $t('累計') }})
           </span>
           <span>
             <strong>{{ 検査実施人数 }}</strong>
