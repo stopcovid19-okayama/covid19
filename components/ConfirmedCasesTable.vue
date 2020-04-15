@@ -1,5 +1,19 @@
 <template>
   <ul :class="$style.container">
+    <li :class="[$style.box, $style.tall, $style.tested]">
+      <div :class="$style.pillar_tested">
+        <div :class="$style.content">
+          <span>
+            {{ $t('検査実施') }}
+            <br />{{ $t('人数') }} <br />({{ $t('累計') }})
+          </span>
+          <span>
+            <strong>{{ 検査実施人数 }}</strong>
+            <span :class="$style.unit">{{ $t('人') }}</span>
+          </span>
+        </div>
+      </div>
+    </li>
     <li :class="[$style.box, $style.tall, $style.parent, $style.confirmed]">
       <div :class="$style.pillar">
         <div :class="$style.content">
@@ -14,49 +28,12 @@
         </div>
       </div>
       <ul :class="$style.group">
-        <li :class="[$style.box, $style.parent, $style.hospitalized]">
+        <li :class="[$style.box, $style.hospitalized]">
           <div :class="$style.pillar">
             <div :class="$style.content">
               <span>{{ $t('入院中') }}</span>
               <span>
                 <strong>{{ 入院中 }}</strong>
-                <span :class="$style.unit">{{ $t('人') }}</span>
-              </span>
-            </div>
-          </div>
-          <ul :class="$style.group">
-            <li :class="[$style.box, $style.short, $style.minor]">
-              <div :class="$style.pillar">
-                <div :class="$style.content">
-                  <!-- eslint-disable vue/no-v-html-->
-                  <span v-html="$t('軽症・<br />中等症')" />
-                  <!-- eslint-enable vue/no-v-html-->
-                  <span>
-                    <strong>{{ 軽症中等症 }}</strong>
-                    <span :class="$style.unit">{{ $t('人') }}</span>
-                  </span>
-                </div>
-              </div>
-            </li>
-            <li :class="[$style.box, $style.short, $style.severe]">
-              <div :class="$style.pillar">
-                <div :class="$style.content">
-                  <span>{{ $t('重症') }}</span>
-                  <span>
-                    <strong>{{ 重症 }}</strong>
-                    <span :class="$style.unit">{{ $t('人') }}</span>
-                  </span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li :class="[$style.box, $style.deceased]">
-          <div :class="$style.pillar">
-            <div :class="$style.content">
-              <span>{{ $t('死亡') }}</span>
-              <span>
-                <strong>{{ 死亡 }}</strong>
                 <span :class="$style.unit">{{ $t('人') }}</span>
               </span>
             </div>
@@ -68,6 +45,17 @@
               <span>{{ $t('退院') }}</span>
               <span>
                 <strong>{{ 退院 }}</strong>
+                <span :class="$style.unit">{{ $t('人') }}</span>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li :class="[$style.box, $style.deceased]">
+          <div :class="$style.pillar">
+            <div :class="$style.content">
+              <span>{{ $t('死亡') }}</span>
+              <span>
+                <strong>{{ 死亡 }}</strong>
                 <span :class="$style.unit">{{ $t('人') }}</span>
               </span>
             </div>
@@ -96,6 +84,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
+    /*
     軽症中等症: {
       type: Number,
       required: true
@@ -104,6 +93,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
+    */
     死亡: {
       type: Number,
       required: true
@@ -175,6 +165,16 @@ $default-boxdiff: 35px;
   border: $default-bdw solid $green-1;
 }
 
+.pillar_tested {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  text-align: center;
+  width: 100%;
+  border: $default-bdw solid $gray-1;
+}
+
 .group {
   display: flex;
   flex: 0 0 auto;
@@ -211,20 +211,30 @@ $default-boxdiff: 35px;
     }
   }
 
+  &.tested {
+    display: flex;
+    flex: 0 0 auto;
+    // [5列] 1/5
+    width: calc((100% - #{$default-bdw} * 3) / 5);
+    color: $gray-1;
+  }
+
   &.confirmed {
+    margin-left: $default-bdw;
     width: 100%;
 
     > .pillar {
-      // [6列] 1/6
-      width: calc((100% + #{$default-bdw} * 2) / 6 - #{$default-bdw} * 3);
+      // [4列] 1/4
+      width: calc((100% + #{$default-bdw} * 3) / 4 - #{$default-bdw} * 3);
     }
 
     > .group {
-      // [6列] 5/6
-      width: calc((100% + #{$default-bdw} * 2) / 6 * 5 + #{$default-bdw});
+      // [4列] 3/4
+      width: calc((100% + #{$default-bdw} * 2) / 4 * 3 + #{$default-bdw});
     }
   }
 
+  /*
   &.hospitalized {
     margin-left: $default-bdw;
     // [5列] 3/5
@@ -240,6 +250,7 @@ $default-boxdiff: 35px;
       width: calc((100% + #{$default-bdw} * 2) / 3 * 2 + #{$default-bdw});
     }
   }
+  */
 
   &.minor,
   &.severe {
@@ -248,11 +259,12 @@ $default-boxdiff: 35px;
     width: calc(100% / 2 - #{$default-bdw});
   }
 
+  &.hospitalized,
   &.deceased,
   &.recovered {
     margin-left: $default-bdw;
-    // [5列] 1/5
-    width: calc(100% / 5 - #{$default-bdw});
+    // [3列] 1/3
+    width: calc(100% / 3 - #{$default-bdw});
   }
 }
 
@@ -296,7 +308,8 @@ $default-boxdiff: 35px;
 }
 
 @mixin override($vw, $bdw, $fz, $boxh, $boxdiff) {
-  .pillar {
+  .pillar,
+  .pillar_tested {
     border-width: px2vw($bdw, $vw);
   }
 
@@ -336,19 +349,20 @@ $default-boxdiff: 35px;
     }
 
     &.confirmed {
+      margin-left: px2vw($bdw, $vw);
+
       > .pillar {
-        width: calc(
-          (100% + #{px2vw($bdw, $vw)} * 2) / 6 - #{px2vw($bdw, $vw)} * 3
-        );
+        // [4列] 1/4
+        width: calc((100% + #{$default-bdw} * 3) / 4 - #{$default-bdw} * 3);
       }
 
       > .group {
-        width: calc(
-          (100% + #{px2vw($bdw, $vw)} * 2) / 6 * 5 + #{px2vw($bdw, $vw)}
-        );
+        // [4列] 3/4
+        width: calc((100% + #{$default-bdw} * 2) / 4 * 3 + #{$default-bdw});
       }
     }
 
+    /*
     &.hospitalized {
       margin-left: px2vw($bdw, $vw);
       width: calc(100% / 5 * 3 - #{px2vw($bdw, $vw)});
@@ -365,6 +379,7 @@ $default-boxdiff: 35px;
         );
       }
     }
+    */
 
     &.minor,
     &.severe {
@@ -372,10 +387,11 @@ $default-boxdiff: 35px;
       width: calc(100% / 2 - #{px2vw($bdw, $vw)});
     }
 
+    &.hospitalized,
     &.deceased,
     &.recovered {
       margin-left: px2vw($bdw, $vw);
-      width: calc(100% / 5 - #{px2vw($bdw, $vw)});
+      width: calc(100% / 3 - #{px2vw($bdw, $vw)});
     }
   }
 }
