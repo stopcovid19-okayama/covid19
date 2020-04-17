@@ -60,7 +60,9 @@
           href="https://www.mhlw.go.jp/stf/newpage_10037.html"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ $t('時間外労働等改善助成金の特例的なコースの申請受付開始について') }}</a
+          >{{
+            $t('時間外労働等改善助成金の特例的なコースの申請受付開始について')
+          }}</a
         >
       </h3>
       <p>

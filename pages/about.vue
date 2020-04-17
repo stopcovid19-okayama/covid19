@@ -9,7 +9,8 @@
           '当サイトは岡山県内の新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために作成されました。'
         )
       }}<br />
-      {{ $t('運営・開発は有志によってボランティアで行われています。') }}<br /><br />
+      {{ $t('運営・開発は有志によってボランティアで行われています。')
+      }}<br /><br />
       <external-link
         url="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md"
         :icon-size="16"
@@ -22,7 +23,10 @@
         {{ $t('東京都公式新型コロナウイルス対策サイト') }}
       </external-link>
       の
-      <external-link url="//github.com/tokyo-metropolitan-gov/covid19" :icon-size="16">
+      <external-link
+        url="//github.com/tokyo-metropolitan-gov/covid19"
+        :icon-size="16"
+      >
         {{ $t('仕組み') }}
       </external-link>
       を利用しています
@@ -53,10 +57,7 @@
         path="当サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。"
       >
         <template v-slot:catalogWebsite>
-          <external-link
-            url="http://www.okayama-opendata.jp"
-            :icon-size="16"
-          >
+          <external-link url="http://www.okayama-opendata.jp" :icon-size="16">
             {{ $t('岡山県オープンデータカタログサイト') }}
           </external-link>
         </template>
@@ -264,7 +265,7 @@
               url="https://join.slack.com/t/okayama-stopcovid19/shared_invite/zt-d86r1ajq-ba1w0w71DGcX_fed6lufog"
               :icon-size="16"
             >
-              {{ $t("ここ") }}
+              {{ $t('ここ') }}
             </external-link>
           </template>
         </i18n>

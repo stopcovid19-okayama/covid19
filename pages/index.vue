@@ -108,7 +108,7 @@ export default Vue.extend({
     InspectionPersonsNumberCard,
     TestedNumberCard,
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
+    ConsultationDeskReportsNumberCard
     /*
     MetroCard,
     AgencyCard,

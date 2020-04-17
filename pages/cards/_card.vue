@@ -113,7 +113,7 @@ export default {
     InspectionPersonsNumberCard,
     */
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
+    ConsultationDeskReportsNumberCard
     /*
     MetroCard,
     AgencyCard,
