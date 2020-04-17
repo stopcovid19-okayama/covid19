@@ -1,10 +1,9 @@
 <template>
   <div>
-    <!--
     <confirmed-cases-details-card
       v-if="this.$route.params.card == 'details-of-confirmed-cases'"
     />
-    <tested-cases-details-card
+    <!--<tested-cases-details-card
       v-else-if="this.$route.params.card == 'details-of-tested-cases'"
     />
     -->
@@ -79,6 +78,8 @@ import patientData from '@/data/patient.json'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 */
+import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
+// import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import ConfirmedCasesByMunicipalitiesCard from '@/components/cards/ConfirmedCasesByMunicipalitiesCard.vue'
@@ -100,10 +101,8 @@ import TokyoCityMapCard from '@/components/cards/TokyoCityMapCard.vue'
 
 export default {
   components: {
-    /*
     ConfirmedCasesDetailsCard,
-    TestedCasesDetailsCard,
-    */
+    // TestedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     /*
@@ -128,11 +127,11 @@ export default {
   data() {
     let title, updatedAt
     switch (this.$route.params.card) {
-      /*
       case 'details-of-confirmed-cases':
         title = this.$t('検査陽性者の状況')
-        updatedAt = Data.inspections_summary.date
+        updatedAt = InspectionSummary.date
         break
+      /*
       case 'details-of-tested-cases':
         title = this.$t('検査実施状況')
         updatedAt = Data.inspection_status_summary.date
