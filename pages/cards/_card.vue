@@ -1,10 +1,9 @@
 <template>
   <div>
-    <!--
     <confirmed-cases-details-card
       v-if="this.$route.params.card == 'details-of-confirmed-cases'"
     />
-    <tested-cases-details-card
+    <!--<tested-cases-details-card
       v-else-if="this.$route.params.card == 'details-of-tested-cases'"
     />
     -->
@@ -70,9 +69,9 @@ import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
 import ShinjukuData from '@/data/13104_daily_visitors.json'
 import ChiyodaData from '@/data/13101_daily_visitors.json'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 */
+import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
+// import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
@@ -93,10 +92,8 @@ import TokyoCityMapCard from '@/components/cards/TokyoCityMapCard.vue'
 
 export default {
   components: {
-    /*
     ConfirmedCasesDetailsCard,
-    TestedCasesDetailsCard,
-    */
+    // TestedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     TestedNumberCard,
@@ -118,11 +115,11 @@ export default {
   data() {
     let title, updatedAt
     switch (this.$route.params.card) {
-      /*
       case 'details-of-confirmed-cases':
         title = this.$t('検査陽性者の状況')
-        updatedAt = Data.inspections_summary.date
+        updatedAt = InspectionSummary.date
         break
+      /*
       case 'details-of-tested-cases':
         title = this.$t('検査実施状況')
         updatedAt = Data.inspection_status_summary.date
