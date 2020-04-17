@@ -60,11 +60,13 @@
 </template>
 
 <script lang="ts">
+/*
 import PhoneIcon from '@/static/flow/responsive/phone.svg'
 
 export default {
   components: { PhoneIcon }
 }
+*/
 </script>
 
 <style module lang="scss">

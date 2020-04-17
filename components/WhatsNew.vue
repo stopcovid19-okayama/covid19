@@ -52,7 +52,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
+/*
 import ExternalLink from '@/components/ExternalLink.vue'
+*/
 
 import {
   convertDateByCountryPreferTimeFormat,
@@ -60,7 +62,7 @@ import {
 } from '@/utils/formatDate'
 
 export default Vue.extend({
-  components: { ExternalLink },
+  // components: { ExternalLink },
   props: {
     items: {
       type: Array,

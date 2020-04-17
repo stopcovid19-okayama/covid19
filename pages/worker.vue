@@ -115,13 +115,16 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import StaticCard from '@/components/StaticCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
+/*
 import ExternalLink from '@/components/ExternalLink.vue'
+*/
 
 export default Vue.extend({
   components: {
     PageHeader,
-    StaticCard,
+    StaticCard /*,
     ExternalLink
+    */
   },
   head(): MetaInfo {
     return {

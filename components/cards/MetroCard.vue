@@ -32,8 +32,8 @@
 <script>
 /*
 import Data from '@/data/data.json'
-*/
 import MetroData from '@/data/metro.json'
+*/
 import MetroBarChart from '@/components/MetroBarChart.vue'
 
 export default {
@@ -41,6 +41,7 @@ export default {
     MetroBarChart
   },
   data() {
+    /*
     // 都営地下鉄の利用者数の推移
     const metroGraph = MetroData
     for (const dataset of metroGraph.datasets) {
@@ -76,6 +77,7 @@ export default {
       metroGraphTooltipLabel
     }
     return data
+    */
   },
   methods: {
     /**

@@ -74,9 +74,11 @@ import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vu
 */
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
+/*
 import ConfirmedCasesByMunicipalitiesCard from '@/components/cards/ConfirmedCasesByMunicipalitiesCard.vue'
 import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
+*/
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
@@ -103,9 +105,11 @@ export default Vue.extend({
     */
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
+    /*
     ConfirmedCasesByMunicipalitiesCard,
     TestedCasesDetailsCard,
     InspectionPersonsNumberCard,
+    */
     TestedNumberCard,
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard

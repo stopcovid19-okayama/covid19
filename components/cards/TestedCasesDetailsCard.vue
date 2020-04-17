@@ -59,8 +59,8 @@ ul.notes {
 <script>
 /*
 import Data from '@/data/data.json'
-*/
 import formatTestedCases from '@/utils/formatTestedCases'
+*/
 import DataView from '@/components/DataView.vue'
 import TestedCasesDetailsTable from '@/components/TestedCasesDetailsTable.vue'
 
@@ -70,6 +70,7 @@ export default {
     TestedCasesDetailsTable
   },
   data() {
+    /*
     // 検査陽性者の状況
     const testedCases = formatTestedCases(Data.inspection_status_summary)
 
@@ -78,6 +79,7 @@ export default {
       testedCases
     }
     return data
+    */
   }
 }
 </script>
