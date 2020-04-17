@@ -3,7 +3,7 @@
     <page-header class="mb-3">
       {{ $t('企業の皆様・はたらく皆様へ') }}
     </page-header>
-    <StaticCard>
+    <static-card>
       <h3>
         <a
           href="https://www.pref.okayama.jp/page/331085.html"
@@ -19,8 +19,8 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
+    </static-card>
+    <static-card>
       <h3>
         <a
           href="https://www.mhlw.go.jp/stf/newpage_10059.html"
@@ -36,8 +36,8 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
+    </static-card>
+    <static-card>
       <h3>
         <a
           href="http://acsa.jp/htm/news/2020022803.htm"
@@ -53,14 +53,16 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
+    </static-card>
+    <static-card>
       <h3>
         <a
           href="https://www.mhlw.go.jp/stf/newpage_10037.html"
           target="_blank"
           rel="noopener noreferrer"
-          >{{ $t('時間外労働等改善助成金の特例的なコースの申請受付開始について') }}</a
+          >{{
+            $t('時間外労働等改善助成金の特例的なコースの申請受付開始について')
+          }}</a
         >
       </h3>
       <p>
@@ -70,8 +72,8 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
+    </static-card>
+    <static-card>
       <h3>
         <a
           href="https://jsite.mhlw.go.jp/okayama-roudoukyoku/hourei_seido_tetsuzuki/kakushu_joseikin/tetsuzuki/_120417_00004.html"
@@ -87,8 +89,8 @@
           )
         }}
       </p>
-    </StaticCard>
-    <StaticCard>
+    </static-card>
+    <static-card>
       <h3>
         <a
           href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/dengue_fever_qa_00007.html"
@@ -104,7 +106,7 @@
           )
         }}
       </p>
-    </StaticCard>
+    </static-card>
   </div>
 </template>
 
@@ -113,11 +115,16 @@ import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import StaticCard from '@/components/StaticCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
+/*
+import ExternalLink from '@/components/ExternalLink.vue'
+*/
 
 export default Vue.extend({
   components: {
     PageHeader,
-    StaticCard
+    StaticCard /*,
+    ExternalLink
+    */
   },
   head(): MetaInfo {
     return {

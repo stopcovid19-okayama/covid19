@@ -1,14 +1,14 @@
 <template>
   <div class="Flow">
     <div class="Flow-Heading">
-      <CovidIcon aria-hidden="true" />
+      <covid-icon aria-hidden="true" />
       <page-header class="Flow-Heading-Title">
         {{ $t('新型コロナウイルス感染症が心配なときに') }}
       </page-header>
-      <PrinterButton :wrapper-class="'Flow-PullRight'" to="/print/flow" />
+      <printer-button :wrapper-class="'Flow-PullRight'" to="/print/flow" />
     </div>
     <div>
-      <div class="only-pc">
+      <div class="only-pc" aria-hidden="true">
         <flow-pc />
       </div>
       <div class="only-sp">
@@ -109,7 +109,7 @@ export default Vue.extend({
 
 @include largerThan($medium) {
   .only-sp {
-    display: none;
+    @include visually-hidden;
   }
 
   .only-pc {
@@ -118,10 +118,6 @@ export default Vue.extend({
 }
 
 @include lessThan($medium) {
-  .only-sp {
-    display: block;
-  }
-
   .only-pc {
     display: none;
   }

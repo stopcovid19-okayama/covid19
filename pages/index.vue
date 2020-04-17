@@ -23,29 +23,39 @@
       :btn-text="$t('相談の手順を見る')"
     />
     <v-row class="DataBlock">
+      <!-- 検査陽性者の状況 -->
       <confirmed-cases-details-card />
-      <!--
+      <!-- 陽性患者数 -->
+      <confirmed-cases-number-card />
+      <!-- 陽性患者の属性 -->
+      <confirmed-cases-attributes-card />
+      <!-- 区市町村別患者数
+      <confirmed-cases-by-municipalities-card />
+      -->
+      <!-- 検査実施状況
       <tested-cases-details-card />
       -->
-      <confirmed-cases-number-card />
-      <confirmed-cases-attributes-card />
+      <!-- 検査実施人数
+      <inspection-persons-number-card />
+      -->
+      <!-- 検査実施件数 -->
       <tested-number-card />
+      <!-- 新型コロナコールセンター相談件数 -->
       <telephone-advisory-reports-number-card />
+      <!-- 新型コロナ受診相談窓口相談件数 -->
       <consultation-desk-reports-number-card />
-      <!--
+
+      <!-- 都営地下鉄の利用者数の推移
       <metro-card />
+      -->
+      <!-- 都庁来庁者数の推移
       <agency-card />
+      -->
+      <!--
       <shinjuku-visitors-card />
       <chiyoda-visitors-card />
       -->
     </v-row>
-    <!--
-    <v-divider />
-    <v-row class="DataBlock">
-      <shinjuku-st-map-card />
-      <tokyo-st-map-card />
-    </v-row>
-    -->
   </div>
 </template>
 
@@ -64,8 +74,12 @@ import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vu
 */
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
+/*
+import ConfirmedCasesByMunicipalitiesCard from '@/components/cards/ConfirmedCasesByMunicipalitiesCard.vue'
+import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
+*/
+import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 /*
@@ -91,10 +105,14 @@ export default Vue.extend({
     */
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
-    TestedNumberCard,
+    /*
+    ConfirmedCasesByMunicipalitiesCard,
+    TestedCasesDetailsCard,
     InspectionPersonsNumberCard,
+    */
+    TestedNumberCard,
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
+    ConsultationDeskReportsNumberCard
     /*
     MetroCard,
     AgencyCard,

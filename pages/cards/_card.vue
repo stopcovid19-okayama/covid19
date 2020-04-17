@@ -10,6 +10,13 @@
     <confirmed-cases-number-card
       v-if="this.$route.params.card == 'number-of-confirmed-cases'"
     />
+    <!--
+    <confirmed-cases-by-municipalities-card
+      v-else-if="
+        this.$route.params.card == 'number-of-confirmed-cases-by-municipalities'
+      "
+    />
+    -->
     <confirmed-cases-attributes-card
       v-else-if="this.$route.params.card == 'attributes-of-confirmed-cases'"
     />
@@ -67,13 +74,15 @@ import Querents from '@/data/querents.json'
 /*
 import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
-import ShinjukuData from '@/data/13104_daily_visitors.json'
-import ChiyodaData from '@/data/13101_daily_visitors.json'
+import patientData from '@/data/patient.json'
+import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
+import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 */
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 // import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
+// import ConfirmedCasesByMunicipalitiesCard from '@/components/cards/ConfirmedCasesByMunicipalitiesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 /*
 import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
@@ -96,12 +105,15 @@ export default {
     // TestedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
+    /*
+    ConfirmedCasesByMunicipalitiesCard,
+    */
     TestedNumberCard,
     /*
     InspectionPersonsNumberCard,
     */
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
+    ConsultationDeskReportsNumberCard
     /*
     MetroCard,
     AgencyCard,
@@ -129,6 +141,12 @@ export default {
         title = this.$t('陽性患者数')
         updatedAt = Patients.date
         break
+      /*
+      case 'number-of-confirmed-cases-by-municipalities':
+        title = this.$t('陽性患者数（区市町村別）')
+        updatedAt = patientData.date
+        break
+      */
       case 'attributes-of-confirmed-cases':
         title = this.$t('陽性患者の属性')
         updatedAt = Patients.date

@@ -19,17 +19,6 @@ const config: Configuration = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、学生エンジニアが非公式に開設したものです。'
-      },
-      {
-        hid: 'og:site_name',
-        property: 'og:site_name',
-        content: '岡山県 新型コロナウイルス感染症対策サイト(非公式)'
-      },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
         hid: 'og:url',
@@ -40,17 +29,6 @@ const config: Configuration = {
         hid: 'og:title',
         property: 'og:title',
         content: '岡山県 新型コロナウイルス感染症対策サイト(非公式)'
-      },
-      {
-        hid: 'og:description',
-        property: 'og:description',
-        content:
-          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、学生エンジニアが非公式に開設したものです。'
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: 'https://okayama.stopcovid19.jp/ogp.png'
       },
       {
         hid: 'twitter:card',
@@ -85,11 +63,7 @@ const config: Configuration = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon-precomposed.png' },
-      {
-        rel: 'stylesheet',
-        href: 'https://use.fontawesome.com/releases/v5.6.1/css/all.css'
-      }
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon-precomposed.png' }
     ]
   },
   /*
@@ -150,8 +124,17 @@ const config: Configuration = {
     }
   },
   googleAnalytics: {
-    id: 'UA-98485251-15'
+    id: process.env.GOOGLE_ANALYTICS_ID
   },
+  optionalCookies: [
+    {
+      name: 'i18n_redirected',
+      label: 'i18n Redirection Cookie',
+      description:
+        'For automatically switching UI languages in accordance with locale preferences in the web browser configuration.',
+      cookies: ['i18n_redirected']
+    }
+  ],
   build: {
     plugins: [
       new webpack.ProvidePlugin({
@@ -193,23 +176,27 @@ const config: Configuration = {
   generate: {
     fallback: true,
     routes() {
-      const locales = ['ja', 'en', 'zh-cn', 'zh-tw', 'ko', 'ja-basic']
+      const locales = ['ja' /* 'en', 'zh-cn', 'zh-tw', 'ko', 'ja-basic' */]
       const pages = [
         '/cards/details-of-confirmed-cases',
+        /*
         '/cards/details-of-tested-cases',
+        */
         '/cards/number-of-confirmed-cases',
+        /*
+        '/cards/number-of-confirmed-cases-by-municipalities',
+        */
         '/cards/attributes-of-confirmed-cases',
         '/cards/number-of-tested',
+        /*
         '/cards/number-of-inspection-persons',
+        */
         '/cards/number-of-reports-to-covid19-telephone-advisory-center',
-        '/cards/number-of-reports-to-covid19-consultation-desk',
+        '/cards/number-of-reports-to-covid19-consultation-desk'
+        /*
         '/cards/predicted-number-of-toei-subway-passengers',
-        '/cards/agency',
-        '/cards/shinjuku-visitors',
-        '/cards/chiyoda-visitors',
-        '/cards/shinjuku-st-heatmap',
-        '/cards/tokyo-st-heatmap',
-        '/cards/tokyo-city-heatmap'
+        '/cards/agency'
+        */
       ]
 
       const routes: string[] = []

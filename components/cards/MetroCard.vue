@@ -8,12 +8,12 @@
       :date="metroGraph.date"
       :tooltips-title="metroGraphTooltipTitle"
       :tooltips-label="metroGraphTooltipLabel"
-      :unit="$t('%')"
+      unit="%"
     >
       <template v-slot:description>
         {{
           $t('{range}の利用者数*の平均値を基準としたときの相対値', {
-            range: $t(metroGraph.base_period)
+            range: metroGraph.base_period
           })
         }}
         <br />
@@ -32,8 +32,8 @@
 <script>
 /*
 import Data from '@/data/data.json'
-*/
 import MetroData from '@/data/metro.json'
+*/
 import MetroBarChart from '@/components/MetroBarChart.vue'
 
 export default {
@@ -41,14 +41,19 @@ export default {
     MetroBarChart
   },
   data() {
+    /*
     // 都営地下鉄の利用者数の推移
     const metroGraph = MetroData
+    for (const dataset of metroGraph.datasets) {
+      dataset.label = this.getWeekLabel(dataset.label)
+    }
+
     // metroGraph ツールチップ title文字列
     // this.$t を使うため metroGraphOption の外側へ
     const metroGraphTooltipTitle = (tooltipItems, _) => {
-      const label = tooltipItems[0].label
+      const label = this.getWeekLabel(tooltipItems[0].label)
       return this.$t('期間: {duration}', {
-        // duration = label = '2月10日~14日' | '2月17日~21日' | '2月25日~28日'
+        // duration = label = '2\/10~14' etc.
         duration: this.$t(label)
       })
     }
@@ -59,7 +64,7 @@ export default {
       const percentage = `${currentData.data[tooltipItem.index]}%`
 
       return this.$t('{duration}の利用者数との相対値: {percentage}', {
-        // duration = metroGraph.base_period = '1月20日~1月24日'
+        // duration = metroGraph.base_period = '1\/20~1\/24'
         duration: this.$t(metroGraph.base_period),
         percentage
       })
@@ -72,6 +77,39 @@ export default {
       metroGraphTooltipLabel
     }
     return data
+    */
+  },
+  methods: {
+    /**
+     * 表の横軸に表示する、「MM/DD~MM/DD」形式のラベルを取得する
+     */
+    getWeekLabel(label) {
+      const slashCount = label.split('/').length - 1
+      if (slashCount === 1) {
+        // MM/DD~DD形式だったので、「~」の後に「MM/」を追加する
+        let month = label.substr(0, label.indexOf('/'))
+
+        const startDate = Number(
+          label.substr(
+            label.indexOf('/') + 1,
+            label.indexOf('~') - label.indexOf('/') - 1
+          )
+        )
+        const endDate = Number(label.substr(label.indexOf('~') + 1))
+        if (startDate > endDate) {
+          const date = new Date()
+          date.setMonth(Number(month) + 1)
+          month = date.getMonth().toString()
+        }
+
+        label = label.replace('~', `~${month}/`)
+      }
+
+      // 日は、0埋めしない
+      label = label.replace('/0', '/')
+
+      return label
+    }
   }
 }
 </script>

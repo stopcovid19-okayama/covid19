@@ -36,7 +36,11 @@
               </span>
               {{ $t('留守番電話につながります') }}
               <br />
-              {{ $t('（岡山市保健所と倉敷市保健所は午前9時から午後17時まで受付）') }}
+              {{
+                $t(
+                  '（岡山市保健所と倉敷市保健所は午前9時から午後17時まで受付）'
+                )
+              }}
             </li>
           </ul>
         </dt>
@@ -56,11 +60,13 @@
 </template>
 
 <script lang="ts">
+/*
 import PhoneIcon from '@/static/flow/responsive/phone.svg'
 
 export default {
   components: { PhoneIcon }
 }
+*/
 </script>
 
 <style module lang="scss">
