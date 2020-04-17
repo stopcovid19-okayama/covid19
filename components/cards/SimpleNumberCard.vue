@@ -17,7 +17,7 @@
 
 <style lang="scss" scoped>
 .SimpleNumberCard {
-  ::v-deep .DataView-Title {
+  >>> .DataView-Title {
     width: 100%;
   }
   .SimpleNumberDataContainer {
