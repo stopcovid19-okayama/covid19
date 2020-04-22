@@ -36,7 +36,6 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-
               <span>{{ $t('各保健所の電話番号は岡山県公式HPへ') }}</span>
               <v-icon size="18">
                 mdi-open-in-new
@@ -54,7 +53,9 @@
           <br />
           <span>{{ $t('留守番電話につながります') }}</span>
           <br />
-          <span>{{ $t('（岡山市保健所と倉敷市保健所は午前9時から午後17時まで受付）') }}</span>
+          <span>{{
+            $t('（岡山市保健所と倉敷市保健所は午前9時から午後17時まで受付）')
+          }}</span>
         </div>
         <div v-if="!['ja', 'ja-basic'].includes($i18n.locale)" class="pt-8">
           <span>{{ $t('ひまわり') }}</span>
@@ -142,7 +143,16 @@
     &:focus {
       color: inherit;
       text-decoration: none;
-      outline: 1px dotted $gray-3;
+    }
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      @media screen {
+        // printだとoutlineが太くなってしまい読みにくいので、消す処理
+        outline: 1px dotted $gray-3;
+      }
     }
 
     &Icon {

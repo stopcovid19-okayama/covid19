@@ -34,16 +34,18 @@
       </v-icon>
 
       <nav class="SideNavigation-Menu">
-        <MenuList :items="items" @click="$emit('closeNavi', $event)" />
-        <div
-          v-if="this.$i18n.locales.length > 1"
-          class="SideNavigation-Language"
-        >
-          <label class="SideNavigation-LanguageLabel" for="LanguageSelector">
-            {{ $t('多言語対応選択メニュー') }}
-          </label>
-          <LanguageSelector />
+        <div class="SideNavigation-Language">
+          <div
+            v-if="this.$i18n.locales.length > 1"
+            class="SideNavigation-Language"
+          >
+            <label class="SideNavigation-LanguageLabel" for="LanguageSelector">
+              {{ $t('多言語対応選択メニュー') }}
+            </label>
+            <language-selector />
+          </div>
         </div>
+        <menu-list :items="items" @click="$emit('closeNavi', $event)" />
       </nav>
 
       <footer class="SideNavigation-Footer">
@@ -83,6 +85,17 @@
           </a>
         </div>
         <small class="SideNavigation-Copyright">
+          {{ $t('このサイトの内容物は') }}
+          <a
+            :href="$t('https://creativecommons.org/licenses/by/4.0/deed.ja')"
+            target="_blank"
+            rel="license"
+            class="SideNavigation-LicenseLink"
+          >
+            {{ $t('クリエイティブ・コモンズ 表示 4.0 ライセンス') }}
+          </a>
+          {{ $t('の下に提供されています。') }}
+          <br />
           2020 Stop COVID19 Okayama
         </small>
       </footer>
@@ -234,7 +247,7 @@ export default Vue.extend({
 
 .SideNavigation-HeaderTitle {
   width: 100%;
-  font-size: 13px;
+  font-size: 12px;
   color: #707070;
   @include largerThan($small) {
     margin: 0;
@@ -318,10 +331,6 @@ export default Vue.extend({
   @include lessThan($small) {
     padding-top: 50px;
   }
-}
-
-.SideNavigation-Language {
-  padding-top: 20px;
 }
 
 .SideNavigation-LanguageLabel {

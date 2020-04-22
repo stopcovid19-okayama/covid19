@@ -1,12 +1,19 @@
-Okayama Covid-19 response site contributors
+本サイトにご協力いただいた皆様
 ============================================
 
-本サイトにご協力いただいた皆様
+このような素晴らしい仕組みを、複製・改変が許されたオープンソースライセンスで提供して下さった東京都の皆様、本当にありがとうございます。
 
-| Name (link) | GitHub | Twitter | Contribution |
+そして、東京都版のサイト制作に尽力された[皆様](https://github.com/tokyo-metropolitan-gov/covid19/blob/development/CONTRIBUTORS.md)に深く感謝申し上げます。
+
+| Name (link) | GitHub | リンク | Contribution |
 | --- | --- | --- | --- |
-| Izuho Fujiwara | [@fujiwaraizuho](https://github.com/fujiwaraizuho) | [@fujiwaraizuho](https://twitter.com/fujiwaraizuho) | Project facilitation |
-| ルサカ | [@Lusaca](https://github.com/Lusaca) | [@Luscaca_](https://twitter.com/Luscaca_) | Frontend, Design |
+| Izuho Fujiwara | [@fujiwaraizuho](https://github.com/fujiwaraizuho) | [Twitter](https://twitter.com/fujiwaraizuho) | Project facilitation |
+| ルサカ | [@Lusaca](https://github.com/Lusaca) | [Twitter](https://twitter.com/Luscaca_) | Frontend, Design, Management |
+| manate | [@manate-anagram](https://github.com/manate-anagram) | [Twitter](https://twitter.com/manate-anagram) | Frontend, Management |
+| こめ | [@come25136](https://github.com/come25136) | [Twitter](https://twitter.com/come25136_air) | Coder, Management |
+| nao20010128nao | [@nao20010128nao](https://github.com/nao20010128nao) | | Coder |
+| 尾川ふみのり（なと） | [@aptus-jp](https://github.com/aptus-jp) | [HP](https://www.gentoo.app) | Coder |
+| 滋賀県 対策サイト | | [HP](https://stopcovid19.pref.shiga.jp) | Code |
 
 ご協力に感謝です！！！
 

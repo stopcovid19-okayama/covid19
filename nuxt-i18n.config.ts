@@ -1,4 +1,6 @@
-export default {
+import { NuxtVueI18n } from 'nuxt-i18n'
+
+const options: NuxtVueI18n.Options.AllOptionsInterface = {
   strategy: 'prefix_except_default',
   detectBrowserLanguage: {
     useCookie: true,
@@ -19,7 +21,7 @@ export default {
       iso: 'ja-JP',
       file: 'ja.json',
       description: 'Japanese'
-    },
+    }
     // {
     //   code: 'en',
     //   name: 'English',
@@ -66,3 +68,5 @@ export default {
     // }
   ]
 }
+
+export default options
