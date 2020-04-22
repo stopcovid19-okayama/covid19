@@ -38,7 +38,7 @@
       />
     </template>
     <template v-slot:footer>
-      <!--<open-data-link :url="url" />-->
+      <open-data-link :url="url" />
     </template>
   </data-view>
 </template>
@@ -102,12 +102,10 @@
 import Vue from 'vue'
 import DataView from '@/components/DataView.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
-/*
 import OpenDataLink from '@/components/OpenDataLink.vue'
-*/
 
 export default Vue.extend({
-  components: { DataView, DataViewBasicInfoPanel /* OpenDataLink */ },
+  components: { DataView, DataViewBasicInfoPanel, OpenDataLink },
   props: {
     title: {
       type: String,
