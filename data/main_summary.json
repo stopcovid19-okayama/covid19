@@ -1,5 +1,5 @@
 {
-    "last_update": "2020\/04\/23 21:00",
+    "last_update": "2020\/04\/24 00:50",
     "attr": "検査実施人数",
     "value": 927,
     "children": [
@@ -9,11 +9,11 @@
             "children": [
                 {
                     "attr": "入院中",
-                    "value": 19
+                    "value": 14
                 },
                 {
                     "attr": "退院",
-                    "value": 0
+                    "value": 5
                 },
                 {
                     "attr": "死亡",
