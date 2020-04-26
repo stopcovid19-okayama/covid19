@@ -54,10 +54,7 @@
         {{ $t('新型コロナコールセンター') }}
       </div>
       <div :class="$style.SmallerText">
-        {{ $t('午前9時から午後9時 (平日)') }}
-      </div>
-      <div :class="$style.SmallerText">
-        {{ $t('午前9時から午後5時 (土日祝)') }}
+        {{ $t('24時間対応') }}
       </div>
 
       <div :class="$style.Tel">
