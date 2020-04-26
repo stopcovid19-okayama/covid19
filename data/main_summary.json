@@ -9,11 +9,11 @@
             "children": [
                 {
                     "attr": "入院中",
-                    "value": 21
+                    "value": 16
                 },
                 {
                     "attr": "退院",
-                    "value": 0
+                    "value": 5
                 },
                 {
                     "attr": "死亡",
