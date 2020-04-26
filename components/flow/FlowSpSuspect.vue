@@ -24,9 +24,7 @@
         {{ $t('新型コロナコールセンター') }}
       </p>
       <p :class="$style.open">
-        {{ $t('午前9時から午後9時（平日）') }}
-        <br />
-        {{ $t('午前9時から午後5時 (土日祝)') }}
+        {{ $t('24時間対応') }}
       </p>
       <p :class="[$style.phone, $style.fzNumeric]">
         <span :class="$style.icon">
