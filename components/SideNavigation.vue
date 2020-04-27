@@ -136,6 +136,12 @@ export default Vue.extend({
           link: this.localePath('/')
         },
         {
+          icon: 'mdi-hospital',
+          title: this.$t('医療体制整備状況'),
+          link: this.localePath('/others'),
+          divider: true
+        },
+        {
           icon: 'CovidIcon',
           title: this.$t('新型コロナウイルス感染症が心配なときに'),
           link: this.localePath('/flow'),
