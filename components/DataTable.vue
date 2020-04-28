@@ -157,17 +157,6 @@ export default Vue.extend({
       }
     }
   },
-  created() {
-    // 「陽性患者の属性」カードにおいて、「退院」のデータが存在しないため、
-    // createdライフサイクルフックの段階で「退院」のヘッダを除去する。
-    this.chartData.headers.forEach((header: any, index: Number) => {
-      if (header.text === '退院※') {
-        // ヘッダデータの要素の並び順が変わる可能性を想定し、
-        // 各要素の中で「退院」のテキストを特定してから除去する。
-        this.chartData.headers.splice(index, 1)
-      }
-    })
-  },
   mounted() {
     const vTables = this.$refs.displayedTable as Vue
     const vTableElement = vTables.$el
