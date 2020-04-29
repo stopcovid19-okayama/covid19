@@ -1,5 +1,5 @@
 <template>
-  <div class="Others">
+  <div class="Medical">
     <div class="Header mb-3">
       <page-header :icon="headerItem.icon">
         {{ headerItem.title }}
@@ -78,7 +78,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.Others {
+.Medical {
   .Header {
     display: flex;
     flex-wrap: wrap;
