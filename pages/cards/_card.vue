@@ -63,6 +63,17 @@
       v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
     />
     -->
+    <medical-system-bed-number-card
+      v-else-if="this.$route.params.card == 'number-of-medical-system-bed'"
+    />
+    <medical-system-ventilator-number-card
+      v-else-if="
+        this.$route.params.card == 'number-of-medical-system-ventilator'
+      "
+    />
+    <medical-system-ecmo-number-card
+      v-else-if="this.$route.params.card == 'number-of-medical-system-ecmo'"
+    />
   </div>
 </template>
 
@@ -71,6 +82,7 @@ import Patients from '@/data/patients.json'
 import InspectionSummary from '@/data/inspections_summary.json'
 import Contacts from '@/data/contacts.json'
 import Querents from '@/data/querents.json'
+import MedicalSystem from '@/data/medical_system.json'
 /*
 import MetroData from '@/data/metro.json'
 import agencyData from '@/data/agency.json'
@@ -98,6 +110,9 @@ import ShinjukuStMapCard from '@/components/cards/ShinjukuStMapCard.vue'
 import TokyoStMapCard from '@/components/cards/TokyoStMapCard.vue'
 import TokyoCityMapCard from '@/components/cards/TokyoCityMapCard.vue'
 */
+import MedicalSystemBedNumberCard from '@/components/cards/MedicalSystemBedNumberCard.vue'
+import MedicalSystemVentilatorNumberCard from '@/components/cards/MedicalSystemVentilatorNumberCard.vue'
+import MedicalSystemEcmoNumberCard from '@/components/cards/MedicalSystemEcmoNumberCard.vue'
 
 export default {
   components: {
@@ -113,7 +128,7 @@ export default {
     InspectionPersonsNumberCard,
     */
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard
+    ConsultationDeskReportsNumberCard,
     /*
     MetroCard,
     AgencyCard,
@@ -123,6 +138,9 @@ export default {
     TokyoStMapCard,
     TokyoCityMapCard
     */
+    MedicalSystemBedNumberCard,
+    MedicalSystemVentilatorNumberCard,
+    MedicalSystemEcmoNumberCard
   },
   data() {
     let title, updatedAt
@@ -187,6 +205,18 @@ export default {
         updatedAt = ChiyodaData.date
         break
       */
+      case 'number-of-medical-system-bed':
+        title = this.$t('確保病床')
+        updatedAt = MedicalSystem.date
+        break
+      case 'number-of-medical-system-ventilator':
+        title = this.$t('人工呼吸器')
+        updatedAt = MedicalSystem.date
+        break
+      case 'number-of-medical-system-ecmo':
+        title = this.$t('ECMO')
+        updatedAt = MedicalSystem.date
+        break
     }
 
     const data = {
