@@ -138,7 +138,7 @@ export default Vue.extend({
         {
           icon: 'mdi-hospital',
           title: this.$t('医療体制整備状況'),
-          link: this.localePath('/others'),
+          link: this.localePath('/medical'),
           divider: true
         },
         {
