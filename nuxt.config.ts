@@ -228,7 +228,7 @@ const config: Configuration = {
     gzip: true,
     generate: true,
     exclude: ['/print/**'],
-    routes: ['/about', '/flow', '/parent', '/worker']
+    routes: ['/about', '/flow', '/parent', '/worker', '/medical']
   }
 }
 
