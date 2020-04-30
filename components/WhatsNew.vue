@@ -12,7 +12,7 @@
           mdi-bullhorn
         </v-icon>
         <external-link
-          url="https://www.pref.okayama.jp/uploaded/attachment/270309.pdf"
+          url="https://youtu.be/mUwVyGTMWn8"
         >
           {{ $t('岡山県緊急事態措置について') }}
         </external-link>
