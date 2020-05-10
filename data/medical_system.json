@@ -1,8 +1,8 @@
 {
-  "date": "2020\/4\/23 00:00",
-  "items": {
-    "bed":  117,
-    "ventilator": 500,
-    "ecmo":   28
-  }
+    "date": "2020/05/05 00:00",
+    "items": {
+        "bed": 117,
+        "ventilator": 517,
+        "ecmo": 28
+    }
 }
