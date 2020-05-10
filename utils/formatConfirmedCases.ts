@@ -7,7 +7,7 @@ type DataType = {
       value: number
       children: [
         {
-          attr: '入院調整中',
+          attr: '入院調整中'
           value: number
         },
         {
