@@ -28,6 +28,20 @@
         </div>
       </div>
       <ul :class="$style.group">
+        <li :class="[$style.box, $style.deceased]">
+          <div :class="$style.pillar">
+            <div :class="$style.content">
+              <span>
+                {{ $t('入院') }}
+                <br />{{ $t('調整中') }}
+              </span>
+              <span>
+                <strong>{{ 入院調整中.toLocaleString() }}</strong>
+                <span :class="$style.unit">{{ $t('人') }}</span>
+              </span>
+            </div>
+          </div>
+        </li>
         <li :class="[$style.box, $style.hospitalized]">
           <div :class="$style.pillar">
             <div :class="$style.content">
@@ -103,6 +117,10 @@ export default Vue.extend({
       required: true
     },
     陽性者数: {
+      type: Number,
+      required: true
+    },
+    入院調整中: {
       type: Number,
       required: true
     },
