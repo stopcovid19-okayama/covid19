@@ -4,9 +4,6 @@
       {{ $t('新型コロナウイルス感染症にかかる相談窓口について') }}
     </h3>
     <div :class="$style.FlowCard">
-      <flow-sp-past />
-    </div>
-    <div :class="$style.FlowCard">
       <flow-sp-general />
     </div>
     <div :class="$style.FlowCard">
@@ -29,8 +26,6 @@
 
 <script>
 import VueScrollTo from 'vue-scrollto'
-
-import FlowSpPast from './FlowSpPast.vue'
 import FlowSpGeneral from './FlowSpGeneral.vue'
 import FlowSpElder from './FlowSpElder.vue'
 import FlowSpSuspect from './FlowSpSuspect.vue'
@@ -40,7 +35,6 @@ import FlowSpHospitalized from './FlowSpHospitalized.vue'
 
 export default {
   components: {
-    FlowSpPast,
     FlowSpGeneral,
     FlowSpElder,
     FlowSpSuspect,
