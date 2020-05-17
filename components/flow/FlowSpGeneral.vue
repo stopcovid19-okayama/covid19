@@ -8,7 +8,7 @@
     </h4>
     <ul :class="[$style.rectContainer, $style.double]">
       <li :class="$style.symptom">
-          {{ $t('息苦しさ') }}
+        {{ $t('息苦しさ') }}
       </li>
       <li :class="$style.symptom">
         {{ $t('強いだるさ') }}

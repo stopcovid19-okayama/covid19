@@ -75,7 +75,6 @@ export default {
   }
 }
 
-
 .heading {
   // elder
   &.multi {

@@ -11,9 +11,7 @@
         <v-icon size="20" class="WhatsNew-link-to-emergency-page-icon">
           mdi-bullhorn
         </v-icon>
-        <external-link
-          url="https://youtu.be/mUwVyGTMWn8"
-        >
+        <external-link url="https://youtu.be/mUwVyGTMWn8">
           {{ $t('岡山県緊急事態措置について') }}
         </external-link>
       </span>
