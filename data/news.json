@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2020/06/16",
+            "url": "https://www.youtube.com/watch?v=cUW0VRpkMnY",
+            "text": "ももっち、うらっちの～やってみよう！「新しい生活様式」～"
+        },
+        {
             "date": "2020/06/12",
             "url": "https://www.okayama-kanko.jp/feature/ouchi-okayama/top",
             "text": "＃おうちおかやま（岡山県観光連盟HP）"
@@ -9,11 +14,6 @@
             "date": "2020/06/10",
             "url": "https://www.youtube.com/watch?v=FVUWof_hPuI",
             "text": "【ファジアーノクッキング】　新玉ねぎの担々風みそ和え"
-        },
-        {
-            "date": "2020/06/02",
-            "url": "https://www.youtube.com/watch?v=o13SywcELUk",
-            "text": "【ファジアーノクッキング】にんじんとツナの和え物"
         }
     ]
 }
