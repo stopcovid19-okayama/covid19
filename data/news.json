@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2020/06/22",
+            "url": "https://youtu.be/T9EpMFYyG4I",
+            "text": "桃太郎的感染予防対策"
+        },
+        {
             "date": "2020/06/17",
             "url": "https://www.pref.okayama.jp/page/658782.html",
             "text": "事業者支援策リーフレット（更新）"
@@ -9,11 +14,6 @@
             "date": "2020/06/17",
             "url": "https://www.pref.okayama.jp/page/665982.html",
             "text": "農林漁業者支援策リーフレット（更新）"
-        },
-        {
-            "date": "2020/06/16",
-            "url": "https://www.youtube.com/watch?v=cUW0VRpkMnY",
-            "text": "ももっち、うらっちの～やってみよう！「新しい生活様式」～"
         }
     ]
 }
