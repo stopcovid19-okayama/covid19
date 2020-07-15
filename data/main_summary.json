@@ -1,23 +1,23 @@
 {
-    "last_update": "2020/07/14 21:00",
+    "last_update": "2020/07/15 21:00",
     "attr": "検査実施人数",
-    "value": 1968,
+    "value": 1978,
     "children": [
         {
             "attr": "陽性患者数",
-            "value": 28,
+            "value": 30,
             "children": [
                 {
                     "attr": "入院調整中",
-                    "value": 0
-                },
-                {
-                    "attr": "入院中",
                     "value": 2
                 },
                 {
+                    "attr": "入院中",
+                    "value": 0
+                },
+                {
                     "attr": "退院",
-                    "value": 26
+                    "value": 28
                 },
                 {
                     "attr": "死亡",
