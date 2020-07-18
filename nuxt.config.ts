@@ -1,13 +1,12 @@
 import { Configuration } from '@nuxt/types'
-import { Configuration as WebpackConfiguration } from 'webpack'
 import i18n from './nuxt-i18n.config'
-const webpack = require('webpack')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const autoprefixer = require('autoprefixer')
 const environment = process.env.NODE_ENV || 'development'
 
-const config: Configuration = {
+const config: Configuration= {
   mode: 'universal',
+  target: 'static',
   /*
    ** Headers of the page
    */
@@ -119,6 +118,7 @@ const config: Configuration = {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     defaultAssets: {
       icons: false
     }
@@ -136,11 +136,6 @@ const config: Configuration = {
     }
   ],
   build: {
-    plugins: [
-      new webpack.ProvidePlugin({
-        mapboxgl: 'mapbox-gl'
-      })
-    ],
     postcss: {
       plugins: [
         autoprefixer({ grid: 'autoplace' }),
@@ -157,7 +152,7 @@ const config: Configuration = {
         })
       ]
     },
-    extend(config: WebpackConfiguration, _) {
+    extend(config: any) {
       // default externals option is undefined
       config.externals = [{ moment: 'moment' }]
     }
@@ -192,10 +187,28 @@ const config: Configuration = {
         '/cards/number-of-inspection-persons',
         */
         '/cards/number-of-reports-to-covid19-telephone-advisory-center',
-        '/cards/number-of-reports-to-covid19-consultation-desk'
+        // '/cards/number-of-reports-to-covid19-consultation-desk',
         /*
         '/cards/predicted-number-of-toei-subway-passengers',
         '/cards/agency'
+        '/cards/number-of-reports-to-covid19-telephone-advisory-center',
+        '/cards/predicted-number-of-toei-subway-passengers',
+        '/cards/agency',
+        '/cards/positive-rate',
+        '/cards/positive-number-by-diagnosed-date',
+        */
+        '/cards/monitoring-number-of-confirmed-cases',
+        /*
+        '/cards/untracked-rate',
+        '/cards/positive-status-severe-case',
+        '/cards/number-of-hospitalized',
+        */
+        '/cards/monitoring-number-of-reports-to-covid19-consultation-desk',
+        /*
+        '/cards/monitoring-status-overview',
+        '/cards/number-of-reports-to-consultations-about-fever-in-7119',
+        '/cards/number-of-tokyo-rules-applied',
+        '/cards/monitoring-items-overview'
         */
       ]
 

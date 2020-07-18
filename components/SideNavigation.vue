@@ -73,7 +73,7 @@
             </picture>
           </a>
           <a
-            href="https://github.com/fujiwaraizuho/okayama-covid19"
+            href="https://github.com/stopcovid19-okayama/covid19"
             target="_blank"
             rel="noopener noreferrer"
             class="SideNavigation-SocialLink"
@@ -255,6 +255,7 @@ export default Vue.extend({
   width: 100%;
   font-size: 12px;
   color: #707070;
+  @include font-size(13);
   @include largerThan($small) {
     margin: 0;
     margin-top: 10px;
@@ -304,7 +305,7 @@ export default Vue.extend({
 .SideNavigation-HeaderText {
   margin: 10px 0 0 0;
   @include lessThan($small) {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 8px;
   }
 
   @include lessThan($tiny) {
@@ -342,7 +343,7 @@ export default Vue.extend({
 .SideNavigation-LanguageLabel {
   display: block;
   margin-bottom: 5px;
-  font-size: 0.85rem;
+  @include font-size(14);
 }
 
 .SideNavigation-Footer {
@@ -386,9 +387,9 @@ export default Vue.extend({
   display: block;
   margin-top: 15px;
   color: $gray-1;
-  font-size: 10px;
   line-height: 1.3;
   font-weight: bold;
+  @include font-size(10);
 }
 
 .SideNavigation-LicenseLink {

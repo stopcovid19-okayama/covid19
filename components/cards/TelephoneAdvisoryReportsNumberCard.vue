@@ -28,11 +28,10 @@ export default {
     // 相談件数
     const contactsGraph = formatGraph(Contacts.data)
 
-    const data = {
+    return {
       Contacts,
       contactsGraph
     }
-    return data
   }
 }
 </script>

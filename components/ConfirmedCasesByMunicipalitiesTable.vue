@@ -25,47 +25,6 @@
   </data-view>
 </template>
 
-<style lang="scss">
-.cardTable {
-  &.v-data-table {
-    box-shadow: 0 -20px 12px -12px #0003 inset;
-    th {
-      padding: 8px 10px;
-      height: auto;
-      border-bottom: 1px solid $gray-4;
-      color: $gray-2;
-      font-size: 12px;
-    }
-
-    tbody {
-      tr {
-        color: $gray-1;
-
-        th {
-          font-weight: normal;
-        }
-
-        td {
-          padding: 8px 10px;
-          height: auto;
-          font-size: 12px;
-        }
-
-        &:nth-child(odd) {
-          th,
-          td {
-            background: rgba($gray-4, 0.3);
-          }
-        }
-      }
-    }
-    &:focus {
-      outline: dotted $gray-3 1px;
-    }
-  }
-}
-</style>
-
 <script lang="ts">
 import Vue from 'vue'
 import DataView from '@/components/DataView.vue'
@@ -99,8 +58,9 @@ export default Vue.extend({
     const vTables = this.$refs.displayedTable as Vue
     const vTableElement = vTables.$el
     const tables = vTableElement.querySelectorAll('table')
-
-    tables.forEach((table: HTMLElement) => {
+    // NodeListをIE11でforEachするためのワークアラウンド
+    const nodes = Array.prototype.slice.call(tables, 0)
+    nodes.forEach((table: HTMLElement) => {
       table.setAttribute('tabindex', '0')
     })
   }

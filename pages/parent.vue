@@ -1,7 +1,7 @@
 <template>
   <div class="Parent">
     <page-header class="mb-3">
-      {{ $t('臨時休校中の新型コロナウイルス感染症対応についてのお願い') }}
+      {{ $t('新型コロナウイルス感染症対応についてのお願い') }}
     </page-header>
     <static-card>
       <h3>{{ $t('感染予防・健康管理') }}</h3>
@@ -41,7 +41,7 @@
       </ul>
     </static-card>
     <static-card>
-      <h3>{{ $t('その他.parent') }}</h3>
+      <h3>{{ $t('その他') }}</h3>
       <p>{{ $t('詳細は、各学校からのお知らせ等をご確認ください。') }}</p>
     </static-card>
   </div>
