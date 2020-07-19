@@ -1,14 +1,14 @@
 {
     "newsItems": [
         {
+            "date": "2020/07/19",
+            "url": "https://youtu.be/BFwss8zRh9k",
+            "text": "新型コロナウイルス感染症に関する知事メッセージ動画"
+        },
+        {
             "date": "2020/07/17",
             "url": "https://www.pref.okayama.jp/page/658782.html",
             "text": "事業者支援策リーフレット（更新）"
-        },
-        {
-            "date": "2020/07/08",
-            "url": "https://youtu.be/BFwss8zRh9k",
-            "text": "新型コロナウイルス感染症に関する知事メッセージ動画"
         },
         {
             "date": "2020/07/02",
