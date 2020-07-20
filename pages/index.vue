@@ -8,6 +8,7 @@
         :key="i"
         v-ripple="false"
         :href="`#tab-${i}`"
+        @click="change"
       >
         <v-icon class="TabIcon">
           mdi-chart-timeline-variant
@@ -21,7 +22,7 @@
       </v-tabs-items>
     </v-tabs>
     -->
-    <CardsMonitoring></CardsMonitoring>
+    <CardsMonitoring />
   </div>
 </template>
 
@@ -35,7 +36,7 @@ import { EventBus, TOGGLE_EVENT } from '@/utils/tab-event-bus.ts'
 export default Vue.extend({
   components: {
     SiteTopUpper,
-    CardsMonitoring,
+    CardsMonitoring
     /*
     CardsReference
     */

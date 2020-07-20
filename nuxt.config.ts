@@ -126,7 +126,12 @@ const config: Configuration= {
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID
   },
-  optionalCookies: [
+  /*
+   * nuxt-i18n による自動リダイレクトを停止したためコメントアウト
+   * @todo 「Cookieがあるときのみ、その言語にリダイレクトする」を実装する場合は復活させる
+   * 実装しない場合は以下の記述を完全に削除する
+   */
+  /* optionalCookies: [
     {
       name: 'i18n_redirected',
       label: 'i18n Redirection Cookie',
@@ -134,7 +139,7 @@ const config: Configuration= {
         'For automatically switching UI languages in accordance with locale preferences in the web browser configuration.',
       cookies: ['i18n_redirected']
     }
-  ],
+  ], */
   build: {
     postcss: {
       plugins: [
