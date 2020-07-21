@@ -2,11 +2,14 @@
   <div class="WhatsNew">
     <div class="WhatsNew-heading">
       <h3 class="WhatsNew-title">
-        <v-icon size="24" class="WhatsNew-title-icon">
+        <v-icon size="2.4rem" class="WhatsNew-title-icon">
           mdi-information
         </v-icon>
         {{ $t('最新のお知らせ') }}
       </h3>
+      <div class="WhatsNew-linkGroup">
+        <link-to-information-about-emergency-measure v-if="isEmergency" />
+      </div>
     </div>
     <ul class="WhatsNew-list">
       <li v-for="(item, i) in items" :key="i" class="WhatsNew-list-item">
@@ -27,7 +30,7 @@
             <v-icon
               v-if="!isInternalLink(item.url)"
               class="WhatsNew-item-ExternalLinkIcon"
-              size="12"
+              size="1.2rem"
             >
               mdi-open-in-new
             </v-icon>
@@ -40,19 +43,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ExternalLink from '@/components/ExternalLink.vue'
+import LinkToInformationAboutEmergencyMeasure from '@/components/LinkToInformationAboutEmergencyMeasure.vue'
 
-import {
-  convertDateByCountryPreferTimeFormat,
-  convertDateToISO8601Format
-} from '@/utils/formatDate'
+import { convertDateToISO8601Format } from '@/utils/formatDate'
 
 export default Vue.extend({
-  components: { ExternalLink },
+  components: {
+    LinkToInformationAboutEmergencyMeasure
+  },
   props: {
     items: {
       type: Array,
       required: true
+    },
+    isEmergency: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   methods: {
@@ -63,7 +70,7 @@ export default Vue.extend({
       return convertDateToISO8601Format(dateString)
     },
     formattedDateForDisplay(dateString: string) {
-      return convertDateByCountryPreferTimeFormat(dateString, this.$i18n.locale)
+      return this.$d(new Date(dateString), 'date')
     }
   }
 })
@@ -93,30 +100,14 @@ export default Vue.extend({
       }
     }
 
-    .WhatsNew-link-to-emergency-page {
-      background-color: $emergency;
-      border: 2px solid $emergency;
-      color: $gray-2;
-      border-radius: 4px;
-      font-size: 1rem;
-      padding: 4px 8px;
+    .WhatsNew-linkGroup {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
 
-      &:hover {
-        background-color: $white;
-        border-radius: 4px;
-      }
-
-      .ExternalLink {
-        color: $gray-2 !important;
-        text-decoration: none;
-      }
-
-      > span {
-        @include button-text('sm');
-      }
-
-      @include lessThan($small) {
-        margin-top: 4px;
+      @include lessThan($medium) {
+        justify-content: flex-start;
       }
     }
   }
@@ -129,7 +120,7 @@ export default Vue.extend({
       &-anchor {
         text-decoration: none;
         margin: 5px;
-        font-size: 14px;
+        @include font-size(14);
 
         @include lessThan($medium) {
           display: flex;
