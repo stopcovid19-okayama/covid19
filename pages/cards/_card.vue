@@ -1,200 +1,114 @@
 <template>
-  <div>
-    <confirmed-cases-details-card
-      v-if="this.$route.params.card == 'details-of-confirmed-cases'"
-    />
-    <!--<tested-cases-details-card
-      v-else-if="this.$route.params.card == 'details-of-tested-cases'"
-    />
-    -->
-    <confirmed-cases-number-card
-      v-if="this.$route.params.card == 'number-of-confirmed-cases'"
-    />
-    <!--
-    <confirmed-cases-by-municipalities-card
-      v-else-if="
-        this.$route.params.card == 'number-of-confirmed-cases-by-municipalities'
-      "
-    />
-    -->
-    <confirmed-cases-attributes-card
-      v-else-if="this.$route.params.card == 'attributes-of-confirmed-cases'"
-    />
-    <tested-number-card
-      v-else-if="this.$route.params.card == 'number-of-tested'"
-    />
-    <!--
-    <inspection-persons-number-card
-      v-else-if="this.$route.params.card == 'number-of-inspection-persons'"
-    />
-    -->
-    <telephone-advisory-reports-number-card
-      v-else-if="
-        this.$route.params.card ==
-          'number-of-reports-to-covid19-telephone-advisory-center'
-      "
-    />
-    <consultation-desk-reports-number-card
-      v-else-if="
-        this.$route.params.card ==
-          'number-of-reports-to-covid19-consultation-desk'
-      "
-    />
-    <!--
-    <metro-card
-      v-else-if="
-        this.$route.params.card == 'predicted-number-of-toei-subway-passengers'
-      "
-    />
-    <agency-card v-else-if="this.$route.params.card == 'agency'" />
-    <shinjuku-visitors-card
-      v-else-if="this.$route.params.card == 'shinjuku-visitors'"
-    />
-    <chiyoda-visitors-card
-      v-else-if="this.$route.params.card == 'chiyoda-visitors'"
-    />
-    <shinjuku-st-map-card
-      v-else-if="this.$route.params.card == 'shinjuku-st-heatmap'"
-    />
-    <tokyo-st-map-card
-      v-else-if="this.$route.params.card == 'tokyo-st-heatmap'"
-    />
-    <tokyo-city-map-card
-      v-else-if="this.$route.params.card == 'tokyo-city-heatmap'"
-    />
-    -->
-    <medical-system-bed-number-card
-      v-else-if="this.$route.params.card == 'number-of-medical-system-bed'"
-    />
-    <medical-system-ventilator-number-card
-      v-else-if="
-        this.$route.params.card == 'number-of-medical-system-ventilator'
-      "
-    />
-    <medical-system-ecmo-number-card
-      v-else-if="this.$route.params.card == 'number-of-medical-system-ecmo'"
-    />
-  </div>
+  <component :is="cardComponent" />
 </template>
 
 <script>
-import Patients from '@/data/patients.json'
-import InspectionSummary from '@/data/inspections_summary.json'
-import Contacts from '@/data/contacts.json'
-import Querents from '@/data/querents.json'
-import MedicalSystem from '@/data/medical_system.json'
-/*
-import MetroData from '@/data/metro.json'
-import agencyData from '@/data/agency.json'
-import patientData from '@/data/patient.json'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
-*/
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-// import TestedCasesDetailsCard from '@/components/cards/TestedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 // import ConfirmedCasesByMunicipalitiesCard from '@/components/cards/ConfirmedCasesByMunicipalitiesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
-/*
-import InspectionPersonsNumberCard from '@/components/cards/InspectionPersonsNumberCard.vue'
-*/
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
-import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
-/*
+import MonitoringConfirmedCasesNumberCard from '@/components/cards/MonitoringConfirmedCasesNumberCard.vue'
+import MonitoringConsultationDeskReportsNumberCard from '@/components/cards/MonitoringConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
-import ShinjukuVisitorsCard from '@/components/cards/ShinjukuVisitorsCard.vue'
-import ChiyodaVisitorsCard from '@/components/cards/ChiyodaVisitorsCard.vue'
-import ShinjukuStMapCard from '@/components/cards/ShinjukuStMapCard.vue'
-import TokyoStMapCard from '@/components/cards/TokyoStMapCard.vue'
-import TokyoCityMapCard from '@/components/cards/TokyoCityMapCard.vue'
-*/
-import MedicalSystemBedNumberCard from '@/components/cards/MedicalSystemBedNumberCard.vue'
-import MedicalSystemVentilatorNumberCard from '@/components/cards/MedicalSystemVentilatorNumberCard.vue'
-import MedicalSystemEcmoNumberCard from '@/components/cards/MedicalSystemEcmoNumberCard.vue'
+import PositiveNumberByDiagnosedDateCard from '@/components/cards/PositiveNumberByDiagnosedDateCard.vue'
+import PositiveRateCard from '@/components/cards/PositiveRateCard.vue'
+import UntrackedRateCard from '@/components/cards/UntrackedRateCard.vue'
+import SevereCaseCard from '@/components/cards/SevereCaseCard.vue'
+import HospitalizedNumberCard from '@/components/cards/HospitalizedNumberCard.vue'
+import ConsultationAboutFeverNumberCard from '@/components/cards/ConsultationAboutFeverNumberCard.vue'
+import TokyoRulesApplicationNumberCard from '@/components/cards/TokyoRulesApplicationNumberCard.vue'
+import MonitoringItemsOverviewCard from '@/components/cards/MonitoringItemsOverviewCard.vue'
+import { getLinksLanguageAlternative } from '@/utils/i18nUtils'
 
 export default {
   components: {
+    MonitoringConfirmedCasesNumberCard,
+    SevereCaseCard,
+    MonitoringConsultationDeskReportsNumberCard,
+    PositiveRateCard,
+    UntrackedRateCard,
     ConfirmedCasesDetailsCard,
-    // TestedCasesDetailsCard,
     ConfirmedCasesNumberCard,
     ConfirmedCasesAttributesCard,
     /*
     ConfirmedCasesByMunicipalitiesCard,
     */
     TestedNumberCard,
-    /*
-    InspectionPersonsNumberCard,
-    */
     TelephoneAdvisoryReportsNumberCard,
-    ConsultationDeskReportsNumberCard,
-    /*
     MetroCard,
     AgencyCard,
-    ShinjukuVisitorsCard,
-    ChiyodaVisitorsCard,
-    ShinjukuStMapCard,
-    TokyoStMapCard,
-    TokyoCityMapCard
-    */
-    MedicalSystemBedNumberCard,
-    MedicalSystemVentilatorNumberCard,
-    MedicalSystemEcmoNumberCard
+    PositiveNumberByDiagnosedDateCard,
+    HospitalizedNumberCard,
+    ConsultationAboutFeverNumberCard,
+    TokyoRulesApplicationNumberCard,
+    MonitoringItemsOverviewCard
   },
   data() {
-    let title, updatedAt
+    let title, updatedAt, cardComponent
     switch (this.$route.params.card) {
       case 'details-of-confirmed-cases':
-        title = this.$t('検査陽性者の状況')
-        updatedAt = InspectionSummary.date
+        cardComponent = 'confirmed-cases-details-card'
         break
-      /*
-      case 'details-of-tested-cases':
-        title = this.$t('検査実施状況')
-        updatedAt = Data.inspection_status_summary.date
-        break
-      */
       case 'number-of-confirmed-cases':
-        title = this.$t('陽性患者数')
-        updatedAt = Patients.date
+        cardComponent = 'confirmed-cases-number-card'
         break
       /*
       case 'number-of-confirmed-cases-by-municipalities':
-        title = this.$t('陽性患者数（区市町村別）')
-        updatedAt = patientData.date
+        cardComponent = 'confirmed-cases-by-municipalities-card'
         break
       */
       case 'attributes-of-confirmed-cases':
-        title = this.$t('陽性患者の属性')
-        updatedAt = Patients.date
+        cardComponent = 'confirmed-cases-attributes-card'
         break
       case 'number-of-tested':
-        title = this.$t('検査実施件数')
-        updatedAt = InspectionSummary.date
+        cardComponent = 'tested-number-card'
         break
-      /*
-      case 'number-of-inspection-persons':
-        title = this.$t('検査実施人数')
-        updatedAt = Data.inspection_persons.date
-        break
-      */
       case 'number-of-reports-to-covid19-telephone-advisory-center':
-        title = this.$t('新型コロナコールセンター相談件数')
-        updatedAt = Contacts.date
-        break
-      case 'number-of-reports-to-covid19-consultation-desk':
-        title = this.$t('新型コロナ受診相談窓口相談件数')
-        updatedAt = Querents.date
+        cardComponent = 'telephone-advisory-reports-number-card'
         break
       /*
       case 'predicted-number-of-toei-subway-passengers':
-        title = this.$t('都営地下鉄の利用者数の推移')
-        updatedAt = MetroData.date
+        cardComponent = 'metro-card'
         break
       case 'agency':
-        title = this.$t('都庁来庁者数の推移')
-        updatedAt = agencyData.date
+        cardComponent = 'agency-card'
+        break
+      case 'positive-number-by-diagnosed-date':
+        cardComponent = 'positive-number-by-diagnosed-date-card'
+        break
+      case 'positive-rate':
+        cardComponent = 'positive-rate-card'
+        break
+      */
+      case 'monitoring-number-of-confirmed-cases':
+        cardComponent = 'monitoring-confirmed-cases-number-card'
+        break
+      /*
+      case 'untracked-rate':
+        cardComponent = 'untracked-rate-card'
+        break
+      case 'positive-status-severe-case':
+        cardComponent = 'severe-case-card'
+        break
+      case 'number-of-hospitalized':
+        cardComponent = 'hospitalized-number-card'
+        break
+      */
+      case 'monitoring-number-of-reports-to-covid19-consultation-desk':
+        cardComponent = 'monitoring-consultation-desk-reports-number-card'
+        break
+      /*
+      case 'monitoring-items-overview':
+        cardComponent = 'monitoring-items-overview-card'
+        break
+      case 'number-of-reports-to-consultations-about-fever-in-7119':
+        cardComponent = 'consultation-about-fever-number-card'
+        break
+      case 'number-of-tokyo-rules-applied':
+        cardComponent = 'tokyo-rules-application-number-card'
         break
       case 'shinjuku-visitors':
         title = this.$t('新宿区エリアの来訪者数の推移（参考値）')
@@ -204,7 +118,7 @@ export default {
         title = this.$t('千代田区エリアの来訪者数の推移（参考値）')
         updatedAt = ChiyodaData.date
         break
-      */
+      
       case 'number-of-medical-system-bed':
         title = this.$t('確保病床')
         updatedAt = MedicalSystem.date
@@ -217,13 +131,14 @@ export default {
         title = this.$t('ECMO')
         updatedAt = MedicalSystem.date
         break
+      */
     }
 
-    const data = {
+    return {
+      cardComponent,
       title,
       updatedAt
     }
-    return data
   },
   head() {
     const url = 'https://okayama.stopcovid19.jp'
@@ -232,40 +147,47 @@ export default {
       this.$i18n.locale === 'ja'
         ? `${url}/ogp/${this.$route.params.card}.png?t=${timestamp}`
         : `${url}/ogp/${this.$i18n.locale}/${this.$route.params.card}.png?t=${timestamp}`
-    const description = `${this.updatedAt} | ${this.$t(
+    const description = `${this.$t(
       '当サイトは岡山県の新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
     )}`
+    const defaultTitle = `${this.$t('岡山県')} ${this.$t(
+      '新型コロナウイルス感染症'
+    )}${this.$t('対策サイト')} ${this.$t('(非公式)')}`
 
     return {
-      title: this.title,
+      titleTemplate: title => `${this.title || title} | ${defaultTitle}`,
+      link: [
+        ...getLinksLanguageAlternative(
+          `cards/${this.$route.params.card}`,
+          this.$i18n.locales,
+          this.$i18n.defaultLocale
+        )
+      ],
       meta: [
         {
           hid: 'og:url',
           property: 'og:url',
-          content: url + this.$route.path + '/'
+          content: `${url}${this.$route.path}/`
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content:
-            this.title +
-            ' | ' +
-            this.$t('岡山県') +
-            ' ' +
-            this.$t('新型コロナウイルス感染症') +
-            this.$t('対策サイト') +
-            ' ' +
-            this.$t('(非公式)')
+          template: title => `${this.title || title} | ${defaultTitle}`,
+          content: ''
         },
         {
           hid: 'description',
           name: 'description',
-          content: description
+          template: updatedAt =>
+            `${this.updatedAt || updatedAt} | ${description}`,
+          content: ''
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: description
+          template: updatedAt =>
+            `${this.updatedAt || updatedAt} | ${description}`,
+          content: ''
         },
         {
           hid: 'og:image',

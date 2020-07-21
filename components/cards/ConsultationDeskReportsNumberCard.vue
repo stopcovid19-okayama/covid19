@@ -28,11 +28,10 @@ export default {
     // 帰国者・接触者 電話相談センター 相談件数
     const querentsGraph = formatGraph(Querents.data)
 
-    const data = {
+    return {
       Querents,
       querentsGraph
     }
-    return data
   }
 }
 </script>
