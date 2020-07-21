@@ -218,7 +218,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       }
     },
     displayData() {
-      const style = getGraphSeriesStyle(1)[0]
+      const style = getGraphSeriesStyle(0)[0]
       const zeroMouseOverHeight = 5
       const transparentWhite = 'rgba(255,255,255,0)'
 

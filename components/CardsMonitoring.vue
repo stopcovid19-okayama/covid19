@@ -11,6 +11,8 @@
       <monitoring-confirmed-cases-number-card />
       <!-- 検査実施件数 -->
       <tested-number-card />
+      <!-- 陽性率 -->
+      <positive-rate-card />
       <!-- 新型コロナ受診相談窓口相談件数 -->
       <monitoring-consultation-desk-reports-number-card />
       <!-- 新型コロナコールセンター相談件数 -->
@@ -25,14 +27,13 @@ import CardRow from '@/components/cards/CardRow.vue'
 import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
 import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
 import MonitoringConfirmedCasesNumberCard from '@/components/cards/MonitoringConfirmedCasesNumberCard.vue'
-// import PositiveRateCard from '@/components/cards/PositiveRateCard.vue'
-import SevereCaseCard from '@/components/cards/SevereCaseCard.vue'
+import PositiveRateCard from '@/components/cards/PositiveRateCard.vue'
+// import SevereCaseCard from '@/components/cards/SevereCaseCard.vue'
 // import UntrackedRateCard from '@/components/cards/UntrackedRateCard.vue'
-import HospitalizedNumberCard from '@/components/cards/HospitalizedNumberCard.vue'
+// import HospitalizedNumberCard from '@/components/cards/HospitalizedNumberCard.vue'
 // import MonitoringItemsOverviewCard from '@/components/cards/MonitoringItemsOverviewCard.vue'
-import ConsultationAboutFeverNumberCard from '@/components/cards/ConsultationAboutFeverNumberCard.vue'
-import TokyoRulesApplicationNumberCard from '@/components/cards/TokyoRulesApplicationNumberCard.vue'
-
+// import ConsultationAboutFeverNumberCard from '@/components/cards/ConsultationAboutFeverNumberCard.vue'
+// import TokyoRulesApplicationNumberCard from '@/components/cards/TokyoRulesApplicationNumberCard.vue'
 import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
 import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
 import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
@@ -43,13 +44,13 @@ export default Vue.extend({
     CardRow,
     MonitoringConfirmedCasesNumberCard,
     // UntrackedRateCard,
-    SevereCaseCard,
-    // PositiveRateCard,
+    // SevereCaseCard,
+    PositiveRateCard,
     ConfirmedCasesDetailsCard,
     ConfirmedCasesNumberCard,
-    HospitalizedNumberCard,
-    ConsultationAboutFeverNumberCard,
-    TokyoRulesApplicationNumberCard,
+    // HospitalizedNumberCard,
+    // ConsultationAboutFeverNumberCard,
+    // TokyoRulesApplicationNumberCard,
     // MonitoringItemsOverviewCard
     ConfirmedCasesAttributesCard,
     TestedNumberCard,

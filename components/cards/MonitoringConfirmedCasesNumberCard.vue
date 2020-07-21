@@ -19,7 +19,11 @@
             {{ $t('※チャーター機帰国者、クルーズ船乗客等は含まれていない') }}
           </li>
           <li>
-            {{ $t('※曜日などによる数値のばらつきにより、日々の結果が変動するため、こうしたばらつきを平準化し全体の傾向を見る趣旨から、過去７日間の移動平均値を折れ線グラフで示す') }}
+            {{
+              $t(
+                '※曜日などによる数値のばらつきにより、日々の結果が変動するため、こうしたばらつきを平準化し全体の傾向を見る趣旨から、過去７日間の移動平均値を折れ線グラフで示す'
+              )
+            }}
           </li>
         </ul>
       </template>
@@ -29,7 +33,7 @@
 
 <script>
 import MonitoringConfirmedCasesChart from '@/components/MonitoringConfirmedCasesChart.vue'
-import Data from '@/data/daily_positive_detail.json' // TODO: change
+import Data from '@/data/patients_summary.json'
 import {
   getNumberToFixedFunction,
   getNumberToLocaleStringFunction
@@ -42,9 +46,9 @@ export default {
   data() {
     const [patientsCount, sevenDayMoveAverages, labels] = Data.data.reduce(
       (res, data) => {
-        res[0].push(data.count)
-        res[1].push(data.weekly_average_count)
-        res[2].push(data.diagnosed_date)
+        res[0].push(data['小計'])
+        res[1].push(data['７日間平均'])
+        res[2].push(data['日付'])
         return res
       },
       [[], [], []]

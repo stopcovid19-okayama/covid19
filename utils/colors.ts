@@ -7,22 +7,22 @@ type Series = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
 
 const surfaceStyleA: SurfaceStyle = {
   strokeColor: '#E813A4',
-  fillColor: '#00A040'
+  fillColor: '#E813A4'
 }
 
 const surfaceStyleB: SurfaceStyle = {
   strokeColor: '#E813A4',
-  fillColor: '#E813A4'
+  fillColor: '#ebc0df'
 }
 
 const surfaceStyleC: SurfaceStyle = {
-  strokeColor: '#E813A4',
-  fillColor: '#E813A4'
+  strokeColor: '#00A040',
+  fillColor: '#00A040'
 }
 
 const surfaceStyleD: SurfaceStyle = {
-  strokeColor: '#1b4d30',
-  fillColor: '#cbe1c8'
+  strokeColor: '#00A040',
+  fillColor: '#00A040'
 }
 
 const surfaceStyleE: SurfaceStyle = {
@@ -31,13 +31,13 @@ const surfaceStyleE: SurfaceStyle = {
 }
 
 const surfaceStyleF: SurfaceStyle = {
-  strokeColor: '#1b4d30',
-  fillColor: '#1b4d30'
+  strokeColor: '#00A040',
+  fillColor: '#00A040'
 }
 
 const surfaceStyleG: SurfaceStyle = {
-  strokeColor: '#5a8055',
-  fillColor: '#e2eee2'
+  strokeColor: '#00A040',
+  fillColor: '#00A040'
 }
 
 export function getGraphSeriesStyle(seriesLength: number) {

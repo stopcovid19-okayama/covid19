@@ -1,13 +1,12 @@
 <template>
   <v-col cols="12" md="6" class="DataCard">
     <positive-rate-mixed-chart
-      :title="$t('モニタリング項目(4)')"
       :title-id="'positive-rate'"
       :info-titles="[$t('検査の陽性率'), $t('検査人数')]"
       :chart-id="'positive-rate-chart'"
       :chart-data="positiveRateGraph"
       :get-formatter="getFormatter"
-      :date="PositiveRate.date"
+      :date="PositiveRate.last_update"
       :labels="positiveRateLabels"
       unit="%"
       :option-unit="$t('人')"
@@ -15,22 +14,18 @@
       :table-labels="positiveRateTableLabels"
     >
       <template v-slot:additionalDescription>
-        <span>{{ $t('（注）') }}</span>
-        <ul>
-          <li>
-            {{
-              $t(
-                '陽性率：陽性判明数（PCR・抗原）の移動平均／検査人数（＝陽性判明数（PCR・抗原）＋陰性判明数（PCR・抗原））の移動平均'
-              )
-            }}
-          </li>
-          <li>
-            {{
-              $t(
-                '集団感染発生や曜日による数値のばらつきにより、日々の結果が変動するため、こうしたばらつきを平準化し全体の傾向を見る趣旨から、過去7日間の移動平均値をもとに算出し、折れ線グラフで示す（例えば、5月7日の陽性率は、5月1日から5月7日までの実績平均を用いて算出）'
-              )
-            }}
-          </li>
+        {{
+          $t(
+            '※陽性率：陽性判明数の移動平均／検査人数（＝陽性判明数＋陰性判明数）の移動平均'
+          )
+        }}
+        <br />
+        {{
+          $t(
+            '※集団感染発生や曜日による数値のばらつきにより、日々の結果が変動するため、こうしたばらつきを平準化し全体の傾向を見る趣旨から、過去7日間の移動平均値をもとに算出し、折れ線グラフで示す'
+          )
+        }}
+        <!--
           <li>
             {{ $t('検査結果の判明日を基準とする') }}
           </li>
@@ -65,7 +60,7 @@
               )
             }}
           </li>
-        </ul>
+          -->
       </template>
     </positive-rate-mixed-chart>
   </v-col>
@@ -92,16 +87,16 @@ export default {
     const l = PositiveRate.data.length
     const pcrPositiveCount = []
     const pcrNegativeCount = []
-    const antigenPositiveCount = []
-    const antigenNegativeCount = []
+    // const antigenPositiveCount = []
+    // const antigenNegativeCount = []
     const positiveRates = []
     const positiveRateLabels = []
     const weeklyAverageDiagnosedCount = []
     for (let i = 0; i < l; i++) {
-      pcrPositiveCount.push(PositiveRate.data[i].pcr_positive_count)
-      pcrNegativeCount.push(PositiveRate.data[i].pcr_negative_count)
-      antigenPositiveCount.push(PositiveRate.data[i].antigen_positive_count)
-      antigenNegativeCount.push(PositiveRate.data[i].antigen_negative_count)
+      pcrPositiveCount.push(PositiveRate.data[i].positive_count)
+      pcrNegativeCount.push(PositiveRate.data[i].negative_count)
+      // antigenPositiveCount.push(PositiveRate.data[i].antigen_positive_count)
+      // antigenNegativeCount.push(PositiveRate.data[i].antigen_negative_count)
       positiveRates.push(PositiveRate.data[i].positive_rate)
       positiveRateLabels.push(PositiveRate.data[i].diagnosed_date)
       weeklyAverageDiagnosedCount.push(
@@ -111,17 +106,17 @@ export default {
 
     const positiveRateGraph = [
       pcrPositiveCount,
-      antigenPositiveCount,
+      // antigenPositiveCount,
       pcrNegativeCount,
-      antigenNegativeCount,
+      // antigenNegativeCount,
       weeklyAverageDiagnosedCount,
       positiveRates
     ]
     const positiveRateDataLabels = [
       this.$t('PCR検査陽性者数'),
-      this.$t('抗原検査陽性者数'),
+      // this.$t('抗原検査陽性者数'),
       this.$t('PCR検査陰性者数'),
-      this.$t('抗原検査陰性者数'),
+      // this.$t('抗原検査陰性者数'),
       this.$t('検査人数（７日間移動平均）'),
       this.$t('陽性率')
     ]
