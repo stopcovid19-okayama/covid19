@@ -12,6 +12,7 @@ $gray-5: #f8f9fa;
 $white: #fff;
 $link: #006ca8;
 $emergency: #FFE200;
+$alert: #AD2121;
 
 // ==================
 // shadow
@@ -52,9 +53,8 @@ $z-index-map: (
 
 // ==================
 // font-size
-@mixin font-size($size, $base: 16) {
-  font-size: $size + px;
-  font-size: ($size / $base) + rem;
+@mixin font-size($size, $important: false) {
+  font-size: ($size / 10) + rem #{if($important, "!important", "")};
 }
 
 @mixin card-h1 {
@@ -99,7 +99,7 @@ $z-index-map: (
   }
 }
 
-@mixin button-text($size: 'md') {
+@mixin button-text($size: 'md', $font-size: 14) {
   @if ($size == 'sm') {
     padding: 4px 8px;
   }
@@ -108,7 +108,7 @@ $z-index-map: (
     padding: 24px 36px;
   }
 
-  @include font-size(14);
+  @include font-size($font-size);
 
   display: inline-block;
   border-radius: 4px;
@@ -166,3 +166,14 @@ $z-index-map: (
   display: block !important;
   visibility: visible !important;
 }
+
+// ===================
+// Vuetify
+
+// Expansion Panels
+// https://vuetifyjs.com/en/components/expansion-panels/
+$expansion-panel-content-padding: 0;
+$expansion-panel-header-padding: 10px 0;
+$expansion-panel-header-min-height: 26px;
+$expansion-panel-active-header-min-height: 26px;
+$expansion-panel-header-font-size: .875rem;

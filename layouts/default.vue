@@ -1,6 +1,6 @@
-﻿<template>
+<template>
   <v-app class="app">
-    <v-overlay v-if="loading" color="#F8F9FA" opacity="1" z-index="9999">
+    <v-overlay :value="loading" color="#F8F9FA" opacity="1" z-index="9999">
       <div class="loader">
         <img src="/logo.svg" alt="岡山県" />
         <scale-loader color="#E813A4" />
@@ -21,7 +21,7 @@
         </v-container>
       </main>
     </div>
-    <div v-else class="embed">
+    <div v-if="!loading && !hasNavigation" class="embed">
       <v-container>
         <nuxt />
       </v-container>
@@ -33,20 +33,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { MetaInfo } from 'vue-meta'
+import { MetaInfo, LinkPropertyHref } from 'vue-meta'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 import Data from '@/data/last_update.json'
 import SideNavigation from '@/components/SideNavigation.vue'
 import NoScript from '@/components/NoScript.vue'
 import DevelopmentModeMark from '@/components/DevelopmentModeMark.vue'
 import { convertDateToSimpleFormat } from '@/utils/formatDate'
+import { getLinksLanguageAlternative } from '@/utils/i18nUtils'
 
 type LocalData = {
   hasNavigation: boolean
   isOpenNavigation: boolean
   loading: boolean
 }
-
 export default Vue.extend({
   components: {
     DevelopmentModeMark,
@@ -64,7 +64,6 @@ export default Vue.extend({
       hasNavigation = false
       loading = false
     }
-
     return {
       hasNavigation,
       loading,
@@ -99,6 +98,18 @@ export default Vue.extend({
             name: 'og:locale',
             content: this.$i18n.locale
           }
+
+    let linksAlternate: LinkPropertyHref[] = []
+    const basename = this.getRouteBaseName()
+    // 404 エラーなどのときは this.getRouteBaseName() が null になるため除外
+    if (basename) {
+      linksAlternate = getLinksLanguageAlternative(
+        basename,
+        this.$i18n.locales,
+        this.$i18n.defaultLocale
+      )
+    }
+
     return {
       htmlAttrs,
       link: [
@@ -109,8 +120,12 @@ export default Vue.extend({
         {
           rel: 'stylesheet',
           href: 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css'
-        }
+        },
+        ...linksAlternate
       ],
+      // Disable prettier for readability purposes
+      // eslint-disable-next-line prettier/prettier
+      titleTemplate: `%s | ${this.$t('岡山県')} ${this.$t('新型コロナウイルス感染症')}${this.$t('対策サイト')}`,
       meta: [
         {
           hid: 'author',
@@ -120,24 +135,18 @@ export default Vue.extend({
         {
           hid: 'description',
           name: 'description',
-          content:
-            convertDateToSimpleFormat(Data.date) +
-            ' 更新：　' +
-            this.$tc(
-              '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
-            )
+          content: `${this.$t('{date} 更新', {
+            date: convertDateToSimpleFormat(Data.date)
+          })}: ${this.$tc(
+            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
+          )}`
         },
         {
           hid: 'og:site_name',
           property: 'og:site_name',
-          content:
-            this.$t('岡山県') +
-            ' ' +
-            this.$t('新型コロナウイルス感染症') +
-            ' ' +
-            this.$t('対策サイト') +
-            ' ' +
-            this.$t('(非公式)')
+          content: `${this.$t('岡山県')} ${this.$t(
+            '新型コロナウイルス感染症'
+          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
         },
         {
           hid: 'og:url',
@@ -148,24 +157,18 @@ export default Vue.extend({
         {
           hid: 'og:title',
           property: 'og:title',
-          content:
-            this.$t('岡山県') +
-            ' ' +
-            this.$t('新型コロナウイルス感染症') +
-            ' ' +
-            this.$t('対策サイト') +
-            ' ' +
-            this.$t('(非公式)')
+          content: `${this.$t('岡山県')} ${this.$t(
+            '新型コロナウイルス感染症'
+          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            convertDateToSimpleFormat(Data.date) +
-            ' 更新：　' +
-            this.$tc(
-              '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
-            )
+          content: `${this.$t('{date} 更新', {
+            date: convertDateToSimpleFormat(Data.date)
+          })}: ${this.$tc(
+            '当サイトは新型コロナウイルス感染症 (COVID-19) に関する最新情報を提供するために、有志が開設したものです。'
+          )}`
         },
         {
           hid: 'og:image',
@@ -175,14 +178,9 @@ export default Vue.extend({
         {
           hid: 'apple-mobile-web-app-title',
           name: 'apple-mobile-web-app-title',
-          content:
-            this.$t('岡山県') +
-            ' ' +
-            this.$t('新型コロナウイルス感染症') +
-            ' ' +
-            this.$t('対策サイト') +
-            ' ' +
-            this.$t('(非公式)')
+          content: `${this.$t('岡山県')} ${this.$t(
+            '新型コロナウイルス感染症'
+          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
         },
         {
           hid: 'twitter:image',
@@ -200,35 +198,32 @@ export default Vue.extend({
   margin: 0 auto;
   background-color: inherit !important;
 }
+.v-application--wrap {
+  width: 100%;
+}
 .embed {
   .container {
     padding: 0 !important;
   }
-
   .DataCard {
     padding: 0 !important;
   }
 }
-
 .appContainer {
   position: relative;
-
   @include largerThan($small) {
     display: grid;
     grid-template-columns: 240px 1fr;
     grid-template-rows: auto;
   }
-
   @include largerThan($huge) {
     grid-template-columns: 325px 1fr;
     grid-template-rows: auto;
   }
 }
-
 .naviContainer {
   background-color: $white;
 }
-
 @include lessThan($small) {
   .naviContainer {
     position: sticky;
@@ -237,7 +232,6 @@ export default Vue.extend({
     z-index: z-index-of(sp-navigation);
   }
 }
-
 @include largerThan($small) {
   .naviContainer {
     grid-column: 1/2;
@@ -252,33 +246,27 @@ export default Vue.extend({
     overscroll-behavior: contain;
   }
 }
-
 @include largerThan($huge) {
   .naviContainer {
     width: 325px;
   }
 }
-
 .open {
   height: 100vh;
-
   @include largerThan($small) {
     overflow-x: hidden;
     overflow-y: auto;
   }
 }
-
 .mainContainer {
   grid-column: 2/3;
   overflow: hidden;
-
   @include lessThan($small) {
     .container {
       padding-top: 16px;
     }
   }
 }
-
 .loader {
   height: 200px;
   width: 150px;
@@ -286,7 +274,6 @@ export default Vue.extend({
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-
   img {
     display: block;
     margin: 0 auto 20px;
