@@ -26,19 +26,44 @@
       </ul>
     </static-card>
     <static-card>
-      <h3>{{ $t('感染症を疑う場合の対応') }}</h3>
-      <ul>
-        <li>{{ $t('各保健所にご相談ください') }}</li>
-        <li>
-          {{ $t('各保健所の電話番号について') }}
-          <br />
-          <external-link
-            url="https://www.pref.okayama.jp/page/644784.html"
-            :icon-size="16"
-            >{{ $t('「新型コロナウイルス感染症にかかる相談窓口について」') }}
-          </external-link>
-        </li>
-      </ul>
+      <h3>{{ $t('教育費に不安がある') }}</h3>
+      <p>
+        {{
+          $t(
+            '家計が急変した場合に、奨学金の緊急採用や授業料の減免措置(対象: 県立高校生)、教育給付金の支給を行っています。'
+          )
+        }}
+        <br />
+        {{ $t('詳細は、') }}
+        <external-link
+          href="https://www.pref.okayama.jp/page/664377.html#kyoikuhi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ $t('岡山県のHP') }}
+        </external-link>
+        {{ $t('をご確認ください') }}
+      </p>
+    </static-card>
+    <static-card>
+      <h3>{{ $t('学習に不安がある') }}</h3>
+      <p>
+        {{
+          $t(
+            '岡山県や文部科学省ではお子様の学びを支援するためのコンテンツポータルサイトを開設しています。'
+          )
+        }}
+        <br />
+        {{ $t('詳細は、') }}
+        <external-link
+          href="https://www.pref.okayama.jp/page/664377.html#gakusyuu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ $t('岡山県のHP') }}
+        </external-link>
+        {{ $t('をご確認ください') }}
+      </p>
     </static-card>
     <static-card>
       <h3>{{ $t('その他') }}</h3>
