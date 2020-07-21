@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import MainSummary from '@/data/main_summary.json'
-import Patients from '@/data/patients.json'
 import dayjs from 'dayjs'
+import MainSummary from '@/data/main_summary.json'
+// import Patients from '@/data/patients.json'
 import Data from '@/data/data.json'
 import formatConfirmedCases from '@/utils/formatConfirmedCases'
 import DataView from '@/components/DataView.vue'

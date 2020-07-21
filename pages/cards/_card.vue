@@ -118,7 +118,7 @@ export default {
         title = this.$t('千代田区エリアの来訪者数の推移（参考値）')
         updatedAt = ChiyodaData.date
         break
-      */
+      
       case 'number-of-medical-system-bed':
         title = this.$t('確保病床')
         updatedAt = MedicalSystem.date
@@ -131,6 +131,7 @@ export default {
         title = this.$t('ECMO')
         updatedAt = MedicalSystem.date
         break
+      */
     }
 
     return {

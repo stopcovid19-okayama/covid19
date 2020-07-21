@@ -1,7 +1,10 @@
 <template>
   <ul :class="$style.container">
     <li :class="$style.box">
-      <div :class="$style.content" style="border: 3px solid black; color: black;">
+      <div
+        :class="$style.content"
+        style="border: 3px solid black; color: black;"
+      >
         <span> {{ $t('検査実施人数') }} ({{ $t('累計') }}) </span>
         <span>
           <strong>{{ 検査実施人数.toLocaleString() }}</strong>

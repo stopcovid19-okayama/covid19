@@ -48,7 +48,7 @@ export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
-    StaticInfo,
+    StaticInfo
     /*
     TokyoAlertCard,
     MonitoringCommentCard

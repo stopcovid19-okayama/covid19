@@ -182,11 +182,7 @@
         </p>
         <div :class="[$style.box, $style.bgGray]">
           <h5 :class="$style.boxHeading">
-            {{
-              $t(
-                '新型コロナコールセンター'
-              )
-            }}
+            {{ $t('新型コロナコールセンター') }}
           </h5>
           <dl :class="$style.contact">
             <dt>{{ $t('24時間対応') }}</dt>
@@ -219,11 +215,7 @@
         </p>
         <div :class="[$style.box, $style.bgGray]">
           <h5 :class="$style.boxHeading">
-            {{
-              $t(
-                '新型コロナコールセンター'
-              )
-            }}
+            {{ $t('新型コロナコールセンター') }}
           </h5>
           <dl :class="$style.contact">
             <dt>{{ $t('24時間対応') }}</dt>
@@ -262,11 +254,7 @@
           }}</span>
         </p>
         <h4 :class="[$style.sxnHeadingSmall]">
-          {{
-            $t(
-              '医師により検査が必要だと判断されPCR検査を受けた結果'
-            )
-          }}
+          {{ $t('医師により検査が必要だと判断されPCR検査を受けた結果') }}
         </h4>
         <div :class="$style.boxes">
           <div :class="[$style.box, $style.border]">
@@ -681,7 +669,7 @@ $margin: 20;
   background-color: $white;
   &.yellow {
     border-width: 4px;
-    border-color: #00A040;
+    border-color: #00a040;
   }
   > * {
     line-height: 1.5;

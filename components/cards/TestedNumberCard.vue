@@ -43,13 +43,13 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
 import InspectionsSummary from '@/data/inspections_summary.json'
 import formatGraph from '@/utils/formatGraph'
 import TimeBarChart from '@/components/TimeBarChart.vue'
-import dayjs from 'dayjs'
-import duration from 'dayjs/plugin/duration'
-import Data from '@/data/data.json'
-import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
+// import Data from '@/data/data.json'
+// import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
 dayjs.extend(duration)
 
 export default {

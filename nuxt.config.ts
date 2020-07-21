@@ -4,7 +4,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')
 const autoprefixer = require('autoprefixer')
 const environment = process.env.NODE_ENV || 'development'
 
-const config: Configuration= {
+const config: Configuration = {
   mode: 'universal',
   target: 'static',
   /*
@@ -208,7 +208,7 @@ const config: Configuration= {
         '/cards/positive-status-severe-case',
         '/cards/number-of-hospitalized',
         */
-        '/cards/monitoring-number-of-reports-to-covid19-consultation-desk',
+        '/cards/monitoring-number-of-reports-to-covid19-consultation-desk'
         /*
         '/cards/monitoring-status-overview',
         '/cards/number-of-reports-to-consultations-about-fever-in-7119',
