@@ -41,6 +41,7 @@ jobs:
           base: development
           branch-suffix: 'short-commit-hash'
           branch: data-bot/development
+          labels: auto_merge
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
@@ -87,6 +88,7 @@ jobs:
           base: master
           branch-suffix: 'short-commit-hash'
           branch: data-bot/master
+          labels: auto_merge
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
