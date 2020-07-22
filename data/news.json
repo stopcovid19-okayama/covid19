@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
-            "date": "2020/07/20",
-            "url": "https://youtu.be/PC5LTNvXUA0",
+            "date": "2020/07/22",
+            "url": "https://youtu.be/jGjcaImk6x0",
             "text": "新型コロナウイルス感染症に関する知事メッセージ動画"
+        },
+        {
+            "date": "2020/07/22",
+            "url": "https://www.pref.okayama.jp/page/645925.html#04-kenmin-yobou-atarashiiseikatsu",
+            "text": "【県民の皆さまへ】感染症予防対策や「新しい生活様式」をご確認ください。"
         },
         {
             "date": "2020/07/17",
             "url": "https://www.pref.okayama.jp/page/658782.html",
             "text": "事業者支援策リーフレット（更新）"
-        },
-        {
-            "date": "2020/07/02",
-            "url": "https://miryoku-harenokuni-okayama.jp/momo-ura/new-normal.html",
-            "text": "ももっち・うらっちのデザイン集「新しい生活様式」"
         }
     ]
 }
