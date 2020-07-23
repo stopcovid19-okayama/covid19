@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [update-data]
   schedule:
-    - cron: '15 12 * * *'
+    - cron: '15 * * * *'
 
 jobs:
   pr-development:
