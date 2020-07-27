@@ -1,0 +1,281 @@
+<template>
+  <div>
+    <div :class="$style.title">
+      <covid-icon aria-hidden="true" />
+      <page-header :class="$style.text">{{ $t('新型コロナウイルス感染症について') }}</page-header>
+      <printer-button :wrapper-class="$style.printerButton" to="/print/covid19" />
+    </div>
+    <div :class="$style.container">
+      <h3 :class="$style.conHeading">{{ $t('私たちにできる新型コロナウイルス感染予防') }}</h3>
+      <div class="row DataBlock">
+        <div class="DataCard col-md-6 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeadingL">{{ $t('しっかり手を洗う') }}</h3>
+              <p :class="$style.preventText">{{ $t('流水で20秒以上かけて洗いましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-hand />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-6 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeadingL">{{ $t('自宅で過ごそう') }}</h3>
+              <p :class="$style.preventText">{{ $t('不要不急の外出は控えましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-stayhome />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-8 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeadingL">{{ $t('距離をとる') }}</h3>
+              <p :class="$style.preventText">{{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-socialdistance />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('よく食べる') }}</h3>
+              <p :class="$style.preventText">{{ $t('健康的な食事を心がけましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-eat />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('よく寝る') }}</h3>
+              <p :class="$style.preventText">{{ $t('しっかり寝て体を休ませましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-sleeping />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('咳の飛沫を飛ばさない') }}</h3>
+              <p :class="$style.preventText">{{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-cough />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('運動をする') }}</h3>
+              <p :class="$style.preventText">{{ $t('適度な運動で健康的な体づくりを心がけましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-play />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('目鼻口を触らない') }}</h3>
+              <p :class="$style.preventText">{{ $t('外出中は触らないように粘膜からの感染を防ぎましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-virus />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('しっかり換気をする') }}</h3>
+              <p :class="$style.preventText">{{ $t('ウイルスや菌は長時間空気中を浮遊します') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-ventilation />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-md-4 col-xs-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('風邪気味なら休む') }}</h3>
+              <p :class="$style.preventText">{{ $t('風邪症状のある場合は外出を控えしっかり休みましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-thermometer />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div :class="$style.container">
+      <h3 :class="$style.conHeading">{{ $t('新型コロナウイルス感染症のQ&A') }}</h3>
+      <div class="row DataBlock">
+        <div class="DataCard col-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <dl class="DataView-Inner">
+              <dt>{{ $t('Q.どんな症状が出ますか？') }}</dt>
+              <dd>{{ $t('A.熱や体のだるさ、咳が多いですが喉の痛み、筋肉痛、下痢など様々です。') }}</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="DataCard col-12">
+          <div class="DataView v-card v-sheet theme--light">
+            <dl class="DataView-Inner">
+              <dt>{{ $t('Q.病院に相談するのはどのタイミングですか？') }}</dt>
+              <dd>{{ $t('A.呼吸が苦しい、高熱、体のだるさがひどい等の症状がある場合は早めに相談してください。詳しくはこちらをご確認ください。') }}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { MetaInfo } from 'vue-meta'
+import CovidIcon from '@/static/covid-prevention.svg'
+import PrinterButton from '@/components/PrinterButton.vue'
+import PageHeader from '@/components/PageHeader.vue'
+import preventIconHand from '@/static/covid19/prevent-icon-hand.svg'
+import preventIconStayhome from '@/static/covid19/prevent-icon-stayhome.svg'
+import preventIconSocialdistance from '@/static/covid19/prevent-icon-socialdistance.svg'
+import preventIconEat from '@/static/covid19/prevent-icon-eat.svg'
+import preventIconSleeping from '@/static/covid19/prevent-icon-sleeping.svg'
+import preventIconCough from '@/static/covid19/prevent-icon-cough.svg'
+import preventIconPlay from '@/static/covid19/prevent-icon-play.svg'
+import preventIconVirus from '@/static/covid19/prevent-icon-virus.svg'
+import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.svg'
+import preventIconThermometer from '@/static/covid19/prevent-icon-thermometer.svg'
+
+export default Vue.extend({
+  components: {
+    CovidIcon,
+    PrinterButton,
+    PageHeader,
+    preventIconHand,
+    preventIconStayhome,
+    preventIconSocialdistance,
+    preventIconEat,
+    preventIconSleeping,
+    preventIconCough,
+    preventIconPlay,
+    preventIconVirus,
+    preventIconVentilation,
+    preventIconThermometer
+  },
+  data() {
+    const data = {}
+    return data
+  },
+  computed: {
+  },
+  head(): MetaInfo {
+    return {
+      title: this.$t('新型コロナウイルス感染症について') as string
+    }
+  }
+})
+</script>
+
+<style lang="scss" module>
+/* stylelint-disable no-descending-specificity */
+
+$fzSmall: 14;
+$fzRegular: 16;
+$fzMedium: 18;
+$fzLarge: 20;
+$fzHuge: 22;
+$fzHeading: 20;
+$fzHeadingL: 26;
+
+$padding: 20;
+$margin: 20;
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: $margin * 1px;
+  > svg {
+    width: 30px;
+    height: 30px;
+    > path:not(:first-of-type) {
+      fill: $gray-2;
+    }
+  }
+  .text {
+    margin-left: 8px;
+  }
+  .printerButton {
+    margin: 0 0 0 auto;
+  }
+}
+.container {
+  background-color: $white;
+  box-shadow: $shadow;
+  border: 0.5px solid $gray-4 !important;
+  border-radius: 4px;
+  padding: $padding * 1px;
+  line-height: 1.35;
+  color: $gray-2;
+  margin-bottom: 20px;
+  @include font-size($fzRegular);
+
+  > .conHeading {
+    @include font-size($fzHeading);
+  }
+  > .prevent {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    margin-right: -12px;
+    margin-left: -12px;
+  }
+  .priorityHigh {
+    border: solid 4px $green-1 !important;
+  }
+  .preventHeadingL {
+    font-weight: bold;
+    margin-bottom:10px;
+    @include font-size($fzHeadingL);
+  }
+  .preventHeading {
+    font-weight: bold;
+    margin-bottom: 10px;
+    @include font-size($fzHeading);
+  }
+  .preventText {
+    color: $green-1;
+    margin-bottom: 20px;
+  }
+  .preventImage {
+    height: 160px;
+    width: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+    svg {
+      height: 160px;
+      width: 100%;
+    }
+  ul {
+    padding-left: 0; // override Vuetify style
+  }
+  p {
+    margin-bottom: 0; // override Vuetify style
+  }
+}
+</style>
