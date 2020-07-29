@@ -8,8 +8,8 @@
     <div :class="$style.container">
       <h3 :class="$style.conHeading">{{ $t('私たちにできる新型コロナウイルス感染予防') }}</h3>
       <div class="row DataBlock">
-        <div class="DataCard col-md-6 col-xs-12">
-          <div class="DataView v-card v-sheet theme--light">
+        <div class="DataCard col-lg-6">
+          <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeadingL">{{ $t('しっかり手を洗う') }}</h3>
               <p :class="$style.preventText">{{ $t('流水で20秒以上かけて洗いましょう') }}</p>
@@ -19,8 +19,8 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-6 col-xs-12">
-          <div class="DataView v-card v-sheet theme--light">
+        <div class="DataCard col-lg-6">
+          <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeadingL">{{ $t('自宅で過ごそう') }}</h3>
               <p :class="$style.preventText">{{ $t('不要不急の外出は控えましょう') }}</p>
@@ -30,8 +30,8 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-8 col-xs-12">
-          <div class="DataView v-card v-sheet theme--light">
+        <div class="DataCard col-lg-8">
+          <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeadingL">{{ $t('距離をとる') }}</h3>
               <p :class="$style.preventText">{{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}</p>
@@ -41,7 +41,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('よく食べる') }}</h3>
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('よく寝る') }}</h3>
@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('咳の飛沫を飛ばさない') }}</h3>
@@ -74,7 +74,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('運動をする') }}</h3>
@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('目鼻口を触らない') }}</h3>
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('しっかり換気をする') }}</h3>
@@ -107,7 +107,7 @@
             </div>
           </div>
         </div>
-        <div class="DataCard col-md-4 col-xs-12">
+        <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeading">{{ $t('風邪気味なら休む') }}</h3>
@@ -126,7 +126,7 @@
         <div class="DataCard col-12">
           <div class="DataView v-card v-sheet theme--light">
             <dl class="DataView-Inner">
-              <dt>{{ $t('Q.どんな症状が出ますか？') }}</dt>
+              <dt :class="$style.preventHeading">{{ $t('Q.どんな症状が出ますか？') }}</dt>
               <dd>{{ $t('A.熱や体のだるさ、咳が多いですが喉の痛み、筋肉痛、下痢など様々です。') }}</dd>
             </dl>
           </div>
@@ -134,7 +134,7 @@
         <div class="DataCard col-12">
           <div class="DataView v-card v-sheet theme--light">
             <dl class="DataView-Inner">
-              <dt>{{ $t('Q.病院に相談するのはどのタイミングですか？') }}</dt>
+              <dt :class="$style.preventHeading">{{ $t('Q.病院に相談するのはどのタイミングですか？') }}</dt>
               <dd>{{ $t('A.呼吸が苦しい、高熱、体のだるさがひどい等の症状がある場合は早めに相談してください。詳しくはこちらをご確認ください。') }}</dd>
             </dl>
           </div>
@@ -150,6 +150,7 @@ import { MetaInfo } from 'vue-meta'
 import CovidIcon from '@/static/covid-prevention.svg'
 import PrinterButton from '@/components/PrinterButton.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import DataView from '@/components/DataView.vue'
 import preventIconHand from '@/static/covid19/prevent-icon-hand.svg'
 import preventIconStayhome from '@/static/covid19/prevent-icon-stayhome.svg'
 import preventIconSocialdistance from '@/static/covid19/prevent-icon-socialdistance.svg'
@@ -166,6 +167,7 @@ export default Vue.extend({
     CovidIcon,
     PrinterButton,
     PageHeader,
+    DataView,
     preventIconHand,
     preventIconStayhome,
     preventIconSocialdistance,
@@ -232,50 +234,75 @@ $margin: 20;
   line-height: 1.35;
   color: $gray-2;
   margin-bottom: 20px;
+  page-break-after: always;
   @include font-size($fzRegular);
 
   > .conHeading {
     @include font-size($fzHeading);
   }
-  > .prevent {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1 1 auto;
-    margin-right: -12px;
-    margin-left: -12px;
-  }
-  .priorityHigh {
-    border: solid 4px $green-1 !important;
-  }
-  .preventHeadingL {
-    font-weight: bold;
-    margin-bottom:10px;
-    @include font-size($fzHeadingL);
-  }
-  .preventHeading {
-    font-weight: bold;
-    margin-bottom: 10px;
-    @include font-size($fzHeading);
-  }
-  .preventText {
-    color: $green-1;
-    margin-bottom: 20px;
-  }
-  .preventImage {
-    height: 160px;
-    width: auto;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-    svg {
-      height: 160px;
-      width: 100%;
-    }
   ul {
     padding-left: 0; // override Vuetify style
   }
   p {
     margin-bottom: 0; // override Vuetify style
+  }
+}
+.prevent {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  margin-right: -12px;
+  margin-left: -12px;
+}
+.preventHeadingL {
+  font-weight: bold;
+  margin-bottom:10px;
+  @include font-size($fzHeadingL);
+}
+.preventHeading {
+  font-weight: bold;
+  margin-bottom: 10px;
+  @include font-size($fzHeading);
+}
+.preventText {
+  color: $green-1;
+  margin-bottom: 20px;
+}
+.preventImage {
+  height: 160px;
+  width: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  svg {
+    height: 160px;
+    width: 100%;
+  }
+}
+@media (max-width: 960px) {
+  .priorityHigh {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+}
+@media print {
+  .priorityHigh {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+}
+</style>
+
+<style lang="scss" scope>
+@media print {
+  .col-lg-6 {
+    width: 50% !important;
+  }
+  .col-lg-8 {
+    width: 66.6666666667% !important;
+  }
+  .col-lg-4 {
+    width: 33.3333333333% !important;
   }
 }
 </style>
