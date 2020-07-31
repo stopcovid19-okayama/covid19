@@ -118,7 +118,7 @@ export default {
         title = this.$t('千代田区エリアの来訪者数の推移（参考値）')
         updatedAt = ChiyodaData.date
         break
-      
+
       case 'number-of-medical-system-bed':
         title = this.$t('確保病床')
         updatedAt = MedicalSystem.date
@@ -152,7 +152,7 @@ export default {
     )}`
     const defaultTitle = `${this.$t('岡山県')} ${this.$t(
       '新型コロナウイルス感染症'
-    )}${this.$t('対策サイト')} ${this.$t('(非公式)')}`
+    )}${this.$t('対策サイト')}`
 
     return {
       titleTemplate: title => `${this.title || title} | ${defaultTitle}`,
