@@ -121,25 +121,33 @@
       </div>
     </div>
     <div :class="$style.container">
-      <h3 :class="$style.conHeading">{{ $t('新型コロナウイルス感染症のQ&A') }}</h3>
-      <div class="row DataBlock">
-        <div class="DataCard col-12">
+      <h3 :class="$style.conHeadingQa">{{ $t('新型コロナウイルス感染症のQ&A') }}</h3>
+      <v-expansion-panels multiple>
+        <v-expansion-panel>
           <div class="DataView v-card v-sheet theme--light">
-            <dl class="DataView-Inner">
-              <dt :class="$style.preventHeading">{{ $t('Q.どんな症状が出ますか？') }}</dt>
-              <dd>{{ $t('A.熱や体のだるさ、咳が多いですが喉の痛み、筋肉痛、下痢など様々です。') }}</dd>
-            </dl>
+            <div class="DataView-Inner">
+              <v-expansion-panel-header :class="$style.qaHeading">
+                {{ $t('Q.どんな症状が出ますか？') }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                {{ $t('A.熱や体のだるさ、咳が多いですが喉の痛み、筋肉痛、下痢など様々です。') }}
+              </v-expansion-panel-content>
+            </div>
           </div>
-        </div>
-        <div class="DataCard col-12">
+        </v-expansion-panel>
+        <v-expansion-panel>
           <div class="DataView v-card v-sheet theme--light">
-            <dl class="DataView-Inner">
-              <dt :class="$style.preventHeading">{{ $t('Q.病院に相談するのはどのタイミングですか？') }}</dt>
-              <dd>{{ $t('A.呼吸が苦しい、高熱、体のだるさがひどい等の症状がある場合は早めに相談してください。詳しくはこちらをご確認ください。') }}</dd>
-            </dl>
+            <div class="DataView-Inner">
+              <v-expansion-panel-header :class="$style.qaHeading">
+                {{ $t('Q.病院に相談するのはどのタイミングですか？') }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                {{ $t('A.呼吸が苦しい、高熱、体のだるさがひどい等の症状がある場合は早めに相談してください。詳しくはこちらをご確認ください。') }}
+              </v-expansion-panel-content>
+            </div>
           </div>
-        </div>
-      </div>
+        </v-expansion-panel>
+      </v-expansion-panels>
     </div>
   </div>
 </template>
@@ -237,9 +245,6 @@ $margin: 20;
   page-break-after: always;
   @include font-size($fzRegular);
 
-  > .conHeading {
-    @include font-size($fzHeading);
-  }
   ul {
     padding-left: 0; // override Vuetify style
   }
@@ -247,6 +252,14 @@ $margin: 20;
     margin-bottom: 0; // override Vuetify style
   }
 }
+.conHeading {
+    @include font-size($fzHeading);
+  }
+.conHeadingQa {
+    margin-bottom: 12px;
+    @include font-size($fzHeading);
+
+  }
 .prevent {
   display: flex;
   flex-wrap: wrap;
@@ -279,6 +292,12 @@ $margin: 20;
     width: 100%;
   }
 }
+.qaHeading {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  @include font-size($fzHeading);
+}
 @media (max-width: 960px) {
   .priorityHigh {
       padding-top: 40px;
@@ -304,5 +323,8 @@ $margin: 20;
   .col-lg-4 {
     width: 33.3333333333% !important;
   }
+}
+.v-expansion-panel-content {
+  display: block;
 }
 </style>
