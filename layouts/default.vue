@@ -146,7 +146,7 @@ export default Vue.extend({
           property: 'og:site_name',
           content: `${this.$t('岡山県')} ${this.$t(
             '新型コロナウイルス感染症'
-          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
+          )} ${this.$t('対策サイト')}`
         },
         {
           hid: 'og:url',
@@ -159,7 +159,7 @@ export default Vue.extend({
           property: 'og:title',
           content: `${this.$t('岡山県')} ${this.$t(
             '新型コロナウイルス感染症'
-          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
+          )} ${this.$t('対策サイト')}`
         },
         {
           hid: 'og:description',
@@ -180,7 +180,7 @@ export default Vue.extend({
           name: 'apple-mobile-web-app-title',
           content: `${this.$t('岡山県')} ${this.$t(
             '新型コロナウイルス感染症'
-          )} ${this.$t('対策サイト')} ${this.$t('(非公式)')}`
+          )} ${this.$t('対策サイト')}`
         },
         {
           hid: 'twitter:image',
