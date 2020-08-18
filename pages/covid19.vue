@@ -324,4 +324,7 @@ $margin: 20;
 .v-expansion-panel-content {
   display: block;
 }
+.v-expansion-panel-header {
+    font-size: 2rem;
+}
 </style>
