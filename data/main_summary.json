@@ -1,5 +1,5 @@
 {
-    "last_update": "2020/08/20 15:01",
+    "last_update": "2020/08/20 18:01",
     "attr": "検査実施人数",
     "value": 3809,
     "children": [
@@ -9,19 +9,19 @@
             "children": [
                 {
                     "attr": "入院調整中",
-                    "value": 16
+                    "value": 3
                 },
                 {
                     "attr": "入院中",
-                    "value": 20
+                    "value": 16
                 },
                 {
                     "attr": "宿泊療養施設に入所中",
-                    "value": 5
+                    "value": 2
                 },
                 {
                     "attr": "退院",
-                    "value": 90
+                    "value": 110
                 },
                 {
                     "attr": "死亡",
