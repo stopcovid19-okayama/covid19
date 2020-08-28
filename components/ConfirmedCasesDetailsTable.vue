@@ -5,10 +5,10 @@
         :class="$style.content"
         style="border: 3px solid black; color: black;"
       >
-        <span> {{ $t('検査実施人数') }} ({{ $t('累計') }}) </span>
+        <span> {{ $t('検査実施件数') }} ({{ $t('累計') }}) </span>
         <span>
-          <strong>{{ 検査実施人数.toLocaleString() }}</strong>
-          <span :class="$style.unit">{{ $t('人') }}</span>
+          <strong>{{ 検査実施件数.toLocaleString() }}</strong>
+          <span :class="$style.unit">件</span>
         </span>
       </div>
     </li>
@@ -21,16 +21,7 @@
         </span>
       </div>
       <ul :class="$style.group">
-        <li :class="[$style.box]">
-          <div :class="$style.content">
-            <span>{{ $t('入院調整中') }}</span>
-            <span>
-              <strong>{{ 入院調整中.toLocaleString() }}</strong>
-              <span :class="$style.unit">{{ $t('人') }}</span>
-            </span>
-          </div>
-        </li>
-        <li :class="[$style.box]">
+        <li :class="[$style.box, $style.parent]">
           <div :class="$style.content">
             <span>{{ $t('入院中') }}</span>
             <span>
@@ -38,12 +29,32 @@
               <span :class="$style.unit">{{ $t('人') }}</span>
             </span>
           </div>
+          <ul :class="$style.group">
+            <li :class="[$style.box]">
+              <div :class="$style.content">
+                <span>{{ $t('重傷者') }}</span>
+                <span>
+                  <strong>{{ 重傷者.toLocaleString() }}</strong>
+                  <span :class="$style.unit">{{ $t('人') }}</span>
+                </span>
+              </div>
+            </li>
+          </ul>
         </li>
         <li :class="[$style.box]">
           <div :class="$style.content">
             <span>{{ $t('宿泊療養施設に入所中') }}</span>
             <span>
               <strong>{{ 宿泊療養施設に入所中.toLocaleString() }}</strong>
+              <span :class="$style.unit">{{ $t('人') }}</span>
+            </span>
+          </div>
+        </li>
+        <li :class="[$style.box]">
+          <div :class="$style.content">
+            <span>{{ $t('自宅療養中') }}</span>
+            <span>
+              <strong>{{ 自宅療養中.toLocaleString() }}</strong>
               <span :class="$style.unit">{{ $t('人') }}</span>
             </span>
           </div>
@@ -59,9 +70,9 @@
         </li>
         <li :class="[$style.box]">
           <div :class="$style.content">
-            <span>{{ $t('退院等（療養期間経過を含む）') }}</span>
+            <span>{{ $t('退院等') }}</span>
             <span>
-              <strong>{{ 退院.toLocaleString() }}</strong>
+              <strong>{{ 退院等.toLocaleString() }}</strong>
               <span :class="$style.unit">{{ $t('人') }}</span>
             </span>
           </div>
@@ -77,15 +88,11 @@ import Vue from 'vue'
 /* eslint-disable vue/prop-name-casing */
 export default Vue.extend({
   props: {
-    検査実施人数: {
+    検査実施件数: {
       type: Number,
       required: true
     },
     陽性者数: {
-      type: Number,
-      required: true
-    },
-    入院調整中: {
       type: Number,
       required: true
     },
@@ -98,20 +105,20 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    重症: {
+    */
+    重傷者: {
       type: Number,
       required: true
     },
-    */
     宿泊療養施設に入所中: {
       type: Number,
       required: true
     },
-    /*
-    自宅療養: {
+    自宅療養中: {
       type: Number,
       required: true
     },
+    /*
     調査中: {
       type: Number,
       required: true
@@ -121,7 +128,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    退院: {
+    退院等: {
       type: Number,
       required: true
     }

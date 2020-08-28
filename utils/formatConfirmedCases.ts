@@ -40,21 +40,20 @@ type DataType = {
 }
 
 type ConfirmedCasesType = {
-  検査実施人数: number
+  検査実施件数: number
   陽性者数: number
-  入院調整中: number
   入院中: number
   /*
   軽症中等症: number
-  重症: number
   */
+  重傷者: number
   宿泊療養施設に入所中: number
+  自宅療養中: number
   /*
-  自宅療養: number
   調査中: number
   */
   死亡: number
-  退院: number
+  退院等: number
 }
 
 interface ChildData {
@@ -97,12 +96,13 @@ function getSelectedItem(data: DataType, key: string) {
  */
 export default (data: DataType) => {
   return {
-    検査実施人数: getSelectedItem(data, '検査実施人数'),
-    陽性者数: getSelectedItem(data, '陽性患者数'),
+    検査実施件数: getSelectedItem(data, '検査実施件数'),
+    陽性者数: getSelectedItem(data, '陽性者数'),
     入院中: getSelectedItem(data, '入院中'),
-    宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中'),
-    入院調整中: getSelectedItem(data, '入院調整中'),
+    重傷者: getSelectedItem(data, '重傷者'),
+    宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中　'),
+    自宅療養中: getSelectedItem(data, '自宅療養中'),
     死亡: getSelectedItem(data, '死亡'),
-    退院: getSelectedItem(data, '退院')
+    退院等: getSelectedItem(data, '退院等')
   } as ConfirmedCasesType
 }
