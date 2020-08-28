@@ -9,18 +9,11 @@
         <ul class="ListStyleNone">
           <li>
             {{
-              $t('（注）チャーター機帰国者、クルーズ船乗客等は含まれていない')
-            }}
-          </li>
-          <!--
-          <li>
-            {{
               $t(
-                '（注）「重症」は、集中治療室（ICU）等での管理又は人工呼吸器管理が必要な患者数を計上'
+                '（注）検査実施人数と陽性者数以外のデータは、毎週木曜日に更新している'
               )
             }}
           </li>
-          -->
           <li>
             {{
               $t(
@@ -56,9 +49,7 @@ export default {
     // 検査陽性者の状況
     const confirmedCases = formatConfirmedCases(MainSummary)
 
-    const updatedAt = dayjs(Data.main_summary.children[0].date).format(
-      'YYYY/MM/DD HH:mm'
-    )
+    const updatedAt = dayjs(MainSummary.last_update).format('YYYY/MM/DD HH:mm')
 
     return {
       Data,
