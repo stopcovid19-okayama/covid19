@@ -23,7 +23,7 @@
           <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeadingL">{{ $t('マスクを着用しよう') }}</h3>
-              <p :class="$style.preventText">{{ $t('不要不急の外出は控えましょう') }}</p>
+              <p :class="$style.preventText">{{ $t('マスクの表面は触らないようにしましょう') }}</p>
               <div :class="$style.preventImage">
                 <prevent-icon-mask />
               </div>
@@ -44,10 +44,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('咳の飛沫を飛ばさない') }}</h3>
-              <p :class="$style.preventText">{{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}</p>
+              <h3 :class="$style.preventHeadingL">{{ $t('密集をさける') }}</h3>
+              <p :class="$style.preventText">{{ $t('人が多く集まる場所をさけましょう') }}</p>
               <div :class="$style.preventImage">
-                <prevent-icon-cough />
+                <prevent-icon-crowded />
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('しっかり換気をする') }}</h3>
+              <h3 :class="$style.preventHeadingL">{{ $t('しっかり換気をする') }}</h3>
               <p :class="$style.preventText">{{ $t('ウイルスや菌は長時間空気中を浮遊します') }}</p>
               <div :class="$style.preventImage">
                 <prevent-icon-ventilation />
@@ -88,10 +88,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('運動をする') }}</h3>
-              <p :class="$style.preventText">{{ $t('適度な運動で健康的な体づくりを心がけましょう') }}</p>
+              <h3 :class="$style.preventHeading">{{ $t('咳の飛沫を飛ばさない') }}</h3>
+              <p :class="$style.preventText">{{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}</p>
               <div :class="$style.preventImage">
-                <prevent-icon-play />
+                <prevent-icon-cough />
               </div>
             </div>
           </div>
@@ -114,6 +114,17 @@
               <p :class="$style.preventText">{{ $t('健康的な食事を心がけましょう') }}</p>
               <div :class="$style.preventImage">
                 <prevent-icon-eat />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="DataCard col-lg-4 col-md-6">
+          <div class="DataView v-card v-sheet theme--light">
+            <div class="DataView-Inner">
+              <h3 :class="$style.preventHeading">{{ $t('運動をする') }}</h3>
+              <p :class="$style.preventText">{{ $t('適度な運動で健康的な体づくりを心がけましょう') }}</p>
+              <div :class="$style.preventImage">
+                <prevent-icon-play />
               </div>
             </div>
           </div>
@@ -169,6 +180,7 @@ import preventIconPlay from '@/static/covid19/prevent-icon-play.svg'
 import preventIconVirus from '@/static/covid19/prevent-icon-virus.svg'
 import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.svg'
 import preventIconThermometer from '@/static/covid19/prevent-icon-thermometer.svg'
+import preventIconCrowded from '@/static/covid19/prevent-icon-crowded.svg'
 
 export default Vue.extend({
   components: {
@@ -185,7 +197,8 @@ export default Vue.extend({
     preventIconPlay,
     preventIconVirus,
     preventIconVentilation,
-    preventIconThermometer
+    preventIconThermometer,
+    preventIconCrowded
   },
   data() {
     const data = {}
