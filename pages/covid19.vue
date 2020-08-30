@@ -131,35 +131,25 @@
         </div>
       </div>
     </div>
-    <div :class="$style.container">
-      <h3 :class="$style.conHeadingQa">{{ $t('新型コロナウイルス感染症のQ&A') }}</h3>
-      <v-expansion-panels multiple>
-        <v-expansion-panel>
-          <div class="DataView v-card v-sheet theme--light">
-            <div class="DataView-Inner">
-              <v-expansion-panel-header :class="$style.qaHeading">
-                {{ $t('Q.どんな症状が出ますか？') }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                {{ $t('A.熱や体のだるさ、咳が多いですが喉の痛み、筋肉痛、下痢など様々です。') }}
-              </v-expansion-panel-content>
-            </div>
-          </div>
-        </v-expansion-panel>
-        <v-expansion-panel>
-          <div class="DataView v-card v-sheet theme--light">
-            <div class="DataView-Inner">
-              <v-expansion-panel-header :class="$style.qaHeading">
-                {{ $t('Q.病院に相談するのはどのタイミングですか？') }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                {{ $t('A.呼吸が苦しい、高熱、体のだるさがひどい等の症状がある場合は早めに相談してください。詳しくはこちらをご確認ください。') }}
-              </v-expansion-panel-content>
-            </div>
-          </div>
-        </v-expansion-panel>
-      </v-expansion-panels>
-    </div>
+    <static-card>
+      <h3>{{ $t('新型コロナウイルス感染症のQ&A') }}</h3>
+      <ul>
+        <li>
+          <app-link
+            to="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/dengue_fever_qa_00001.html"
+            :icon-size="16"
+            >{{ $t('新型コロナウイルスに関するQ&A（一般の方向け）｜厚生労働省') }}
+          </app-link>
+        </li>
+        <li>
+          <app-link
+            to="https://www3.nhk.or.jp/news/special/coronavirus/question-answer/"
+            :icon-size="16"
+            >{{ $t('特設サイト 新型コロナウイルス 疑問・不安Q＆A |NHK') }}
+          </app-link>
+        </li>
+      </ul>
+    </static-card>
   </div>
 </template>
 
@@ -181,6 +171,9 @@ import preventIconVirus from '@/static/covid19/prevent-icon-virus.svg'
 import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.svg'
 import preventIconThermometer from '@/static/covid19/prevent-icon-thermometer.svg'
 import preventIconCrowded from '@/static/covid19/prevent-icon-crowded.svg'
+import StaticCard from '@/components/StaticCard.vue'
+import ExternalLink from '@/components/ExternalLink.vue'
+import AppLink from '@/components/AppLink.vue'
 
 export default Vue.extend({
   components: {
@@ -198,7 +191,10 @@ export default Vue.extend({
     preventIconVirus,
     preventIconVentilation,
     preventIconThermometer,
-    preventIconCrowded
+    preventIconCrowded,
+    StaticCard,
+    ExternalLink,
+    AppLink
   },
   data() {
     const data = {}
