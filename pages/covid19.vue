@@ -44,8 +44,8 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('密集をさける') }}</h3>
-              <p :class="$style.preventText">{{ $t('人が多く集まる場所をさけましょう') }}</p>
+              <h3 :class="$style.preventHeadingL">{{ $t('人の多い場所を避ける') }}</h3>
+              <p :class="$style.preventText">{{ $t('他者との安全な距離を保ちましょう') }}</p>
               <div :class="$style.preventImage">
                 <prevent-icon-crowded />
               </div>
