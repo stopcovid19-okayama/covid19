@@ -16,7 +16,8 @@
       </h3>
       <div class="row DataBlock">
         <div class="DataCard col-lg-6">
-          <div class="DataView v-card v-sheet theme--light"
+          <div
+            class="DataView v-card v-sheet theme--light"
             :class="$style.priorityHigh"
           >
             <div class="DataView-Inner">
@@ -33,7 +34,8 @@
           </div>
         </div>
         <div class="DataCard col-lg-6">
-          <div class="DataView v-card v-sheet theme--light"
+          <div
+            class="DataView v-card v-sheet theme--light"
             :class="$style.priorityHigh"
           >
             <div class="DataView-Inner">
@@ -129,7 +131,11 @@
                 {{ $t('咳の飛沫を飛ばさない') }}
               </h3>
               <p :class="$style.preventText">
-                {{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}
+                {{
+                  $t(
+                    '咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう'
+                  )
+                }}
               </p>
               <div :class="$style.preventImage">
                 <prevent-icon-cough />
@@ -191,15 +197,17 @@
           <app-link
             to="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/dengue_fever_qa_00001.html"
             :icon-size="16"
-            >
-            {{ $t('新型コロナウイルスに関するQ&A（一般の方向け）｜厚生労働省') }}
+          >
+            {{
+              $t('新型コロナウイルスに関するQ&A（一般の方向け）｜厚生労働省')
+            }}
           </app-link>
         </li>
         <li>
           <app-link
             to="https://www3.nhk.or.jp/news/special/coronavirus/question-answer/"
             :icon-size="16"
-            >
+          >
             {{ $t('特設サイト 新型コロナウイルス 疑問・不安Q＆A |NHK') }}
           </app-link>
         </li>
@@ -309,12 +317,12 @@ $margin: 20;
   }
 }
 .conHeading {
-    @include font-size($fzHeading);
-  }
+  @include font-size($fzHeading);
+}
 .conHeadingQa {
-    margin-bottom: 12px;
-    @include font-size($fzHeading);
-  }
+  margin-bottom: 12px;
+  @include font-size($fzHeading);
+}
 .prevent {
   display: flex;
   flex-wrap: wrap;
@@ -324,7 +332,7 @@ $margin: 20;
 }
 .preventHeadingL {
   font-weight: bold;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   @include font-size($fzHeadingL);
 }
 .preventHeading {
@@ -355,15 +363,15 @@ $margin: 20;
 }
 @media (max-width: 960px) {
   .priorityHigh {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 @media print {
   .priorityHigh {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 </style>
 
@@ -383,6 +391,6 @@ $margin: 20;
   display: block;
 }
 .v-expansion-panel-header {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 </style>

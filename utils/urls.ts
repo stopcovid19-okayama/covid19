@@ -1,3 +1,3 @@
 export function isExternal(path: string): boolean {
-	return /^https:\/\//.test(path)
+  return /^https?:\/\//.test(path)
 }
