@@ -2,17 +2,30 @@
   <div>
     <div :class="$style.title">
       <covid-icon aria-hidden="true" />
-      <page-header :class="$style.text">{{ $t('新型コロナウイルス感染症について') }}</page-header>
-      <printer-button :wrapper-class="$style.printerButton" to="/print/covid19" />
+      <page-header :class="$style.text">
+        {{ $t('新型コロナウイルス感染症について') }}
+      </page-header>
+      <printer-button
+        :wrapper-class="$style.printerButton"
+        to="/print/covid19"
+      />
     </div>
     <div :class="$style.container">
-      <h3 :class="$style.conHeading">{{ $t('私たちにできる新型コロナウイルス感染予防') }}</h3>
+      <h3 :class="$style.conHeading">
+        {{ $t('私たちにできる新型コロナウイルス感染予防') }}
+      </h3>
       <div class="row DataBlock">
         <div class="DataCard col-lg-6">
-          <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
+          <div class="DataView v-card v-sheet theme--light"
+            :class="$style.priorityHigh"
+          >
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('しっかり手を洗う') }}</h3>
-              <p :class="$style.preventText">{{ $t('石けんを使い流水で20秒以上かけて洗いましょう') }}</p>
+              <h3 :class="$style.preventHeadingL">
+                {{ $t('しっかり手を洗う') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('石けんを使い流水で20秒以上かけて洗いましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-hand />
               </div>
@@ -20,10 +33,16 @@
           </div>
         </div>
         <div class="DataCard col-lg-6">
-          <div class="DataView v-card v-sheet theme--light" :class="$style.priorityHigh">
+          <div class="DataView v-card v-sheet theme--light"
+            :class="$style.priorityHigh"
+          >
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('マスクを着用しよう') }}</h3>
-              <p :class="$style.preventText">{{ $t('マスクの表面は触らないようにしましょう') }}</p>
+              <h3 :class="$style.preventHeadingL">
+                {{ $t('マスクを着用しよう') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('マスクの表面は触らないようにしましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-mask />
               </div>
@@ -34,7 +53,9 @@
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
               <h3 :class="$style.preventHeadingL">{{ $t('距離をとる') }}</h3>
-              <p :class="$style.preventText">{{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}</p>
+              <p :class="$style.preventText">
+                {{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-socialdistance />
               </div>
@@ -44,8 +65,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('人の多い場所を避ける') }}</h3>
-              <p :class="$style.preventText">{{ $t('他者との安全な距離を保ちましょう') }}</p>
+              <h3 :class="$style.preventHeadingL">
+                {{ $t('人の多い場所を避ける') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('他者との安全な距離を保ちましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-crowded />
               </div>
@@ -55,8 +80,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('しっかり換気をする') }}</h3>
-              <p :class="$style.preventText">{{ $t('ウイルスや菌は長時間空気中を浮遊します') }}</p>
+              <h3 :class="$style.preventHeadingL">
+                {{ $t('しっかり換気をする') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('ウイルスや菌は長時間空気中を浮遊します') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-ventilation />
               </div>
@@ -66,8 +95,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('風邪気味なら休む') }}</h3>
-              <p :class="$style.preventText">{{ $t('風邪症状のある場合は外出を控えしっかり休みましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('風邪気味なら休む') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('風邪症状のある場合は外出を控えしっかり休みましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-thermometer />
               </div>
@@ -77,8 +110,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('目鼻口を触らない') }}</h3>
-              <p :class="$style.preventText">{{ $t('外出中は触らないように粘膜からの感染を防ぎましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('目鼻口を触らない') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('外出中は触らないように粘膜からの感染を防ぎましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-virus />
               </div>
@@ -88,8 +125,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('咳の飛沫を飛ばさない') }}</h3>
-              <p :class="$style.preventText">{{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('咳の飛沫を飛ばさない') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-cough />
               </div>
@@ -99,8 +140,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('よく寝る') }}</h3>
-              <p :class="$style.preventText">{{ $t('しっかり寝て体を休ませましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('よく寝る') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('しっかり寝て体を休ませましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-sleeping />
               </div>
@@ -110,8 +155,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('よく食べる') }}</h3>
-              <p :class="$style.preventText">{{ $t('健康的な食事を心がけましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('よく食べる') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('健康的な食事を心がけましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-eat />
               </div>
@@ -121,8 +170,12 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">{{ $t('運動をする') }}</h3>
-              <p :class="$style.preventText">{{ $t('適度な運動で健康的な体づくりを心がけましょう') }}</p>
+              <h3 :class="$style.preventHeading">
+                {{ $t('運動をする') }}
+              </h3>
+              <p :class="$style.preventText">
+                {{ $t('適度な運動で健康的な体づくりを心がけましょう') }}
+              </p>
               <div :class="$style.preventImage">
                 <prevent-icon-play />
               </div>
@@ -138,14 +191,16 @@
           <app-link
             to="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/dengue_fever_qa_00001.html"
             :icon-size="16"
-            >{{ $t('新型コロナウイルスに関するQ&A（一般の方向け）｜厚生労働省') }}
+            >
+            {{ $t('新型コロナウイルスに関するQ&A（一般の方向け）｜厚生労働省') }}
           </app-link>
         </li>
         <li>
           <app-link
             to="https://www3.nhk.or.jp/news/special/coronavirus/question-answer/"
             :icon-size="16"
-            >{{ $t('特設サイト 新型コロナウイルス 疑問・不安Q＆A |NHK') }}
+            >
+            {{ $t('特設サイト 新型コロナウイルス 疑問・不安Q＆A |NHK') }}
           </app-link>
         </li>
       </ul>
@@ -159,7 +214,6 @@ import { MetaInfo } from 'vue-meta'
 import CovidIcon from '@/static/covid-prevention.svg'
 import PrinterButton from '@/components/PrinterButton.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import DataView from '@/components/DataView.vue'
 import preventIconHand from '@/static/covid19/prevent-icon-hand.svg'
 import preventIconMask from '@/static/covid19/prevent-icon-mask.svg'
 import preventIconSocialdistance from '@/static/covid19/prevent-icon-socialdistance.svg'
@@ -172,7 +226,6 @@ import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.sv
 import preventIconThermometer from '@/static/covid19/prevent-icon-thermometer.svg'
 import preventIconCrowded from '@/static/covid19/prevent-icon-crowded.svg'
 import StaticCard from '@/components/StaticCard.vue'
-import ExternalLink from '@/components/ExternalLink.vue'
 import AppLink from '@/components/AppLink.vue'
 
 export default Vue.extend({
@@ -180,7 +233,6 @@ export default Vue.extend({
     CovidIcon,
     PrinterButton,
     PageHeader,
-    DataView,
     preventIconHand,
     preventIconMask,
     preventIconSocialdistance,
@@ -193,15 +245,13 @@ export default Vue.extend({
     preventIconThermometer,
     preventIconCrowded,
     StaticCard,
-    ExternalLink,
     AppLink
   },
   data() {
     const data = {}
     return data
   },
-  computed: {
-  },
+  computed: {},
   head(): MetaInfo {
     return {
       title: this.$t('新型コロナウイルス感染症について') as string
@@ -264,7 +314,6 @@ $margin: 20;
 .conHeadingQa {
     margin-bottom: 12px;
     @include font-size($fzHeading);
-
   }
 .prevent {
   display: flex;
