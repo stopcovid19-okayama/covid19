@@ -82,7 +82,9 @@
         <li>
           {{ $t('さくらインターネット株式会社様') }}
           :
-          <external-link url="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/">
+          <external-link 
+            url="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/"
+          >
             {{ $t('サイト') }}
           </external-link>
         </li>
