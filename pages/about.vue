@@ -84,7 +84,7 @@
           :
           <external-link url="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/">
             {{ $t('サイト') }}
-          <external-link>
+          </external-link>
         </li>
       </ul>
     </StaticCard>
