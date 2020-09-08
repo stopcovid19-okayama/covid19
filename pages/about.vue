@@ -63,11 +63,11 @@
       </i18n>
     </StaticCard>
     <StaticCard>
-      <h3>{{ $t('協力団体について') }}</h3>
+      <h3>{{ $t('協力団体・企業について') }}</h3>
       <p>
         {{
           $t(
-            '当サイトにおいて、様々な観点からご協力を頂いてる団体を紹介させていただきます。'
+            '当サイトにおいて、様々な観点からご協力を頂いてる団体・企業を紹介させていただきます。(順不同)'
           )
         }}
       </p>
@@ -78,6 +78,13 @@
           <external-link url="http://www.unit-gp.jp/eisei/wp/">
             {{ $t('サイト') }}
           </external-link>
+        </li>
+        <li>
+          {{ $t('さくらインターネット株式会社様') }}
+          :
+          <external-link url="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/">
+            {{ $t('サイト') }}
+          <external-link>
         </li>
       </ul>
     </StaticCard>
