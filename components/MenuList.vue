@@ -31,6 +31,7 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import CovidIcon from '@/static/covid.svg'
+import CovidPreventionIcon from '@/static/covid-prevention.svg'
 import MaskTrashIcon from '@/static/masktrash.svg'
 import ParentIcon from '@/static/parent.svg'
 
@@ -45,6 +46,7 @@ export default Vue.extend({
   components: {
     CovidIcon,
     MaskTrashIcon,
+    CovidPreventionIcon,
     ParentIcon
   },
   props: {
