@@ -1,5 +1,5 @@
 {
-    "last_update": "2020/10/07 23:02",
+    "last_update": "2020/10/08 10:06",
     "data": [
         {
             "diagnosed_date": "2020-03-22T08:00:00.000Z",
@@ -1393,6 +1393,13 @@
             "negative_count": 4,
             "positive_rate": 14.3,
             "weekly_average_diagnosed_count": 7
+        },
+        {
+            "diagnosed_date": "2020-10-07T08:00:00.000Z",
+            "positive_count": 0,
+            "negative_count": 1,
+            "positive_rate": 12.8,
+            "weekly_average_diagnosed_count": 4.7
         }
     ]
 }
