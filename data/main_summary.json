@@ -1,11 +1,11 @@
 {
-    "last_update": "2020/10/09 15:02",
+    "last_update": "2020/10/09 18:01",
     "attr": "検査実施件数",
     "value": 4520,
     "children": [
         {
             "attr": "陽性者数",
-            "value": 162,
+            "value": 163,
             "children": [
                 {
                     "attr": "入院中",
