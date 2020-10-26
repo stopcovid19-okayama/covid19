@@ -1,15 +1,15 @@
 {
-    "last_update": "2020/10/26 15:02",
+    "last_update": "2020/10/26 18:02",
     "attr": "検査実施件数",
     "value": 4684,
     "children": [
         {
             "attr": "陽性者数",
-            "value": 203,
+            "value": 206,
             "children": [
                 {
                     "attr": "入院中",
-                    "value": 16
+                    "value": 17
                 },
                 {
                     "attr": "重傷者",
@@ -25,7 +25,7 @@
                 },
                 {
                     "attr": "退院等",
-                    "value": 162
+                    "value": 161
                 },
                 {
                     "attr": "死亡",
