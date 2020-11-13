@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
+            "date": "2020/11/13",
+            "url": "https://www.pref.okayama.jp/page/658782.html",
+            "text": "事業者支援策リーフレット（更新）"
+        },
+        {
+            "date": "2020/11/13",
+            "url": "https://www.pref.okayama.jp/page/674598.html",
+            "text": "新しい生活様式実践事業者補助金"
+        },
+        {
             "date": "2020/10/27",
             "url": "https://www.pref.okayama.jp/uploaded/attachment/280470.pdf",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
-        },
-        {
-            "date": "2020/10/27",
-            "url": "https://youtu.be/W8ZTxQnIIeY",
-            "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2020/10/19",
-            "url": "https://www.pref.okayama.jp/page/665982.html",
-            "text": "農林漁業者支援策リーフレット（更新）"
         }
     ]
 }
