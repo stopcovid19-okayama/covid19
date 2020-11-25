@@ -32,7 +32,7 @@
           <ul :class="$style.group">
             <li :class="[$style.box]">
               <div :class="$style.content">
-                <span>{{ $t('重傷者') }}</span>
+                <span>{{ $t('重症者') }}</span>
                 <span>
                   <strong>{{ 重傷者.toLocaleString() }}</strong>
                   <span :class="$style.unit">{{ $t('人') }}</span>
