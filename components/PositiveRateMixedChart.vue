@@ -679,7 +679,6 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       for (const i in this.chartData[0]) {
         min = Math.min(min, this.chartData[0][i], this.chartData[1][i])
       }
-      console.log(min)
       return min
     },
     scaledTicksYAxisMax() {
