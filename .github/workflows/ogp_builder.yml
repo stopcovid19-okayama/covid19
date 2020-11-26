@@ -92,6 +92,9 @@ jobs:
         with:
           route: PUT /repos/:repository/branches/master/protection
           repository: ${{ github.repository }}
+          mediaType: |
+            previews: 
+              - luke-cage
           required_status_checks: |
             null
           enforce_admins: |
