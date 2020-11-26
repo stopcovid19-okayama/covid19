@@ -56,14 +56,6 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: ogp
-      - name: Temporarily disable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          owner: stopcovid19-okayama
-          repo: covid19
-          branch: master
       - name: Commit files
         run: |
           cp -rp ogp static/
@@ -74,13 +66,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: master
-      - name: Enable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          owner: stopcovid19-okayama
-          repo: covid19
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
