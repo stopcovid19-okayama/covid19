@@ -56,31 +56,47 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: ogp
-      - name: Temporarily disable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
+      - name: Setup Git
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git remote add origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Branch protection OFF
+        uses: octokit/request-action@v2.x
         with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          owner: stopcovid19-okayama
-          repo: covid19
-          branch: master
+          route: PUT /repos/:repository/branches/master/protection
+          repository: ${{ github.repository }}
+          enforce_admins: |
+            null
+          required_pull_request_reviews: |
+            null
+          restrictions: |
+            null
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Commit files
         run: |
           cp -rp ogp static/
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add static
           git commit -m "Add changes"
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        run: |
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Branch Protection ON
+        uses: octokit/request-action@v2.x
         with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: master
-      - name: Enable "include administrators" branch protection
-        uses: benjefferies/branch-protection-bot@master
-        if: always()
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          owner: stopcovid19-okayama
-          repo: covid19
-          branch: master
+          route: PUT /repos/:repository/branches/master/protection
+          repository: ${{ github.repository }}
+          enforce_admins: |
+            true
+          required_pull_request_reviews: |
+            dismiss_stale_reviews: true
+            required_approving_review_count: 1
+          restrictions: |
+            null
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
