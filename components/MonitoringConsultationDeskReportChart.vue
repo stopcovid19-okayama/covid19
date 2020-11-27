@@ -206,7 +206,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   },
   computed: {
     displayTransitionRatio() {
-      const data = this.chartData[1]
+      const data = this.chartData[0]
       const lastDay = data[data.length - 1]
       const lastDayBefore = data[data.length - 2]
       return this.formatDayBeforeRatio(lastDay - lastDayBefore)
@@ -214,8 +214,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     displayInfo() {
       return [
         {
-          lText: this.chartData[1][
-            this.chartData[1].length - 1
+          lText: this.chartData[0][
+            this.chartData[0].length - 1
           ].toLocaleString(),
           sText: `${this.$t('{date} の数値', {
             date: dayjs(this.labels[this.labels.length - 1]).format('M/D')
