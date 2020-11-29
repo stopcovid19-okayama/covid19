@@ -40,18 +40,57 @@
             <h4 :class="$style.downloadText">
               {{ $t('ai データでダウンロードの方はこちら') }}
             </h4>
-            <download-button :url="localePath('/download/flyer.ai')" />
+            <div class="DownloadButtonWrapper" :class="wrapperClass">
+              <a
+                :href="localePath('/download/flyer.ai')"
+                class="DownloadButton"
+              >
+                <div class="DownloadButton-DownloadIcon">
+                  <download-icon />
+                </div>
+                <span class="DownloadButton-Text">
+                  {{ $t('ダウンロード') }}
+                </span>
+              </a>
+            </div>
           </div>
           <div :class="$style.downloadGroup">
             <h4 :class="$style.downloadText">
               {{ $t('pdf データでダウンロードの方はこちら') }}
             </h4>
-            <download-button :url="localePath('/download/flyer.pdf')" />
+            <div class="DownloadButtonWrapper" :class="wrapperClass">
+              <a
+                :href="localePath('/download/flyer.pdf')"
+                class="DownloadButton"
+              >
+                <div class="DownloadButton-DownloadIcon">
+                  <download-icon />
+                </div>
+                <span class="DownloadButton-Text">
+                  {{ $t('ダウンロード') }}
+                </span>
+              </a>
+            </div>
           </div>
           <div :class="$style.downloadGroup">
             <h4 :class="$style.downloadText">
               {{ $t('大規模な掲載や配布（50枚～）をご希望の方はこちら') }}
             </h4>
+            <div class="DownloadButtonWrapper" :class="wrapperClass">
+              <a
+                href="https://www.google.co.jp/"
+                class="DownloadButton"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="DownloadButton-DownloadIcon">
+                  <apply-icon />
+                </div>
+                <span class="DownloadButton-Text">
+                  {{ $t('申し込みフォーム') }}
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -65,6 +104,52 @@
       <h3 :class="$style.HeadingL" class="pb-4">
         {{ $t('協力団体様') }}
       </h3>
+      <div class="row DataBlock">
+        <div class="col-lg-4">
+          <h4 :class="$style.cooperatorHeading">
+            {{ $t('団体名/組織名') }}
+          </h4>
+          <span>{{ $t('掲載場所') }}</span>
+          <p>{{ $t('その他コメント、URLなど') }}</p>
+        </div>
+        <div class="col-lg-4">
+          <h4 :class="$style.cooperatorHeading">
+            {{ $t('団体名/組織名') }}
+          </h4>
+          <span>{{ $t('掲載場所') }}</span>
+          <p>{{ $t('その他コメント、URLなど') }}</p>
+        </div>
+        <div class="col-lg-4">
+          <h4 :class="$style.cooperatorHeading">
+            {{ $t('団体名/組織名') }}
+          </h4>
+          <span>{{ $t('掲載場所') }}</span>
+          <p>{{ $t('その他コメント、URLなど') }}</p>
+        </div>
+      </div>
+      <div :class="$style.container">
+        <h4 class="pb-4">
+          {{ $t('配布、掲載等してくださった団体様へ') }}
+        </h4>
+        <p class="pb-4">
+          {{ $t('下記フォームより団体名等を入力していただき～～') }}
+        </p>
+        <div class="DownloadButtonWrapper" :class="wrapperClass">
+          <a
+            href="https://www.google.co.jp/"
+            class="DownloadButton"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="DownloadButton-DownloadIcon">
+              <apply-icon />
+            </div>
+            <span class="DownloadButton-Text">
+              {{ $t('掲載フォーム') }}
+            </span>
+          </a>
+        </div>
+      </div>
     </static-card>
   </div>
 </template>
@@ -73,7 +158,7 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import DownloadIcon from '@/static/download.svg'
-import DownloadButton from '@/components/DownloadButton.vue'
+import ApplyIcon from '@/static/apply.svg'
 
 import PageHeader from '@/components/PageHeader.vue'
 import StaticCard from '@/components/StaticCard.vue'
@@ -82,7 +167,7 @@ import AppLink from '@/components/AppLink.vue'
 export default Vue.extend({
   components: {
     DownloadIcon,
-    DownloadButton,
+    ApplyIcon,
     PageHeader,
     StaticCard,
     AppLink
@@ -189,6 +274,11 @@ $margin: 20;
   margin-bottom: 10px;
   @include font-size($fzHeading);
 }
+.cooperatorHeading {
+  margin-bottom: 10px;
+  border-bottom: 1px solid $green-1;
+  @include font-size($fzHeading);
+}
 .downloadGroup {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 20px;
@@ -245,5 +335,33 @@ $margin: 20;
 }
 .v-expansion-panel-header {
   font-size: 2rem;
+}
+.DownloadButtonWrapper a {
+  text-decoration: none !important;
+  color: $green-1 !important;
+}
+.DownloadButton {
+  @include button-text('md');
+
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+
+  &:hover {
+    color: $white !important;
+    fill: $white !important;
+  }
+
+  &-DownloadIcon {
+    margin-top: 8px;
+    margin-right: 8px;
+    width: 25px;
+
+    svg {
+      width: auto;
+    }
+  }
 }
 </style>
