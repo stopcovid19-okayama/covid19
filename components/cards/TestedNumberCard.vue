@@ -9,10 +9,15 @@
       :unit="$t('件.tested')"
       url="http://www.okayama-opendata.jp/opendata/ga120PreAction.action?keyTitle=d9c4776db7f09fff161953a2aaf03b80a9abad48&datasetId=e6b3c1d2-2f1f-4735-b36e-e45d36d94761"
     >
+      <template v-slot:description>
+        <b>{{ $t('※岡山県環境保健センターの実施分のみ計上しています') }}</b>
+        <br />
+        {{ $t('※同一の対象者について複数の検体を検査する場合があります') }}
+      </template>
       <!-- 件.tested = 検査数 -->
       <template v-slot:additionalDescription>
-        {{ $t('※同一の対象者について複数の検体を検査する場合がある') }}
         <!--
+        {{ $t('※同一の対象者について複数の検体を検査する場合がある') }}
         <span>{{ $t('（注）') }}</span>
         <ul>
           <li>
