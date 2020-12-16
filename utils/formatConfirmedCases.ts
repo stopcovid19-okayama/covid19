@@ -100,7 +100,7 @@ export default (data: DataType) => {
     陽性者数: getSelectedItem(data, '陽性者数'),
     入院中: getSelectedItem(data, '入院中'),
     重傷者: getSelectedItem(data, '重傷者'),
-    宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中　'),
+    宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中'),
     自宅療養中: getSelectedItem(data, '自宅療養中'),
     死亡: getSelectedItem(data, '死亡'),
     退院等: getSelectedItem(data, '退院等')
