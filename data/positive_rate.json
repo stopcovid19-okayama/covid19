@@ -1,5 +1,5 @@
 {
-    "last_update": "2020/12/17 18:02",
+    "last_update": "2020/12/17 21:02",
     "data": [
         {
             "diagnosed_date": "2020-03-22T08:00:00.000Z",
@@ -1848,6 +1848,48 @@
             "negative_count": 120,
             "positive_rate": 12.9,
             "weekly_average_diagnosed_count": 80.9
+        },
+        {
+            "diagnosed_date": "2020-12-11T08:00:00.000Z",
+            "positive_count": 16,
+            "negative_count": 48,
+            "positive_rate": 13.9,
+            "weekly_average_diagnosed_count": 86.6
+        },
+        {
+            "diagnosed_date": "2020-12-12T08:00:00.000Z",
+            "positive_count": 22,
+            "negative_count": 56,
+            "positive_rate": 14.3,
+            "weekly_average_diagnosed_count": 95
+        },
+        {
+            "diagnosed_date": "2020-12-13T08:00:00.000Z",
+            "positive_count": 38,
+            "negative_count": 67,
+            "positive_rate": 18.5,
+            "weekly_average_diagnosed_count": 93.7
+        },
+        {
+            "diagnosed_date": "2020-12-14T08:00:00.000Z",
+            "positive_count": 27,
+            "negative_count": 77,
+            "positive_rate": 19.6,
+            "weekly_average_diagnosed_count": 101.4
+        },
+        {
+            "diagnosed_date": "2020-12-15T08:00:00.000Z",
+            "positive_count": 21,
+            "negative_count": 24,
+            "positive_rate": 20.4,
+            "weekly_average_diagnosed_count": 103.6
+        },
+        {
+            "diagnosed_date": "2020-12-16T08:00:00.000Z",
+            "positive_count": 32,
+            "negative_count": 22,
+            "positive_rate": 28.9,
+            "weekly_average_diagnosed_count": 83.3
         }
     ]
 }
