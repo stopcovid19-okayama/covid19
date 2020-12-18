@@ -5,6 +5,9 @@
     :date="date"
     :head-title="title + infoTitles.join(',')"
   >
+    <template v-slot:description>
+      <slot name="description" />
+    </template>
     <ul
       :class="$style.GraphLegend"
       :style="{ display: canvas ? 'block' : 'none' }"
@@ -149,6 +152,7 @@ type Computed = {
   displayOption: Chart.ChartOptions
   displayDataHeader: DisplayData
   displayOptionHeader: Chart.ChartOptions
+  scaledTicksYAxisMin: number
   scaledTicksYAxisMax: number
   scaledTicksYAxisMaxRight: number
   tableHeaders: TableHeader[]
@@ -486,10 +490,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 color: '#E5E5E5' // #E5E5E5
               },
               ticks: {
-                suggestedMin: 0,
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
-                suggestedMax: this.scaledTicksYAxisMax
+                suggestedMax: this.scaledTicksYAxisMax,
+                suggestedMin: this.scaledTicksYAxisMin
               }
             },
             {
@@ -501,10 +505,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 color: '#E5E5E5' // #E5E5E5
               },
               ticks: {
-                suggestedMin: 0,
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
                 suggestedMax: this.scaledTicksYAxisMaxRight,
+                suggestedMin: 0,
                 callback(value) {
                   return `${value}%`
                 }
@@ -638,10 +642,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 color: '#E5E5E5' // #E5E5E5
               },
               ticks: {
-                suggestedMin: 0,
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
-                suggestedMax: this.scaledTicksYAxisMax
+                suggestedMax: this.scaledTicksYAxisMax,
+                suggestedMin: this.scaledTicksYAxisMin
               }
             },
             {
@@ -655,10 +659,10 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 color: '#E5E5E5' // #E5E5E5
               },
               ticks: {
-                suggestedMin: 0,
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
                 suggestedMax: this.scaledTicksYAxisMaxRight,
+                suggestedMin: 0,
                 callback(value) {
                   return `${value}%`
                 }
@@ -669,6 +673,13 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         animation: { duration: 0 }
       }
       return options
+    },
+    scaledTicksYAxisMin() {
+      let min = 0
+      for (const i in this.chartData[0]) {
+        min = Math.min(min, this.chartData[0][i], this.chartData[1][i])
+      }
+      return min
     },
     scaledTicksYAxisMax() {
       let max = 0

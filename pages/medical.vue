@@ -6,7 +6,7 @@
       </page-header>
       <div class="UpdatedAt">
         <span>{{ $t('最終更新') }} </span>
-        <time :datetime="updatedAt">{{ LastUpdate.date }}</time>
+        <time :datetime="updatedAt">{{ MedicalSystem.date }}</time>
       </div>
       <div
         v-show="!['ja', 'ja-basic'].includes($i18n.locale)"
@@ -24,6 +24,7 @@
     />
     <v-row class="DataBlock">
       <medical-system-bed-number-card />
+      <medical-system-stay-care-facility-number-card />
       <medical-system-ventilator-number-card />
       <medical-system-ecmo-number-card />
     </v-row>
@@ -34,12 +35,13 @@
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
 import MedicalSystemBedNumberCard from '@/components/cards/MedicalSystemBedNumberCard.vue'
+import MedicalSystemStayCareFacilityNumberCard from '@/components/cards/MedicalSystemStayCareFacilityNumberCard.vue'
 import MedicalSystemVentilatorNumberCard from '@/components/cards/MedicalSystemVentilatorNumberCard.vue'
 import MedicalSystemEcmoNumberCard from '@/components/cards/MedicalSystemEcmoNumberCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
-import LastUpdate from '@/data/last_update.json'
+import MedicalSystem from '@/data/medical_system.json'
 import News from '@/data/news.json'
 
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
@@ -50,12 +52,13 @@ export default Vue.extend({
     WhatsNew,
     StaticInfo,
     MedicalSystemBedNumberCard,
+    MedicalSystemStayCareFacilityNumberCard,
     MedicalSystemVentilatorNumberCard,
     MedicalSystemEcmoNumberCard
   },
   data() {
     const data = {
-      LastUpdate,
+      MedicalSystem,
       headerItem: {
         icon: 'mdi-hospital',
         title: this.$t('医療体制整備状況')
@@ -66,7 +69,7 @@ export default Vue.extend({
   },
   computed: {
     updatedAt() {
-      return convertDatetimeToISO8601Format(this.$data.LastUpdate.date)
+      return convertDatetimeToISO8601Format(this.$data.MedicalSystem.date)
     }
   },
   head(): MetaInfo {

@@ -2,7 +2,7 @@
   <v-col cols="12" md="6" class="DataCard">
     <monitoring-confirmed-cases-chart
       title-id="monitoring-number-of-confirmed-cases"
-      :info-titles="[$t('新規陽性者数')]"
+      :info-titles="[$t('陽性者数の推移')]"
       chart-id="monitoring-confirmed-cases-chart"
       :chart-data="chartData"
       :get-formatter="getFormatter"
@@ -16,8 +16,9 @@
       <template v-slot:additionalDescription>
         <ul class="ListStyleNone">
           <li>
-            {{ $t('※チャーター機帰国者、クルーズ船乗客等は含まれていない') }}
+            {{ $t('※チャーター機帰国者、クルーズ船乗客等は含まれていません') }}
           </li>
+          <!--
           <li>
             {{
               $t(
@@ -25,6 +26,7 @@
               )
             }}
           </li>
+          -->
         </ul>
       </template>
     </monitoring-confirmed-cases-chart>

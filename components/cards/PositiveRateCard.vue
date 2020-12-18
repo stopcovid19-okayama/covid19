@@ -13,19 +13,29 @@
       :data-labels="positiveRateDataLabels"
       :table-labels="positiveRateTableLabels"
     >
+      <template v-slot:description>
+        <ul class="ListStyleNone">
+          <li>
+            <b>{{ $t('※情報が不正確な可能性があります') }}</b>
+          </li>
+          <li>
+            {{ $t('※あくまで感染拡大の目安として情報を活用してください') }}
+          </li>
+        </ul>
+      </template>
       <template v-slot:additionalDescription>
         {{
           $t(
             '※陽性率：陽性判明数の移動平均／検査人数（＝陽性判明数＋陰性判明数）の移動平均'
           )
         }}
+        <!--
         <br />
         {{
           $t(
             '※集団感染発生や曜日による数値のばらつきにより、日々の結果が変動するため、こうしたばらつきを平準化し全体の傾向を見る趣旨から、過去7日間の移動平均値をもとに算出し、折れ線グラフで示す'
           )
         }}
-        <!--
           <li>
             {{ $t('検査結果の判明日を基準とする') }}
           </li>
