@@ -169,6 +169,12 @@ export default Vue.extend({
           divider: true
         },
         {
+          icon: 'mdi-newspaper',
+          title: this.$t('感染症予防フライヤーをご利用される皆様へ'),
+          link:this.localePath('/download'),
+          divider: true
+        },
+        {
           title: this.$t('知事からのメッセージ'),
           link: 'https://www.youtube.com/watch?v=Mm-xFX7Csf8'
         },

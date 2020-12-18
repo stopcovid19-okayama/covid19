@@ -3,7 +3,7 @@
     <div :class="$style.title">
       <download-icon aria-hidden="true" />
       <page-header :class="$style.text">
-        {{ $t('新型コロナウイルス感染症予防フライヤーのダウンロード') }}
+        {{ $t('感染症予防フライヤーをご利用される皆様へ') }}
       </page-header>
     </div>
     <div :class="$style.container">
@@ -15,21 +15,15 @@
           <h3 :class="$style.licenseHeadingL">
             {{ $t('ライセンスについて') }}
           </h3>
-          <p xmlns:dct="http://purl.org/dc/terms/">
-            To the extent possible under law,
-            <span rel="dct:publisher" resource="[_:publisher]"
-              >the person who associated CC0</span
-            >
-            with this work has waived all copyright and related or neighboring
-            rights to this work.
-            <br />
+          <p class="text-center">
+            {{$t('このフライヤーの著作権は放棄しており、どなたでもご自由に利用することが可能です。')}}
             <a
               rel="license"
-              href="http://creativecommons.org/publicdomain/zero/1.0/"
+              href="https://creativecommons.org/publicdomain/zero/1.0/deed.ja"
             >
               <img
                 src="https://licensebuttons.net/p/zero/1.0/88x31.png"
-                style="border-style: none;"
+                style="border-style: none"
                 alt="CC0"
               />
             </a>
@@ -99,7 +93,27 @@
       <h3 :class="$style.HeadingL" class="pb-4">
         {{ $t('エビデンスについて') }}
       </h3>
+      <div>
+        <p>
+          {{
+            $t(
+              '新型コロナウイルス感染症予防フライヤーの作成にあたり、下記の専門家の方々にご協力をいただき情報に問題がないことを確認致しました。'
+            )
+          }}
+        </p>
+        <p>{{ $t('安心して配布・掲載頂けます。') }}</p>
+        <ul>
+          <li>
+            {{
+              $t(
+                '岡山大学大学院医歯薬学総合研究科 疫学・衛生学分野 頼藤貴志先生'
+              )
+            }}
+          </li>
+        </ul>
+      </div>
     </static-card>
+    <!-- 公開タイミングの都合上一旦非表示
     <static-card>
       <h3 :class="$style.HeadingL" class="pb-4">
         {{ $t('協力団体様') }}
@@ -151,6 +165,7 @@
         </div>
       </div>
     </static-card>
+    -->
   </div>
 </template>
 
@@ -170,7 +185,7 @@ export default Vue.extend({
     ApplyIcon,
     PageHeader,
     StaticCard,
-    AppLink
+    AppLink,
   },
   data() {
     const data = {}
@@ -181,9 +196,9 @@ export default Vue.extend({
     return {
       title: this.$t(
         '新型コロナウイルス感染症予防フライヤーのダウンロード'
-      ) as string
+      ) as string,
     }
-  }
+  },
 })
 </script>
 
@@ -355,9 +370,8 @@ $margin: 20;
   }
 
   &-DownloadIcon {
-    margin-top: 8px;
-    margin-right: 8px;
-    width: 25px;
+    margin: 6px;
+    transform: scale(0.9);
 
     svg {
       width: auto;
