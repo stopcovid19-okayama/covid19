@@ -16,8 +16,8 @@
     <whats-new class="mb-4" :items="newsItems" :is-emergency="false" />
     <!--
     <monitoring-comment-card />
+        -->
     <tokyo-alert-card v-if="TokyoAlert.alert" />
-    -->
     <static-info
       class="mb-4"
       :url="localePath('/flow')"
@@ -33,33 +33,29 @@ import { MetaInfo } from 'vue-meta'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
-/*
 import TokyoAlertCard from '@/components/TokyoAlertCard.vue'
+/*
 import MonitoringCommentCard from '@/components/MonitoringCommentCard.vue'
 */
 import Data from '@/data/last_update.json'
 import News from '@/data/news.json'
-/*
 import TokyoAlert from '@/data/tokyo_alert.json'
-*/
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
 export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
-    StaticInfo
+    StaticInfo,
+    TokyoAlertCard
     /*
-    TokyoAlertCard,
     MonitoringCommentCard
     */
   },
   data() {
     return {
       Data,
-      /*
       TokyoAlert,
-      */
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
         title: this.$t('県内の最新感染動向')
