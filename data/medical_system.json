@@ -3,7 +3,7 @@
     "items": {
         "bed": 401,
         "stay_care_facility": 207,
-        "ventilator": 517,
+        "ventilator": null,
         "ecmo": 28
     }
 }
