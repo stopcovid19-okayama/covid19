@@ -3,6 +3,7 @@ name: Update data
 on:
   repository_dispatch:
     types: [update-data]
+  workflow_dispatch:
   schedule:
     - cron: '15 * * * *'
 
