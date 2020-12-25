@@ -34,7 +34,7 @@
               <div :class="$style.content">
                 <span>{{ $t('重症者') }}</span>
                 <span>
-                  <strong>{{ 重傷者.toLocaleString() }}</strong>
+                  <strong>{{ 重症者.toLocaleString() }}</strong>
                   <span :class="$style.unit">{{ $t('人') }}</span>
                 </span>
               </div>
@@ -100,13 +100,7 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    /*
-    軽症中等症: {
-      type: Number,
-      required: true
-    },
-    */
-    重傷者: {
+    重症者: {
       type: Number,
       required: true
     },
@@ -118,12 +112,6 @@ export default Vue.extend({
       type: Number,
       required: true
     },
-    /*
-    調査中: {
-      type: Number,
-      required: true
-    },
-    */
     死亡: {
       type: Number,
       required: true
