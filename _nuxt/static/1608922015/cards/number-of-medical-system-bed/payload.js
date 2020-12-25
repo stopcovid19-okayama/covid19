@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/cards/number-of-medical-system-bed", {data:[{}],fetch:[],mutations:void 0});
