@@ -36,6 +36,7 @@ export default Vue.extend({
 
   &:hover {
     background-color: $white;
+    color: $alert;
     .svgIcon path {
       fill: $alert;
     }
