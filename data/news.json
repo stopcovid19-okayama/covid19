@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
-            "date": "2020/12/16",
-            "url": "https://www.pref.okayama.jp/uploaded/attachment/283829.pdf",
+            "date": "2020/12/25",
+            "url": "https://www.pref.okayama.jp/page/645925.html#hatsunetshugairai",
+            "text": "発熱や咳などの症状がある場合は、まず発熱外来へお電話ください。【年末年始の発熱外来一覧】"
+        },
+        {
+            "date": "2020/12/24",
+            "url": "https://www.pref.okayama.jp/uploaded/attachment/284513.pdf",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
         },
         {
-            "date": "2020/12/16",
-            "url": "https://youtu.be/ZUzUoZ2RIrg",
+            "date": "2020/12/24",
+            "url": "https://youtu.be/Ab2c3d_eo-4",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2020/11/17",
-            "url": "https://www.pref.okayama.jp/page/645925.html#shinryoukennsa",
-            "text": "発熱や風邪の時は「かかりつけ医」等にご相談を"
         }
     ]
 }

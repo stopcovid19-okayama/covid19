@@ -2,7 +2,7 @@
   <div class="TokyoAlert">
     <div class="TokyoAlert-heading">
       <h3 class="TokyoAlert-title">
-        {{ $t('東京アラート') }}
+        {{ $t('医療非常事態宣言') }}
       </h3>
       <div class="TokyoAlert-link">
         <active-tokyo-alert />

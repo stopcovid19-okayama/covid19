@@ -1,26 +1,19 @@
 <template>
   <span :class="$style.linkButton">
-    <app-link
-      :class="$style.textLink"
-      to="https://www.bousai.metro.tokyo.lg.jp/1007942/1008167.html"
-    >
-      <antenna-icon aria-hidden="true" :class="$style.svgIcon" />
-      <span :class="$style.text">
-        {{ $t('東京アラート発動中') }}
-      </span>
-    </app-link>
+    <antenna-icon aria-hidden="true" :class="$style.svgIcon" />
+    <span :class="$style.text">
+      {{ $t('医療非常事態宣言発令中') }}
+    </span>
   </span>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-import AppLink from '@/components/AppLink.vue'
 import AntennaIcon from '@/static/antenna.svg'
 
 export default Vue.extend({
   components: {
-    AppLink,
     AntennaIcon,
   },
 })
@@ -44,6 +37,7 @@ export default Vue.extend({
 
   &:hover {
     background-color: $white;
+    color: $alert;
     .svgIcon path {
       fill: $alert;
     }

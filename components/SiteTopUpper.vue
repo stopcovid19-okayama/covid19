@@ -18,10 +18,9 @@
     <whats-new class="mb-4" :items="newsItems" :is-emergency="false" />
     <!--
     <monitoring-comment-card />
-    <lazy-tokyo-alert-card v-if="TokyoAlert.alert" />
-    -->
-    <lazy-static-info
-      v-if="$vuetify.breakpoint.smAndUp || showStaticInfo"
+        -->
+    <tokyo-alert-card v-if="TokyoAlert.alert" />
+    <static-info
       class="mb-4"
       :url="'/flow'"
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
@@ -37,27 +36,33 @@ import { MetaInfo } from 'vue-meta'
 
 // import MonitoringCommentCard from '@/components/MonitoringCommentCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import StaticInfo from '@/components/StaticInfo.vue'
+import TokyoAlertCard from '@/components/TokyoAlertCard.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
-import Data from '@/data/data.json'
-import News from '@/data/news.json'
 /*
-import TokyoAlert from '@/data/tokyo_alert.json'
+import MonitoringCommentCard from '@/components/MonitoringCommentCard.vue'
 */
+import Data from '@/data/last_update.json'
+import News from '@/data/news.json'
+import TokyoAlert from '@/data/tokyo_alert.json'
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
 export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
+    StaticInfo,
+    TokyoAlertCard,
+    /*
+    MonitoringCommentCard
+    */
   },
   data() {
-    const { lastUpdate } = Data
+    const lastUpdate = Data.date
 
     return {
       Data,
-      /*
       TokyoAlert,
-      */
       headerItem: {
         iconPath: mdiChartTimelineVariant,
         title: this.$t('県内の最新感染動向'),

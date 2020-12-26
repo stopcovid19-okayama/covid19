@@ -12,6 +12,14 @@ type DataType = {
             value: Date
           },
           {
+            attr: '延べ数'
+            value: number
+          },
+          {
+            attr: '重症者'
+            value: number
+          },
+          {
             attr: '入院中'
             value: number
           },
@@ -70,10 +78,8 @@ function getSelectedItem(data: DataType, key: string) {
             result = child.value
           }
         })
-
         return
       }
-
       data.children.forEach((child: ChildDataType) => {
         if (result) {
           return
@@ -98,7 +104,7 @@ export default (data: DataType) => {
     検査実施件数: getSelectedItem(data, '検査実施件数'),
     陽性者数: getSelectedItem(data, '陽性者数'),
     入院中: getSelectedItem(data, '入院中'),
-    重症者: getSelectedItem(data, '重傷者'),
+    重症者: getSelectedItem(data, '重症者'),
     宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中'),
     自宅療養中: getSelectedItem(data, '自宅療養中'),
     死亡: getSelectedItem(data, '死亡'),
