@@ -4,12 +4,12 @@
       <v-icon
         class="SideNavigation-OpenIcon"
         :aria-label="$t('サイドメニュー項目を開く')"
-        @click="$emit('openNavi', $event)"
+        @click="$emit('open-navigation', $event)"
       >
-        mdi-menu
+        {{ mdiMenu }}
       </v-icon>
       <h1 class="SideNavigation-HeaderTitle">
-        <nuxt-link :to="localePath('/')" class="SideNavigation-HeaderLink">
+        <app-link :to="localePath('/')" class="SideNavigation-HeaderLink">
           <img
             class="SideNavigation-HeaderLogo"
             src="/logo.svg"
@@ -20,17 +20,20 @@
               $t('menu/対策サイト')
             }}
           </div>
-        </nuxt-link>
+        </app-link>
       </h1>
     </header>
 
-    <div :class="['SideNavigation-Body', { '-opened': isNaviOpen }]">
+    <div
+      v-if="isNaviOpen || $vuetify.breakpoint.smAndUp"
+      :class="['SideNavigation-Body', { '-opened': isNaviOpen }]"
+    >
       <v-icon
         class="SideNavigation-CloseIcon"
         :aria-label="$t('サイドメニュー項目を閉じる')"
-        @click="$emit('closeNavi', $event)"
+        @click="$emit('close-navigation', $event)"
       >
-        mdi-close
+        {{ mdiClose }}
       </v-icon>
 
       <nav class="SideNavigation-Menu">
@@ -45,7 +48,7 @@
             <language-selector />
           </div>
         </div>
-        <menu-list :items="items" @click="$emit('closeNavi', $event)" />
+        <menu-list :items="items" @click="$emit('close-navigation', $event)" />
       </nav>
 
       <footer class="SideNavigation-Footer">
@@ -58,7 +61,7 @@
           >
             <picture>
               <source srcset="/twitter.webp" type="image/webp" />
-              <img src="/twitter.png" alt="Twitter" />
+              <img src="/twitter.png" width="130" height="130" alt="Twitter" />
             </picture>
           </a>
           <a
@@ -69,7 +72,12 @@
           >
             <picture>
               <source srcset="/facebook.webp" type="image/webp" />
-              <img src="/facebook.png" alt="Facebook" />
+              <img
+                src="/facebook.png"
+                width="130"
+                height="130"
+                alt="Facebook"
+              />
             </picture>
           </a>
           <a
@@ -80,10 +88,11 @@
           >
             <picture>
               <source srcset="/github.webp" type="image/webp" />
-              <img src="/github.png" alt="GitHub" />
+              <img src="/github.png" width="130" height="130" alt="GitHub" />
             </picture>
           </a>
         </div>
+        <br />
         <small class="SideNavigation-Copyright">
           {{ $t('このサイトの内容物は') }}
           <a
@@ -96,7 +105,7 @@
           </a>
           {{ $t('の下に提供されています。') }}
           <br />
-          2020 Stop COVID19 Okayama
+          2020 STOP COVID19 Okayama.
         </small>
       </footer>
     </div>
@@ -104,13 +113,23 @@
 </template>
 
 <script lang="ts">
+import {
+  mdiAccountMultiple,
+  mdiChartTimelineVariant,
+  mdiClose,
+  mdiHospital,
+  mdiMenu,
+} from '@mdi/js'
 import Vue from 'vue'
 import { TranslateResult } from 'vue-i18n'
+
+import AppLink from '@/components/AppLink.vue'
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import MenuList from '@/components/MenuList.vue'
 
 type Item = {
-  icon?: string
+  iconPath?: string
+  svg?: string
   title: TranslateResult
   link: string
   divider?: boolean
@@ -119,84 +138,86 @@ type Item = {
 export default Vue.extend({
   components: {
     LanguageSelector,
-    MenuList
+    MenuList,
+    AppLink,
   },
   props: {
     isNaviOpen: {
       type: Boolean,
-      required: true
+      required: true,
+    },
+  },
+  data() {
+    return {
+      mdiClose,
+      mdiMenu,
     }
   },
   computed: {
     items(): Item[] {
       return [
         {
-          icon: 'mdi-chart-timeline-variant',
+          iconPath: mdiChartTimelineVariant,
           title: this.$t('県内の最新感染動向'),
-          link: this.localePath('/')
+          link: this.localePath('/'),
         },
         {
-          icon: 'mdi-hospital',
+          iconPath: mdiHospital,
           title: this.$t('医療体制整備状況'),
           link: this.localePath('/medical'),
-          divider: true
+          divider: true,
         },
         {
-          icon: 'CovidIcon',
+          svg: 'CovidIcon',
           title: this.$t('新型コロナウイルス感染症が心配なとき'),
-          link: this.localePath('/flow')
+          link: this.localePath('/flow'),
         },
         {
-          icon: 'CovidPreventionIcon',
+          svg: 'CovidPreventionIcon',
           title: this.$t('新型コロナウイルス感染症について'),
           link: this.localePath('/covid19'),
-          divider: true
+          divider: true,
         },
         {
-          icon: 'ParentIcon',
+          svg: 'ParentIcon',
           title: this.$t('お子様をお持ちの皆様へ'),
-          link: this.localePath('/parent')
+          link: this.localePath('/parent'),
         },
         {
-          icon: 'mdi-account-multiple',
+          iconPath: mdiAccountMultiple,
           title: this.$t('岡山県民の皆様へ'),
-          link: 'https://www.pref.okayama.jp/page/645925.html#kenmin'
-        },
-        {
-          icon: 'mdi-domain',
-          title: this.$t('企業の皆様・はたらく皆様へ'),
-          link: 'https://fight-okayama.jp/support/company/',
-          divider: true
+          link: 'https://www.pref.okayama.jp/page/645925.html',
+          divider: true,
         },
         {
           title: this.$t('知事からのメッセージ'),
-          link: 'https://www.youtube.com/watch?v=Mm-xFX7Csf8'
+          link: 'https://youtu.be/Ab2c3d_eo-4',
         },
         {
           title: this.$t('当サイトについて'),
-          link: this.localePath('/about')
+          link: this.localePath('/about'),
         },
         {
           title: this.$t('岡山県公式ホームページ'),
-          link: 'https://www.pref.okayama.jp/'
-        }
+          link: 'https://www.pref.okayama.jp/',
+        },
       ]
-    }
+    },
   },
   watch: {
-    $route: 'handleChageRoute'
+    $route: 'handleChageRoute',
   },
   methods: {
     handleChageRoute() {
-      // nuxt-link で遷移するとフォーカスが残り続けるので $route を監視して SideNavigation にフォーカスする
+      // nuxt-link で遷移するとフォーカスが残り続けるので $route を監視して SideNavigat,ion にフォーカス,する
       return this.$nextTick().then(() => {
         const $Side = this.$refs.Side as HTMLEmbedElement | undefined
         if ($Side) {
           $Side.focus()
         }
       })
-    }
-  }
+    },
+  },
 })
 </script>
 
@@ -363,6 +384,7 @@ export default Vue.extend({
   border: 1px dotted transparent;
   border-radius: 30px;
   color: $gray-3;
+  margin-bottom: 15px;
 
   &:link,
   &:hover,
@@ -389,8 +411,7 @@ export default Vue.extend({
 }
 
 .SideNavigation-Copyright {
-  display: block;
-  margin-top: 15px;
+  display: inline-block;
   color: $gray-1;
   line-height: 1.3;
   font-weight: bold;

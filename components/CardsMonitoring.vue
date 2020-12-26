@@ -1,79 +1,57 @@
 <template>
-  <div>
-    <card-row class="DataBlock">
-      <!-- 検査陽性者の状況 -->
-      <confirmed-cases-details-card />
-      <!-- 新規患者に関する報告件数の推移 -->
-      <confirmed-cases-number-card />
-      <!-- 陽性患者の属性 -->
-      <confirmed-cases-attributes-card />
-      <!-- 新規陽性者数 -->
-      <monitoring-confirmed-cases-number-card />
-      <!-- 検査実施件数 -->
-      <tested-number-card />
-      <!-- 陽性率 -->
-      <positive-rate-card />
-      <!-- 新型コロナ受診相談窓口相談件数 -->
-      <monitoring-consultation-desk-reports-number-card />
-      <!-- 新型コロナコールセンター相談件数 -->
-      <telephone-advisory-reports-number-card />
-    </card-row>
-  </div>
+  <cards-lazy-row :rows="rows" />
 </template>
 
 <script lang="ts">
+/* eslint-disable simple-import-sort/sort -- ブラウザでの表示順に合わせて各 card の component を import する */
 import Vue from 'vue'
-import CardRow from '@/components/cards/CardRow.vue'
-import ConfirmedCasesDetailsCard from '@/components/cards/ConfirmedCasesDetailsCard.vue'
-import ConfirmedCasesNumberCard from '@/components/cards/ConfirmedCasesNumberCard.vue'
-import MonitoringConfirmedCasesNumberCard from '@/components/cards/MonitoringConfirmedCasesNumberCard.vue'
-import PositiveRateCard from '@/components/cards/PositiveRateCard.vue'
-// import SevereCaseCard from '@/components/cards/SevereCaseCard.vue'
-// import UntrackedRateCard from '@/components/cards/UntrackedRateCard.vue'
-// import HospitalizedNumberCard from '@/components/cards/HospitalizedNumberCard.vue'
-// import MonitoringItemsOverviewCard from '@/components/cards/MonitoringItemsOverviewCard.vue'
-// import ConsultationAboutFeverNumberCard from '@/components/cards/ConsultationAboutFeverNumberCard.vue'
-// import TokyoRulesApplicationNumberCard from '@/components/cards/TokyoRulesApplicationNumberCard.vue'
-import ConfirmedCasesAttributesCard from '@/components/cards/ConfirmedCasesAttributesCard.vue'
-import TestedNumberCard from '@/components/cards/TestedNumberCard.vue'
-import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvisoryReportsNumberCard.vue'
-import MonitoringConsultationDeskReportsNumberCard from '@/components/cards/MonitoringConsultationDeskReportsNumberCard.vue'
+
+// 検査陽性者の状況
+const ConfirmedCasesDetailsCard = () =>
+  import('@/components/cards/ConfirmedCasesDetailsCard.vue')
+// 報告日別による陽性者数の推移
+const ConfirmedCasesNumberCard = () =>
+  import('@/components/cards/ConfirmedCasesNumberCard.vue')
+// モニタリング項目
+const MonitoringItemsOverviewCard = () =>
+  import('@/components/cards/MonitoringItemsOverviewCard.vue')
+// モニタリング項目(1)新規陽性者数
+const MonitoringConfirmedCasesNumberCard = () =>
+  import('@/components/cards/MonitoringConfirmedCasesNumberCard.vue')
+// モニタリング項目(2)#7119における発熱等相談件数
+const ConsultationAboutFeverNumberCard = () =>
+  import('@/components/cards/ConsultationAboutFeverNumberCard.vue')
+// モニタリング項目(3)新規陽性者における接触歴等不明者数
+const UntrackedRateCard = () =>
+  import('@/components/cards/UntrackedRateCard.vue')
+// モニタリング項目(4)検査の陽性率
+const PositiveRateCard = () => import('@/components/cards/PositiveRateCard.vue')
+// モニタリング項目(5)救急医療の東京ルールの適用件数
+const TokyoRulesApplicationNumberCard = () =>
+  import('@/components/cards/TokyoRulesApplicationNumberCard.vue')
+// モニタリング項目(6)入院患者数
+const HospitalizedNumberCard = () =>
+  import('@/components/cards/HospitalizedNumberCard.vue')
+// モニタリング項目(7)重症患者数
+const SevereCaseCard = () => import('@/components/cards/SevereCaseCard.vue')
+/* eslint-enable simple-import-sort/sort */
 
 export default Vue.extend({
-  components: {
-    CardRow,
-    MonitoringConfirmedCasesNumberCard,
-    // UntrackedRateCard,
-    // SevereCaseCard,
-    PositiveRateCard,
-    ConfirmedCasesDetailsCard,
-    ConfirmedCasesNumberCard,
-    // HospitalizedNumberCard,
-    // ConsultationAboutFeverNumberCard,
-    // TokyoRulesApplicationNumberCard,
-    // MonitoringItemsOverviewCard
-    ConfirmedCasesAttributesCard,
-    TestedNumberCard,
-    TelephoneAdvisoryReportsNumberCard,
-    MonitoringConsultationDeskReportsNumberCard
-  }
+  data() {
+    return {
+      rows: [
+        [ConfirmedCasesDetailsCard, ConfirmedCasesNumberCard],
+        [MonitoringItemsOverviewCard, MonitoringConfirmedCasesNumberCard],
+        [ConsultationAboutFeverNumberCard, UntrackedRateCard],
+        [PositiveRateCard, TokyoRulesApplicationNumberCard],
+        [HospitalizedNumberCard, SevereCaseCard],
+      ],
+    }
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-.DataBlock {
-  margin: 20px -8px;
-
-  .DataCard {
-    @include largerThan($medium) {
-      padding: 10px;
-    }
-
-    @include lessThan($small) {
-      padding: 4px 8px;
-    }
-  }
-}
 .AttentionNote {
   margin: 10px 0;
   padding: 12px;

@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
+
 import { EventBus, TOGGLE_EVENT } from '@/utils/card-event-bus'
 
 const cardClassName = '.DataCard'
@@ -35,7 +36,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 > = {
   data() {
     return {
-      payload: {}
+      payload: {},
     }
   },
   methods: {
@@ -44,11 +45,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
 
       const [self, side] = this.cardElements
       if (self) {
-        self.style.height = ''
+        self.style.maxHeight = ''
         self.dataset.height = `${self.offsetHeight}`
       }
       if (side) {
-        side.style.height = ''
+        side.style.maxHeight = ''
         side.dataset.height = `${side.offsetHeight}`
       }
     },
@@ -60,11 +61,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       self.dataset.height = self.dataset.height || `${self.offsetHeight}`
       side.dataset.height = side.dataset.height || `${side.offsetHeight}`
 
-      self.style.height =
-        self.style.height === 'auto' ? `${self.dataset.height}px` : 'auto'
-      side.style.height =
-        side.style.height === 'auto' ? 'auto' : `${side.dataset.height}px`
-    }
+      self.style.maxHeight =
+        self.style.maxHeight === '100%' ? `${self.dataset.height}px` : '100%'
+      side.style.maxHeight =
+        side.style.maxHeight === '100%' ? '100%' : `${side.dataset.height}px`
+    },
   },
   computed: {
     cardElements() {
@@ -80,7 +81,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         `${cardClassName}:nth-child(${sideIndex}`
       ) as HTMLElement
       return [self, side]
-    }
+    },
   },
   mounted() {
     window.addEventListener('resize', this.handleCardHeight)
@@ -92,8 +93,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   beforeDestroy() {
     window.removeEventListener('resize', this.handleCardHeight)
     EventBus.$off(TOGGLE_EVENT)
-  }
+  },
 }
 
 export default Vue.extend(options)
 </script>
+
+<style lang="scss">
+.DataCard {
+  transition: max-height 0.3s;
+}
+</style>
