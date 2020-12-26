@@ -219,22 +219,23 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import CovidIcon from '@/static/covid-prevention.svg'
-import PrinterButton from '@/components/PrinterButton.vue'
+
+import AppLink from '@/components/AppLink.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import PrinterButton from '@/components/PrinterButton.vue'
+import StaticCard from '@/components/StaticCard.vue'
+import CovidIcon from '@/static/covid-prevention.svg'
+import preventIconCough from '@/static/covid19/prevent-icon-cough.svg'
+import preventIconCrowded from '@/static/covid19/prevent-icon-crowded.svg'
+import preventIconEat from '@/static/covid19/prevent-icon-eat.svg'
 import preventIconHand from '@/static/covid19/prevent-icon-hand.svg'
 import preventIconMask from '@/static/covid19/prevent-icon-mask.svg'
-import preventIconSocialdistance from '@/static/covid19/prevent-icon-socialdistance.svg'
-import preventIconEat from '@/static/covid19/prevent-icon-eat.svg'
-import preventIconSleeping from '@/static/covid19/prevent-icon-sleeping.svg'
-import preventIconCough from '@/static/covid19/prevent-icon-cough.svg'
 import preventIconPlay from '@/static/covid19/prevent-icon-play.svg'
-import preventIconVirus from '@/static/covid19/prevent-icon-virus.svg'
-import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.svg'
+import preventIconSleeping from '@/static/covid19/prevent-icon-sleeping.svg'
+import preventIconSocialdistance from '@/static/covid19/prevent-icon-socialdistance.svg'
 import preventIconThermometer from '@/static/covid19/prevent-icon-thermometer.svg'
-import preventIconCrowded from '@/static/covid19/prevent-icon-crowded.svg'
-import StaticCard from '@/components/StaticCard.vue'
-import AppLink from '@/components/AppLink.vue'
+import preventIconVentilation from '@/static/covid19/prevent-icon-ventilation.svg'
+import preventIconVirus from '@/static/covid19/prevent-icon-virus.svg'
 
 export default Vue.extend({
   components: {
@@ -253,7 +254,7 @@ export default Vue.extend({
     preventIconThermometer,
     preventIconCrowded,
     StaticCard,
-    AppLink
+    AppLink,
   },
   data() {
     const data = {}
@@ -262,9 +263,9 @@ export default Vue.extend({
   computed: {},
   head(): MetaInfo {
     return {
-      title: this.$t('新型コロナウイルス感染症について') as string
+      title: this.$t('新型コロナウイルス感染症について') as string,
     }
-  }
+  },
 })
 </script>
 

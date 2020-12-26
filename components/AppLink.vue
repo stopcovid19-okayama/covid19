@@ -10,14 +10,17 @@
       role="img"
       :aria-hidden="false"
     >
-      {{ iconType }}
+      {{ iconPath }}
     </v-icon>
   </component>
 </template>
 
 <script lang="ts">
+import { mdiOpenInNew } from '@mdi/js'
 import Vue from 'vue'
+
 import { isExternal } from '@/utils/urls.ts'
+
 type InternalAttr = {
   to: String
   class: String
@@ -32,24 +35,24 @@ export default Vue.extend({
   props: {
     to: {
       type: String,
-      required: true
+      required: true,
     },
     showIcon: {
       type: Boolean,
-      default: null
+      default: null,
     },
     iconSize: {
       type: Number,
-      default: 12
+      default: 12,
     },
-    iconType: {
+    iconPath: {
       type: String,
-      default: 'mdi-open-in-new'
+      default: mdiOpenInNew,
     },
     iconClass: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
     isExternal(): boolean {
@@ -64,12 +67,12 @@ export default Vue.extend({
           href: this.to,
           target: '_blank',
           rel: 'noopener noreferrer',
-          class: 'ExternalLink'
+          class: 'ExternalLink',
         }
       } else {
         return {
           to: this.to,
-          class: 'Link'
+          class: 'Link',
         }
       }
     },
@@ -79,8 +82,8 @@ export default Vue.extend({
     },
     _iconSize(): string {
       return `${this.iconSize / 10}rem`
-    }
-  }
+    },
+  },
 })
 </script>
 

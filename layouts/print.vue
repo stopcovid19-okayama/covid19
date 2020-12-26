@@ -39,11 +39,11 @@ import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 export default Vue.extend({
   components: {
-    ScaleLoader
+    ScaleLoader,
   },
   data() {
     return {
-      loading: true
+      loading: true,
     }
   },
   mounted() {
@@ -56,7 +56,7 @@ export default Vue.extend({
   methods: {
     print() {
       window.print()
-    }
+    },
   },
   head(): MetaInfo {
     return {
@@ -64,8 +64,8 @@ export default Vue.extend({
         {
           hid: 'robots',
           name: 'robots',
-          content: 'noindex'
-        }
+          content: 'noindex',
+        },
       ],
       link: [
         {
@@ -74,7 +74,7 @@ export default Vue.extend({
         }
       ]
     }
-  }
+  },
 })
 </script>
 <style lang="scss">

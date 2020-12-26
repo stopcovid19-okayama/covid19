@@ -3,12 +3,12 @@
     <li :class="$style.box">
       <div
         :class="$style.content"
-        style="border: 3px solid black; color: black;"
+        style="border: 3px solid black; color: black"
       >
-        <span> {{ $t('検査実施件数') }} ({{ $t('累計') }}) </span>
+        <span> {{ $t('検査実施人数') }} ({{ $t('累計') }}) </span>
         <span>
           <strong>{{ 検査実施件数.toLocaleString() }}</strong>
-          <span :class="$style.unit">件</span>
+          <span :class="$style.unit">人</span>
         </span>
       </div>
     </li>
@@ -34,7 +34,7 @@
               <div :class="$style.content">
                 <span>{{ $t('重症者') }}</span>
                 <span>
-                  <strong>{{ 重傷者.toLocaleString() }}</strong>
+                  <strong>{{ 重症者.toLocaleString() }}</strong>
                   <span :class="$style.unit">{{ $t('人') }}</span>
                 </span>
               </div>
@@ -90,49 +90,37 @@ export default Vue.extend({
   props: {
     検査実施件数: {
       type: Number,
-      required: true
+      required: true,
     },
     陽性者数: {
       type: Number,
-      required: true
+      required: true,
     },
     入院中: {
       type: Number,
-      required: true
+      required: true,
     },
-    /*
-    軽症中等症: {
+    重症者: {
       type: Number,
-      required: true
-    },
-    */
-    重傷者: {
-      type: Number,
-      required: true
+      required: true,
     },
     宿泊療養施設に入所中: {
       type: Number,
-      required: true
+      required: true,
     },
     自宅療養中: {
       type: Number,
-      required: true
+      required: true,
     },
-    /*
-    調査中: {
-      type: Number,
-      required: true
-    },
-    */
     死亡: {
       type: Number,
-      required: true
+      required: true,
     },
     退院等: {
       type: Number,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 })
 </script>
 

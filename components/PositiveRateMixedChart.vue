@@ -23,7 +23,7 @@
             :style="{
               background: `repeating-linear-gradient(90deg, ${colors[i].fillColor}, ${colors[i].fillColor} 2px, #fff 2px, #fff 4px)`,
               border: 0,
-              height: '3px'
+              height: '3px',
             }"
           />
           <div
@@ -31,19 +31,19 @@
             :style="{
               backgroundColor: colors[4].fillColor,
               border: 0,
-              height: '3px'
+              height: '3px',
             }"
           />
           <div
             v-else
             :style="{
               backgroundColor: colors[i].fillColor,
-              borderColor: colors[i].strokeColor
+              borderColor: colors[i].strokeColor,
             }"
           />
           <span
             :style="{
-              textDecoration: displayLegends[i] ? 'none' : 'line-through'
+              textDecoration: displayLegends[i] ? 'none' : 'line-through',
             }"
             >{{ dataLabel }}</span
           >
@@ -81,49 +81,50 @@
       <slot name="additionalDescription" />
     </template>
     <template v-slot:dataTable>
-      <data-view-table :headers="tableHeaders" :items="tableData" />
+      <client-only>
+        <data-view-table :headers="tableHeaders" :items="tableData" />
+      </client-only>
     </template>
     <template v-slot:dataSetPanel>
       <data-view-data-set-panel
-        :title="infoTitles[0]"
-        :l-text="displayInfo[0].lText"
-        :s-text="displayInfo[0].sText"
-        :unit="displayInfo[0].unit"
-      />
-      <data-view-data-set-panel
-        :title="infoTitles[1]"
-        :l-text="displayInfo[1].lText"
-        :s-text="displayInfo[1].sText"
-        :unit="displayInfo[1].unit"
+        v-for="(di, i) in displayInfo"
+        :key="i"
+        :title="infoTitles[i]"
+        :l-text="di.lText"
+        :s-text="di.sText"
+        :s-text-under="di.sTextUnder"
+        :unit="di.unit"
       />
     </template>
   </data-view>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
-import { TranslateResult } from 'vue-i18n'
 import { Chart } from 'chart.js'
 import dayjs from 'dayjs'
+import Vue from 'vue'
+import { TranslateResult } from 'vue-i18n'
+import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
+
 import DataView from '@/components/DataView.vue'
+import DataViewDataSetPanel from '@/components/DataViewDataSetPanel.vue'
 import DataViewTable, {
   TableHeader,
-  TableItem
+  TableItem,
 } from '@/components/DataViewTable.vue'
-import DataViewDataSetPanel from '@/components/DataViewDataSetPanel.vue'
 import ScrollableChart from '@/components/ScrollableChart.vue'
 import {
   DisplayData,
   yAxesBgPlugin,
-  yAxesBgRightPlugin
+  yAxesBgRightPlugin,
 } from '@/plugins/vue-chart'
 import {
-  getGraphSeriesStyle,
   getGraphSeriesColor,
-  SurfaceStyle
+  getGraphSeriesStyle,
+  SurfaceStyle,
 } from '@/utils/colors'
-import { getNumberToFixedFunction } from '~/utils/monitoringStatusValueFormatters'
+import { calcDayBeforeRatio } from '@/utils/formatDayBeforeRatio'
+import { getNumberToFixedFunction } from '@/utils/monitoringStatusValueFormatters'
 
 interface HTMLElementEvent<T extends HTMLElement> extends MouseEvent {
   currentTarget: T
@@ -134,19 +135,15 @@ type Data = {
   colors: SurfaceStyle[]
 }
 type Methods = {
-  pickLastNumber: (chartDataArray: number[][]) => number[]
-  pickLastSecondNumber: (chartDataArray: number[][]) => number[]
   onClickLegend: (i: number) => void
-  formatDayBeforeRatio: (dayBeforeRatio: number, formatter: number) => string
 }
 type DisplayInfo = {
   lText: string
   sText: string
+  sTextUnder: string
   unit: string
 }
 type Computed = {
-  displayTransitionRatio: string
-  displayInspectionsTransitionRatio: string
   displayInfo: DisplayInfo[]
   displayData: DisplayData
   displayOption: Chart.ChartOptions
@@ -190,112 +187,115 @@ const options: ThisTypedComponentOptionsWithRecordProps<
     DataView,
     DataViewTable,
     DataViewDataSetPanel,
-    ScrollableChart
+    ScrollableChart,
   },
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     infoTitles: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     chartId: {
       type: String,
-      default: 'PositiveRateMixedChart'
+      default: 'PositiveRateMixedChart',
     },
     chartData: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     getFormatter: {
       type: Function,
       required: false,
-      default: (_: number) => getNumberToFixedFunction()
+      default: (_: number) => getNumberToFixedFunction(),
     },
     date: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     labels: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     dataLabels: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     tableLabels: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     unit: {
       type: String,
-      default: ''
+      default: '',
     },
     optionUnit: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     yAxesBgPlugin: {
       type: Array,
-      default: () => yAxesBgPlugin
+      default: () => yAxesBgPlugin,
     },
     yAxesBgRightPlugin: {
       type: Array,
-      default: () => yAxesBgRightPlugin
-    }
+      default: () => yAxesBgRightPlugin,
+    },
   },
   data: () => ({
     displayLegends: [true, true, true, true],
     colors: [...getGraphSeriesStyle(4), getGraphSeriesColor('E')],
-    canvas: true
+    canvas: true,
   }),
   computed: {
-    displayTransitionRatio() {
-      const lastDay = this.pickLastNumber(this.chartData)[3]
-      const lastDayBefore = this.pickLastSecondNumber(this.chartData)[3]
-      return this.formatDayBeforeRatio(lastDay - lastDayBefore, 5)
-    },
-    displayInspectionsTransitionRatio() {
-      const lastDay = this.pickLastNumber(this.chartData)[2]
-      const lastDayBefore = this.pickLastSecondNumber(this.chartData)[2]
-      return this.formatDayBeforeRatio(lastDay - lastDayBefore, 4)
-    },
     displayInfo() {
-      const date = this.$d(
-        new Date(this.labels[this.labels.length - 1]),
-        'dateWithoutYear'
-      )
+      const { lastDay, lastDayData, dayBeforeRatio } = calcDayBeforeRatio({
+        displayData: this.displayData,
+        dataIndex: 5,
+        digit: 1,
+      })
+      const {
+        lastDay: lastDay4,
+        lastDayData: lastDayData4,
+        dayBeforeRatio: dayBeforeRatio4,
+      } = calcDayBeforeRatio({
+        displayData: this.displayData,
+        dataIndex: 4,
+        digit: 1,
+      })
+
       return [
         {
-          lText: this.getFormatter(5)(this.pickLastNumber(this.chartData)[3]),
-          sText: `${this.$t('{date}の数値', {
-            date
-          })}（${this.$t('前日比')}: ${this.displayTransitionRatio} ${
+          lText: lastDayData,
+          sText: `${this.$t('{date} の数値', {
+            date: this.$d(lastDay, 'dateWithoutYear'),
+          })}（${this.$t('７日間移動平均値をもとに算出')}）`,
+          sTextUnder: `（${this.$t('前日比')}: ${dayBeforeRatio} ${
             this.unit
           }）`,
-          unit: this.unit
+          unit: this.unit,
         },
         {
-          lText: this.getFormatter(4)(this.pickLastNumber(this.chartData)[2]),
-          sText: `${this.$t('{date}の数値', {
-            date
-          })}（${this.$t('前日比')}: ${
-            this.displayInspectionsTransitionRatio
-          } ${this.optionUnit}）`,
-          unit: this.optionUnit
-        }
+          lText: lastDayData4,
+          sText: `${this.$t('{date} の数値', {
+            date: this.$d(lastDay4, 'dateWithoutYear'),
+          })}（${this.$t('７日間移動平均')}）`,
+          sTextUnder: `（${this.$t('前日比')}: ${dayBeforeRatio4} ${
+            this.optionUnit
+          }）`,
+          unit: this.optionUnit,
+        },
       ]
     },
     displayData() {
@@ -311,7 +311,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             backgroundColor: graphSeries[0].fillColor,
             borderColor: graphSeries[0].strokeColor,
             borderWidth: 1,
-            order: 1
+            order: 1,
           },
           /*
           {
@@ -322,7 +322,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             backgroundColor: graphSeries[1].fillColor,
             borderColor: graphSeries[1].strokeColor,
             borderWidth: 1,
-            order: 2
+            order: 2,
           },
           */
           {
@@ -333,7 +333,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             backgroundColor: graphSeries[1].fillColor,
             borderColor: graphSeries[1].strokeColor,
             borderWidth: 1,
-            order: 3
+            order: 3,
           },
           /*
           {
@@ -344,7 +344,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             backgroundColor: graphSeries[3].fillColor,
             borderColor: graphSeries[3].strokeColor,
             borderWidth: 1,
-            order: 4
+            order: 4,
           },
           */
           {
@@ -358,7 +358,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             borderWidth: 3,
             fill: false,
             order: 0,
-            borderDash: [4, 4]
+            borderDash: [4, 4],
           },
           {
             type: 'line',
@@ -371,9 +371,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             borderWidth: 3,
             fill: false,
             order: 0,
-            lineTension: 0
-          }
-        ]
+            lineTension: 0,
+          },
+        ],
       }
     },
     tableHeaders() {
@@ -381,22 +381,22 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         { text: this.$t('日付'), value: 'text' },
         ...(this.tableLabels as string[]).map((text, i) => {
           return { text, value: String(i), align: 'end' }
-        })
+        }),
       ]
     },
     tableData() {
       return this.labels
         .map((label, i) => {
           return Object.assign(
-            { text: dayjs(label).format('M/D') },
+            { text: label },
             ...(this.dataLabels as string[]).map((_, j) => {
               if (this.chartData[j][i] === null) {
                 return {
-                  [j]: ''
+                  [j]: '',
                 }
               }
               return {
-                [j]: this.getFormatter(j)(this.chartData[j][i])
+                [j]: this.getFormatter(j)(this.chartData[j][i]),
               }
             })
           )
@@ -411,7 +411,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
         tooltips: {
           displayColors: false,
           callbacks: {
-            label: tooltipItem => {
+            label: (tooltipItem) => {
               const cases = this.getFormatter(tooltipItem.datasetIndex!)(
                 parseFloat(tooltipItem.value!)
               )
@@ -428,12 +428,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
             title(tooltipItem, data) {
               const label = data.labels![tooltipItem[0].index!].toString()
               return self.$d(new Date(label), 'dateWithoutYear')
-            }
-          }
+            },
+          },
         },
         maintainAspectRatio: false,
         legend: {
-          display: false
+          display: false,
         },
         scales: {
           xAxes: [
@@ -441,7 +441,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               id: 'day',
               stacked: true,
               gridLines: {
-                display: false
+                display: false,
               },
               ticks: {
                 fontSize: 9,
@@ -450,8 +450,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 maxRotation: 0,
                 callback: (label: string) => {
                   return dayjs(label).format('D')
-                }
-              }
+                },
+              },
               // #2384: If you set "type" to "time", make sure that the bars at both ends are not hidden.
               // #2384: typeをtimeに設定する時はグラフの両端が見切れないか確認してください
             },
@@ -462,22 +462,22 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 drawOnChartArea: false,
                 drawTicks: true,
                 drawBorder: false,
-                tickMarkLength: 10
+                tickMarkLength: 10,
               },
               ticks: {
                 fontSize: 11,
                 fontColor: '#808080',
                 padding: 3,
-                fontStyle: 'bold'
+                fontStyle: 'bold',
               },
               type: 'time',
               time: {
                 unit: 'month',
                 displayFormats: {
-                  month: 'MMM'
-                }
-              }
-            }
+                  month: 'MMM',
+                },
+              },
+            },
           ],
           yAxes: [
             {
@@ -487,14 +487,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               gridLines: {
                 display: true,
                 drawOnChartArea: true,
-                color: '#E5E5E5' // #E5E5E5
+                color: '#E5E5E5', // #E5E5E5
               },
               ticks: {
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
                 suggestedMax: this.scaledTicksYAxisMax,
-                suggestedMin: this.scaledTicksYAxisMin
-              }
+                suggestedMin: this.scaledTicksYAxisMin,
+              },
             },
             {
               id: 'y-axis-2',
@@ -502,7 +502,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               gridLines: {
                 display: true,
                 drawOnChartArea: false,
-                color: '#E5E5E5' // #E5E5E5
+                color: '#E5E5E5', // #E5E5E5
               },
               ticks: {
                 maxTicksLimit: 8,
@@ -511,11 +511,11 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 suggestedMin: 0,
                 callback(value) {
                   return `${value}%`
-                }
-              }
-            }
-          ]
-        }
+                },
+              },
+            },
+          ],
+        },
       }
       if (this.$route.query.ogp === 'true') {
         Object.assign(options, { animation: { duration: 0 } })
@@ -523,71 +523,66 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return options
     },
     displayDataHeader() {
-      let n = 0
-      let max = 0
-      for (const i in this.displayData.datasets[0].data) {
-        const current =
+      const sums = Array.from(this.displayData.datasets[0].data.keys()).map(
+        (i) =>
           this.displayData.datasets[0].data[i] +
           this.displayData.datasets[1].data[i] // +
-        // this.displayData.datasets[2].data[i] +
-        // this.displayData.datasets[3].data[i]
-
-        if (current > max) {
-          max = current
-          n = Number(i)
-        }
-      }
+        //  this.displayData.datasets[2].data[i] +
+        //  this.displayData.datasets[3].data[i]
+      )
+      const max = sums.reduce((a, b) => Math.max(a, b), 0)
+      const n = sums.indexOf(max)
       return {
-        labels: ['2020/1/1'],
+        labels: ['2020-01-01'],
         datasets: [
           {
             data: [this.displayData.datasets[0].data[n]],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-1',
-            borderWidth: 0
+            borderWidth: 0,
           },
           /*
           {
             data: [this.displayData.datasets[1].data[n]],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-1',
-            borderWidth: 0
+            borderWidth: 0,
           },
           */
           {
             data: [this.displayData.datasets[1].data[n]],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-1',
-            borderWidth: 0
+            borderWidth: 0,
           },
           /*
           {
             data: [this.displayData.datasets[3].data[n]],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-1',
-            borderWidth: 0
+            borderWidth: 0,
           },
           */
           {
             data: [0],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-1',
-            borderWidth: 0
+            borderWidth: 0,
           },
           {
             data: [this.displayData.datasets[3].data[n]],
             backgroundColor: 'transparent',
             yAxisID: 'y-axis-2',
-            borderWidth: 0
-          }
-        ]
+            borderWidth: 0,
+          },
+        ],
       }
     },
     displayOptionHeader() {
       const options: Chart.ChartOptions = {
         maintainAspectRatio: false,
         legend: {
-          display: false
+          display: false,
         },
         tooltips: { enabled: false },
         scales: {
@@ -596,7 +591,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               id: 'day',
               stacked: true,
               gridLines: {
-                display: false
+                display: false,
               },
               ticks: {
                 fontSize: 9,
@@ -606,8 +601,8 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 minRotation: 0,
                 callback: (label: string) => {
                   return dayjs(label).format('D')
-                }
-              }
+                },
+              },
             },
             {
               id: 'month',
@@ -616,19 +611,19 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 drawOnChartArea: false,
                 drawTicks: false, // true -> false
                 drawBorder: false,
-                tickMarkLength: 10
+                tickMarkLength: 10,
               },
               ticks: {
                 fontSize: 11,
                 fontColor: 'transparent', // #808080
                 padding: 13, // 3 + 10(tickMarkLength)
-                fontStyle: 'bold'
+                fontStyle: 'bold',
               },
               type: 'time',
               time: {
-                unit: 'month'
-              }
-            }
+                unit: 'month',
+              },
+            },
           ],
           yAxes: [
             {
@@ -639,14 +634,14 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               gridLines: {
                 display: true,
                 drawOnChartArea: false,
-                color: '#E5E5E5' // #E5E5E5
+                color: '#E5E5E5', // #E5E5E5
               },
               ticks: {
                 maxTicksLimit: 8,
                 fontColor: '#808080', // #808080
                 suggestedMax: this.scaledTicksYAxisMax,
-                suggestedMin: this.scaledTicksYAxisMin
-              }
+                suggestedMin: this.scaledTicksYAxisMin,
+              },
             },
             {
               id: 'y-axis-2',
@@ -656,7 +651,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
               gridLines: {
                 display: true,
                 drawOnChartArea: false,
-                color: '#E5E5E5' // #E5E5E5
+                color: '#E5E5E5', // #E5E5E5
               },
               ticks: {
                 maxTicksLimit: 8,
@@ -665,12 +660,12 @@ const options: ThisTypedComponentOptionsWithRecordProps<
                 suggestedMin: 0,
                 callback(value) {
                   return `${value}%`
-                }
-              }
-            }
-          ]
+                },
+              },
+            },
+          ],
         },
-        animation: { duration: 0 }
+        animation: { duration: 0 },
       }
       return options
     },
@@ -682,55 +677,19 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       return min
     },
     scaledTicksYAxisMax() {
-      let max = 0
-      for (const i in this.chartData[0]) {
-        max = Math.max(
-          max,
-          this.chartData[0][i] + this.chartData[1][i]
-          /* +
-            this.chartData[2][i] +
-            this.chartData[3][i]
-            */
-        )
-      }
-      return max
+      return Array.from(this.chartData[0].keys())
+        .map((i) => this.chartData[0][i] + this.chartData[1][i])
+        .reduce((a, b) => Math.max(a, b), 0)
     },
     scaledTicksYAxisMaxRight() {
-      let max = 0
-      for (const i in this.chartData[3]) {
-        max = Math.max(max, this.chartData[3][i])
-      }
-      return max
-    }
+      return this.chartData[3].reduce((a, b) => Math.max(a, b), 0)
+    },
   },
   methods: {
     onClickLegend(i) {
       this.displayLegends[i] = !this.displayLegends[i]
       this.displayLegends = this.displayLegends.slice()
     },
-    pickLastNumber(chartDataArray: number[][]) {
-      return chartDataArray.map((array, _) => {
-        return array[array.length - 1]
-      })
-    },
-    pickLastSecondNumber(chartDataArray: number[][]) {
-      return chartDataArray.map((array, _) => {
-        return array[array.length - 2]
-      })
-    },
-    formatDayBeforeRatio(dayBeforeRatio: number, formatter: number): string {
-      const dayBeforeRatioLocaleString = this.getFormatter(formatter)(
-        dayBeforeRatio
-      )
-      switch (Math.sign(dayBeforeRatio)) {
-        case 1:
-          return `+${dayBeforeRatioLocaleString}`
-        case -1:
-          return `${dayBeforeRatioLocaleString}`
-        default:
-          return `${dayBeforeRatioLocaleString}`
-      }
-    }
   },
   mounted() {
     const barChart = this.$refs.barChart as Vue
@@ -742,7 +701,7 @@ const options: ThisTypedComponentOptionsWithRecordProps<
       canvas.setAttribute('role', 'img')
       canvas.setAttribute('aria-labelledby', labelledbyId)
     }
-  }
+  },
 }
 
 export default Vue.extend(options)

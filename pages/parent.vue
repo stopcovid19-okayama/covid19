@@ -35,13 +35,13 @@
         }}
         <br />
         {{ $t('詳細は、') }}
-        <external-link
-          href="https://www.pref.okayama.jp/page/664377.html#kyoikuhi"
+        <app-link
+          to="https://www.pref.okayama.jp/page/664377.html#kyoikuhi"
           target="_blank"
           rel="noopener noreferrer"
         >
           {{ $t('岡山県のHP') }}
-        </external-link>
+        </app-link>
         {{ $t('をご確認ください') }}
       </p>
     </static-card>
@@ -55,13 +55,13 @@
         }}
         <br />
         {{ $t('詳細は、') }}
-        <external-link
-          href="https://www.pref.okayama.jp/page/664377.html#gakusyuu"
+        <app-link
+          to="https://www.pref.okayama.jp/page/664377.html#gakusyuu"
           target="_blank"
           rel="noopener noreferrer"
         >
           {{ $t('岡山県のHP') }}
-        </external-link>
+        </app-link>
         {{ $t('をご確認ください') }}
       </p>
     </static-card>
@@ -75,20 +75,21 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
-import StaticCard from '@/components/StaticCard.vue'
+
+import AppLink from '@/components/AppLink.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import ExternalLink from '@/components/ExternalLink.vue'
+import StaticCard from '@/components/StaticCard.vue'
 
 export default Vue.extend({
   components: {
     PageHeader,
     StaticCard,
-    ExternalLink
+    AppLink,
   },
   head(): MetaInfo {
     return {
-      title: this.$t('お子様をお持ちの皆様へ') as string
+      title: this.$t('お子様をお持ちの皆様へ') as string,
     }
-  }
+  },
 })
 </script>

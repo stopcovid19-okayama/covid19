@@ -1,7 +1,9 @@
 <template>
-  <div class="MainPage">
+  <div v-scroll="onScroll" class="MainPage">
     <div class="Header mb-3">
-      <page-header :icon="headerItem.icon">{{ headerItem.title }}</page-header>
+      <page-header :icon-path="headerItem.iconPath">
+        {{ headerItem.title }}
+      </page-header>
       <div class="UpdatedAt">
         <span>{{ $t('最終更新') }}</span>
         <time :datetime="updatedAt">{{ formattedDateForDisplay }}</time>
@@ -16,11 +18,12 @@
     <whats-new class="mb-4" :items="newsItems" :is-emergency="false" />
     <!--
     <monitoring-comment-card />
-    <tokyo-alert-card v-if="TokyoAlert.alert" />
+    <lazy-tokyo-alert-card v-if="TokyoAlert.alert" />
     -->
-    <static-info
+    <lazy-static-info
+      v-if="$vuetify.breakpoint.smAndUp || showStaticInfo"
       class="mb-4"
-      :url="localePath('/flow')"
+      :url="'/flow'"
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
@@ -28,16 +31,14 @@
 </template>
 
 <script lang="ts">
+import { mdiChartTimelineVariant } from '@mdi/js'
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+
+// import MonitoringCommentCard from '@/components/MonitoringCommentCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import WhatsNew from '@/components/WhatsNew.vue'
-import StaticInfo from '@/components/StaticInfo.vue'
-/*
-import TokyoAlertCard from '@/components/TokyoAlertCard.vue'
-import MonitoringCommentCard from '@/components/MonitoringCommentCard.vue'
-*/
-import Data from '@/data/last_update.json'
+import Data from '@/data/data.json'
 import News from '@/data/news.json'
 /*
 import TokyoAlert from '@/data/tokyo_alert.json'
@@ -48,38 +49,42 @@ export default Vue.extend({
   components: {
     PageHeader,
     WhatsNew,
-    StaticInfo
-    /*
-    TokyoAlertCard,
-    MonitoringCommentCard
-    */
   },
   data() {
+    const { lastUpdate } = Data
+
     return {
       Data,
       /*
       TokyoAlert,
       */
       headerItem: {
-        icon: 'mdi-chart-timeline-variant',
-        title: this.$t('県内の最新感染動向')
+        iconPath: mdiChartTimelineVariant,
+        title: this.$t('県内の最新感染動向'),
       },
-      newsItems: News.newsItems
+      lastUpdate,
+      newsItems: News.newsItems,
+      showStaticInfo: false,
     }
   },
   computed: {
     updatedAt() {
-      return convertDatetimeToISO8601Format(this.$data.Data.date)
+      return convertDatetimeToISO8601Format(this.$data.lastUpdate)
     },
     formattedDateForDisplay() {
-      return this.$d(new Date(Data.date), 'dateTime')
-    }
+      return `${this.$d(new Date(this.$data.lastUpdate), 'dateTime')} JST`
+    },
+  },
+  methods: {
+    onScroll() {
+      this.showStaticInfo = false
+    },
   },
   head(): MetaInfo {
     return {
-      title: this.$t('県内の最新感染動向') as string
+      title: this.$t('県内の最新感染動向') as string,
     }
-  }
+  },
 })
 </script>
 

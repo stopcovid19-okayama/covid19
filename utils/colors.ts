@@ -61,7 +61,7 @@ export function getGraphSeriesColor(series: Series) {
     D: surfaceStyleD,
     E: surfaceStyleE,
     F: surfaceStyleF,
-    G: surfaceStyleG
+    G: surfaceStyleG,
   }
   return styles[series]
 }
