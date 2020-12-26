@@ -95,8 +95,8 @@ export default {
     const { data } = PositiveRate
     const pcrPositiveCount = data.map((data) => data.pcr_positive_count)
     const pcrNegativeCount = data.map((data) => data.pcr_negative_count)
-    const antigenPositiveCount = data.map((data) => data.antigen_positive_count)
-    const antigenNegativeCount = data.map((data) => data.antigen_negative_count)
+    // const antigenPositiveCount = data.map((data) => data.antigen_positive_count)
+    // const antigenNegativeCount = data.map((data) => data.antigen_negative_count)
     const positiveRates = data.map((data) => data.positive_rate)
     const positiveRateLabels = data.map((data) => data.diagnosed_date)
     const weeklyAverageDiagnosedCount = data.map(

@@ -70,9 +70,9 @@ export default Vue.extend({
       link: [
         {
           rel: 'canonical',
-          href: `https://okayama.stopcovid19.jp${this.$route.path}`
-        }
-      ]
+          href: `https://okayama.stopcovid19.jp${this.$route.path}`,
+        },
+      ],
     }
   },
 })

@@ -50,8 +50,8 @@ const options: NuxtVueI18n.Options.AllOptionsInterface = {
       name: '日本語',
       iso: 'ja-JP',
       file: 'ja.json',
-      description: 'Japanese'
-    }
+      description: 'Japanese',
+    },
     // {
     //   code: 'en',
     //   name: 'English',
@@ -96,7 +96,7 @@ const options: NuxtVueI18n.Options.AllOptionsInterface = {
     //   file: 'ja-Hira.json',
     //   description: 'Easy Japanese'
     // }
-  ]
+  ],
 }
 
 export default options

@@ -34,7 +34,6 @@
 
 <script>
 import MetroBarChart from '@/components/MetroBarChart.vue'
-import MetroData from '@/data/metro.json'
 import { getComplementedDate } from '@/utils/formatDate'
 
 export default {

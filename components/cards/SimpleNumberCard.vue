@@ -40,24 +40,24 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
-      default: ''
+      default: '',
     },
     date: {
       type: String,
-      default: ''
+      default: '',
     },
     number: {
       type: Number,
-      default: 0
+      default: 0,
     },
     unit: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
