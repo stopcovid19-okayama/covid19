@@ -22,7 +22,7 @@
       :text="$t('自分や家族の症状に不安や心配があればまずは電話相談をどうぞ')"
       :btn-text="$t('相談の手順を見る')"
     />
-    <v-row class="DataBlock">
+    <v-row class="DataBlock" style="margin-top: -10px">
       <medical-system-bed-number-card />
       <medical-system-stay-care-facility-number-card />
       <medical-system-ventilator-number-card />
@@ -34,16 +34,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+
 import MedicalSystemBedNumberCard from '@/components/cards/MedicalSystemBedNumberCard.vue'
+import MedicalSystemEcmoNumberCard from '@/components/cards/MedicalSystemEcmoNumberCard.vue'
 import MedicalSystemStayCareFacilityNumberCard from '@/components/cards/MedicalSystemStayCareFacilityNumberCard.vue'
 import MedicalSystemVentilatorNumberCard from '@/components/cards/MedicalSystemVentilatorNumberCard.vue'
-import MedicalSystemEcmoNumberCard from '@/components/cards/MedicalSystemEcmoNumberCard.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
 import StaticInfo from '@/components/StaticInfo.vue'
+import WhatsNew from '@/components/WhatsNew.vue'
 import MedicalSystem from '@/data/medical_system.json'
 import News from '@/data/news.json'
-
 import { convertDatetimeToISO8601Format } from '@/utils/formatDate'
 
 export default Vue.extend({
@@ -54,29 +54,29 @@ export default Vue.extend({
     MedicalSystemBedNumberCard,
     MedicalSystemStayCareFacilityNumberCard,
     MedicalSystemVentilatorNumberCard,
-    MedicalSystemEcmoNumberCard
+    MedicalSystemEcmoNumberCard,
   },
   data() {
     const data = {
       MedicalSystem,
       headerItem: {
         icon: 'mdi-hospital',
-        title: this.$t('医療体制整備状況')
+        title: this.$t('医療体制整備状況'),
       },
-      newsItems: News.newsItems
+      newsItems: News.newsItems,
     }
     return data
   },
   computed: {
     updatedAt() {
       return convertDatetimeToISO8601Format(this.$data.MedicalSystem.date)
-    }
+    },
   },
   head(): MetaInfo {
     return {
-      title: this.$t('医療体制整備状況') as string
+      title: this.$t('医療体制整備状況') as string,
     }
-  }
+  },
 })
 </script>
 

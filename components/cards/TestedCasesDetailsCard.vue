@@ -67,7 +67,7 @@ import TestedCasesDetailsTable from '@/components/TestedCasesDetailsTable.vue'
 export default {
   components: {
     DataView,
-    TestedCasesDetailsTable
+    TestedCasesDetailsTable,
   },
   data() {
     /*
@@ -80,6 +80,6 @@ export default {
     }
     return data
     */
-  }
+  },
 }
 </script>

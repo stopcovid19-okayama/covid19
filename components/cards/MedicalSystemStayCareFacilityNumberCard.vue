@@ -16,13 +16,13 @@ import MedicalSystem from '@/data/medical_system.json'
 
 export default {
   components: {
-    SimpleNumberCard
+    SimpleNumberCard,
   },
   data() {
     const data = {
-      MedicalSystem
+      MedicalSystem,
     }
     return data
-  }
+  },
 }
 </script>

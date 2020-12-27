@@ -11,24 +11,20 @@
       }}<br />
       {{ $t('運用・開発は有志によるボランティアで行われています。')
       }}<br /><br />
-      <external-link
-        url="//github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md"
-        :icon-size="16"
+      <app-link
+        to="https://github.com/stopcovid19-okayama/covid19/blob/development/CONTRIBUTORS.md"
       >
         {{ $t('貢献者一覧') }}
-      </external-link>
+      </app-link>
       <br /><br />
       当サイトは、
-      <external-link url="//stopcovid19.metro.tokyo.lg.jp/" :icon-size="16">
+      <app-link to="https://stopcovid19.metro.tokyo.lg.jp/">
         {{ $t('東京都公式新型コロナウイルス対策サイト') }}
-      </external-link>
+      </app-link>
       の
-      <external-link
-        url="//github.com/tokyo-metropolitan-gov/covid19"
-        :icon-size="16"
-      >
+      <app-link to="https://github.com/tokyo-metropolitan-gov/covid19">
         {{ $t('仕組み') }}
-      </external-link>
+      </app-link>
       を利用しています
       <br />
       <br />
@@ -56,9 +52,9 @@
         path="当サイトで公表しているデータは、{catalogWebsite}より誰でも自由にダウンロードが可能です。"
       >
         <template v-slot:catalogWebsite>
-          <external-link url="http://www.okayama-opendata.jp" :icon-size="16">
+          <app-link to="http://www.okayama-opendata.jp">
             {{ $t('岡山県オープンデータカタログサイト') }}
-          </external-link>
+          </app-link>
         </template>
       </i18n>
     </StaticCard>
@@ -75,18 +71,18 @@
         <li>
           {{ $t('岡山大学大学院医歯薬学総合研究科 疫学・衛生学分野の先生方') }}
           :
-          <external-link url="http://www.unit-gp.jp/eisei/wp/">
+          <app-link to="http://www.unit-gp.jp/eisei/wp/">
             {{ $t('サイト') }}
-          </external-link>
+          </app-link>
         </li>
         <li>
           {{ $t('さくらインターネット株式会社様') }}
           :
-          <external-link
-            url="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/"
+          <app-link
+            to="https://www.sakura.ad.jp/information/pressreleases/2020/03/23/1968203129/"
           >
             {{ $t('サイト') }}
-          </external-link>
+          </app-link>
         </li>
       </ul>
     </StaticCard>
@@ -192,34 +188,29 @@
       </p>
       <ul>
         <li>
-          <external-link
-            :url="
+          <app-link
+            :to="
               $t(
                 'https://marketingplatform.google.com/about/analytics/terms/jp/'
               )
             "
-            :icon-size="16"
           >
             {{ $t('Google Analytics利用規約') }}
-          </external-link>
+          </app-link>
         </li>
         <li>
-          <external-link
-            :url="$t('https://policies.google.com/privacy?hl=ja')"
-            :icon-size="16"
-          >
+          <app-link :to="$t('https://policies.google.com/privacy?hl=ja')">
             {{ $t('Googleのプライバシーポリシー') }}
-          </external-link>
+          </app-link>
         </li>
         <li>
-          <external-link
-            :url="
+          <app-link
+            :to="
               $t('https://support.google.com/analytics/answer/6004245?hl=ja')
             "
-            :icon-size="16"
           >
             {{ $t('Google Analyticsに関する詳細情報') }}
-          </external-link>
+          </app-link>
         </li>
       </ul>
       <i18n
@@ -227,12 +218,9 @@
         path="Google Analyticsによる情報送信を回避する場合は、Google がサポートする{addon}をご利用ください。"
       >
         <template v-slot:addon>
-          <external-link
-            :url="$t('https://tools.google.com/dlpage/gaoptout?hl=ja')"
-            :icon-size="16"
-          >
+          <app-link :to="$t('https://tools.google.com/dlpage/gaoptout?hl=ja')">
             {{ $t('測定を無効にするブラウザ アドオン') }}
-          </external-link>
+          </app-link>
         </template>
       </i18n>
     </static-card>
@@ -270,12 +258,9 @@
         }}
         <i18n path="詳しくは、{githubRepo}をご確認ください。">
           <template v-slot:githubRepo>
-            <external-link
-              url="https://github.com/stopcovid19-okayama/covid19"
-              :icon-size="16"
-            >
+            <app-link to="https://github.com/stopcovid19-okayama/covid19">
               {{ $t('GitHub リポジトリ') }}
-            </external-link>
+            </app-link>
           </template>
         </i18n>
       </p>
@@ -288,12 +273,11 @@
           path="サイトの制作・運用にご協力いただける方であれば誰でも参加可能です。{slack} からご参加ください。"
         >
           <template v-slot:slack>
-            <external-link
-              url="https://join.slack.com/t/okayama-stopcovid19/shared_invite/zt-d86r1ajq-ba1w0w71DGcX_fed6lufog"
-              :icon-size="16"
+            <app-link
+              to="https://join.slack.com/t/okayama-stopcovid19/shared_invite/zt-d86r1ajq-ba1w0w71DGcX_fed6lufog"
             >
               {{ $t('ここ') }}
-            </external-link>
+            </app-link>
           </template>
         </i18n>
       </p>
@@ -312,20 +296,21 @@
 <script lang="ts">
 import Vue from 'vue'
 import { MetaInfo } from 'vue-meta'
+
+import AppLink from '@/components/AppLink.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import StaticCard from '@/components/StaticCard.vue'
-import ExternalLink from '@/components/ExternalLink.vue'
 
 export default Vue.extend({
   components: {
     PageHeader,
     StaticCard,
-    ExternalLink
+    AppLink,
   },
   head(): MetaInfo {
     return {
-      title: this.$t('当サイトについて') as string
+      title: this.$t('当サイトについて') as string,
     }
-  }
+  },
 })
 </script>

@@ -64,6 +64,7 @@ type ChildDataType = {
 
 function getSelectedItem(data: DataType, key: string) {
   let result: number | undefined
+
   const recursiveSearch = (data: ChildDataType) => {
     if (result) {
       return
@@ -87,6 +88,7 @@ function getSelectedItem(data: DataType, key: string) {
       })
     }
   }
+
   recursiveSearch(data)
 
   return result || 0
@@ -106,6 +108,6 @@ export default (data: DataType) => {
     宿泊療養施設に入所中: getSelectedItem(data, '宿泊療養施設に入所中'),
     自宅療養中: getSelectedItem(data, '自宅療養中'),
     死亡: getSelectedItem(data, '死亡'),
-    退院等: getSelectedItem(data, '退院等')
+    退院等: getSelectedItem(data, '退院等'),
   } as ConfirmedCasesType
 }

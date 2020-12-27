@@ -1,15 +1,41 @@
 <template>
   <div v-if="isDevelopmentMode" class="DevelopmentModeMark">
     開発中（development mode）
-    <a
-      href="https://okayama.stopcovid19.jp/"
+    <app-link
+      to="https://okayama.stopcovid19.jp/"
       target="_blank"
       rel="noopener noreferrer"
     >
       公開サイトへ
-    </a>
+    </app-link>
   </div>
 </template>
+
+<script>
+import AppLink from '@/components/AppLink.vue'
+
+export default {
+  name: 'DevelopmentModeMark',
+  components: {
+    AppLink,
+  },
+  props: {
+    value: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
+  computed: {
+    isDevelopmentMode: () => {
+      if (process && process.env && process.env.GENERATE_ENV) {
+        return process.env.GENERATE_ENV === 'development'
+      }
+      return false
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 .DevelopmentModeMark {
@@ -36,24 +62,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: 'DevelopmentModeMark',
-  props: {
-    value: {
-      type: String,
-      required: false,
-      default: ''
-    }
-  },
-  computed: {
-    isDevelopmentMode: () => {
-      if (process && process.env && process.env.GENERATE_ENV) {
-        return process.env.GENERATE_ENV === 'development'
-      }
-      return false
-    }
-  }
-}
-</script>
