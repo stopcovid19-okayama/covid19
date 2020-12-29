@@ -27,7 +27,7 @@
               <p :class="$style.preventText">
                 {{ $t('石けんを使い流水で20秒以上かけて洗いましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-hand />
               </div>
             </div>
@@ -45,7 +45,7 @@
               <p :class="$style.preventText">
                 {{ $t('マスクの表面は触らないようにしましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-mask />
               </div>
             </div>
@@ -58,7 +58,7 @@
               <p :class="$style.preventText">
                 {{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-socialdistance />
               </div>
             </div>
@@ -73,7 +73,7 @@
               <p :class="$style.preventText">
                 {{ $t('他者との安全な距離を保ちましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-crowded />
               </div>
             </div>
@@ -88,7 +88,7 @@
               <p :class="$style.preventText">
                 {{ $t('ウイルスや菌は長時間空気中を浮遊します') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-ventilation />
               </div>
             </div>
@@ -103,7 +103,7 @@
               <p :class="$style.preventText">
                 {{ $t('風邪症状のある場合は外出を控えしっかり休みましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-thermometer />
               </div>
             </div>
@@ -118,7 +118,7 @@
               <p :class="$style.preventText">
                 {{ $t('外出中は触らないように粘膜からの感染を防ぎましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-virus />
               </div>
             </div>
@@ -137,7 +137,7 @@
                   )
                 }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-cough />
               </div>
             </div>
@@ -152,7 +152,7 @@
               <p :class="$style.preventText">
                 {{ $t('しっかり寝て体を休ませましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-sleeping />
               </div>
             </div>
@@ -167,7 +167,7 @@
               <p :class="$style.preventText">
                 {{ $t('健康的な食事を心がけましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-eat />
               </div>
             </div>
@@ -182,7 +182,7 @@
               <p :class="$style.preventText">
                 {{ $t('適度な運動で健康的な体づくりを心がけましょう') }}
               </p>
-              <div :class="$style.preventImage">
+              <div class="preventImage">
                 <prevent-icon-play />
               </div>
             </div>
@@ -269,6 +269,19 @@ export default Vue.extend({
 })
 </script>
 
+<style lang="scss" scoped>
+.preventImage {
+  height: 160px;
+  width: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.preventImage > svg {
+  height: 160px;
+  width: 100%;
+}
+</style>
+
 <style lang="scss" module>
 /* stylelint-disable no-descending-specificity */
 
@@ -345,17 +358,7 @@ $margin: 20;
   color: $green-1;
   margin-bottom: 20px;
 }
-.preventImage {
-  height: 160px;
-  width: auto;
-  overflow: hidden;
-  box-sizing: border-box;
 
-  svg {
-    height: 160px;
-    width: 100%;
-  }
-}
 .qaHeading {
   font-weight: bold;
   display: flex;
