@@ -1,7 +1,7 @@
 <template>
-  <span :class="$style.linkButton">
-    <antenna-icon aria-hidden="true" :class="$style.svgIcon" />
-    <span :class="$style.text">
+  <span class="linkButton">
+    <antenna-icon aria-hidden="true" class="svgIcon" />
+    <span class="text">
       {{ $t('医療非常事態宣言発令中') }}
     </span>
   </span>
@@ -19,7 +19,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss" module>
+<style lang="scss" scoped>
 .linkButton {
   background-color: $alert;
   border: 2px solid $alert;
@@ -31,14 +31,14 @@ export default Vue.extend({
   font-weight: bold;
   @include font-size(14);
 
-  .svgIcon path {
+  .svgIcon >>> path {
     fill: $white;
   }
 
   &:hover {
     background-color: $white;
     color: $alert;
-    .svgIcon path {
+    .svgIcon >>> path {
       fill: $alert;
     }
   }

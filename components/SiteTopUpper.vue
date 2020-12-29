@@ -1,9 +1,11 @@
 <template>
   <div v-scroll="onScroll" class="MainPage">
     <div class="Header mb-3">
-      <page-header :icon-path="headerItem.iconPath">
-        {{ headerItem.title }}
-      </page-header>
+      <client-only>
+        <page-header :icon-path="headerItem.iconPath">
+          {{ headerItem.title }}
+        </page-header>
+      </client-only>
       <div class="UpdatedAt">
         <span>{{ $t('最終更新') }}</span>
         <time :datetime="updatedAt">{{ formattedDateForDisplay }}</time>
@@ -19,7 +21,9 @@
     <!--
     <monitoring-comment-card />
         -->
-    <tokyo-alert-card v-if="TokyoAlert.alert" />
+    <client-only>
+      <tokyo-alert-card v-if="TokyoAlert.alert" />
+    </client-only>
     <static-info
       class="mb-4"
       :url="'/flow'"
