@@ -1,30 +1,24 @@
 <template>
   <div>
-    <div :class="$style.title">
+    <div class="title">
       <covid-icon aria-hidden="true" />
-      <page-header :class="$style.text">
+      <page-header class="text">
         {{ $t('新型コロナウイルス感染症について') }}
       </page-header>
-      <printer-button
-        :wrapper-class="$style.printerButton"
-        to="/print/covid19"
-      />
+      <printer-button wrapper-class="printerButton" to="/print/covid19" />
     </div>
-    <div :class="$style.container">
-      <h3 :class="$style.conHeading">
+    <div class="container">
+      <h3 class="conHeading">
         {{ $t('私たちにできる新型コロナウイルス感染予防') }}
       </h3>
       <div class="row DataBlock">
         <div class="DataCard col-lg-6">
-          <div
-            class="DataView v-card v-sheet theme--light"
-            :class="$style.priorityHigh"
-          >
+          <div class="DataView v-card v-sheet theme--light priorityHigh">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">
+              <h3 class="preventHeadingL">
                 {{ $t('しっかり手を洗う') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('石けんを使い流水で20秒以上かけて洗いましょう') }}
               </p>
               <div class="preventImage">
@@ -34,15 +28,12 @@
           </div>
         </div>
         <div class="DataCard col-lg-6">
-          <div
-            class="DataView v-card v-sheet theme--light"
-            :class="$style.priorityHigh"
-          >
+          <div class="DataView v-card v-sheet theme--light priorityHigh">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">
+              <h3 class="preventHeadingL">
                 {{ $t('マスクを着用しよう') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('マスクの表面は触らないようにしましょう') }}
               </p>
               <div class="preventImage">
@@ -54,8 +45,8 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">{{ $t('距離をとる') }}</h3>
-              <p :class="$style.preventText">
+              <h3 class="preventHeadingL">{{ $t('距離をとる') }}</h3>
+              <p class="preventText">
                 {{ $t('お互いに手を伸ばして触れない距離を心がけましょう') }}
               </p>
               <div class="preventImage">
@@ -67,10 +58,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">
+              <h3 class="preventHeadingL">
                 {{ $t('人の多い場所を避ける') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('他者との安全な距離を保ちましょう') }}
               </p>
               <div class="preventImage">
@@ -82,10 +73,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeadingL">
+              <h3 class="preventHeadingL">
                 {{ $t('しっかり換気をする') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('ウイルスや菌は長時間空気中を浮遊します') }}
               </p>
               <div class="preventImage">
@@ -97,10 +88,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('風邪気味なら休む') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('風邪症状のある場合は外出を控えしっかり休みましょう') }}
               </p>
               <div class="preventImage">
@@ -112,10 +103,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('目鼻口を触らない') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('外出中は触らないように粘膜からの感染を防ぎましょう') }}
               </p>
               <div class="preventImage">
@@ -127,10 +118,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('咳の飛沫を飛ばさない') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{
                   $t(
                     '咳やくしゃみをするときは手ではなく肘の内側で口や鼻を抑えましょう'
@@ -146,10 +137,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('よく寝る') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('しっかり寝て体を休ませましょう') }}
               </p>
               <div class="preventImage">
@@ -161,10 +152,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('よく食べる') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('健康的な食事を心がけましょう') }}
               </p>
               <div class="preventImage">
@@ -176,10 +167,10 @@
         <div class="DataCard col-lg-4 col-md-6">
           <div class="DataView v-card v-sheet theme--light">
             <div class="DataView-Inner">
-              <h3 :class="$style.preventHeading">
+              <h3 class="preventHeading">
                 {{ $t('運動をする') }}
               </h3>
-              <p :class="$style.preventText">
+              <p class="preventText">
                 {{ $t('適度な運動で健康的な体づくりを心がけましょう') }}
               </p>
               <div class="preventImage">
@@ -270,19 +261,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.preventImage {
-  height: 160px;
-  width: auto;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-.preventImage > svg {
-  height: 160px;
-  width: 100%;
-}
-</style>
-
-<style lang="scss" module>
 /* stylelint-disable no-descending-specificity */
 
 $fzSmall: 14;
@@ -358,7 +336,17 @@ $margin: 20;
   color: $green-1;
   margin-bottom: 20px;
 }
+.preventImage {
+  height: 160px;
+  width: auto;
+  overflow: hidden;
+  box-sizing: border-box;
 
+  svg {
+    height: 160px;
+    width: 100%;
+  }
+}
 .qaHeading {
   font-weight: bold;
   display: flex;
