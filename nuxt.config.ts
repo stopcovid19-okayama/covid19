@@ -41,22 +41,22 @@ const config: NuxtConfig = {
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@okayama_stopco,vid19',
+        content: '@okayama_stopcovid19',
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@okayama_,stopcovid19',
+        content: '@okayama_stopcovid19',
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https:///okayama.stopcovid19,.jp/ogp.png',
+        content: 'https://okayama.stopcovid19.jp/ogp.png',
       },
       {
         hid: 'fb:app_id',
         property: 'fb:app_id',
-        content: '7985,78557330092',
+        content: '798578557330092',
       },
       {
         hid: 'note:card',
