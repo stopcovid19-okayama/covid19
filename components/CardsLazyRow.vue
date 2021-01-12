@@ -10,7 +10,7 @@
       min-height="600"
       min-width="50%"
     >
-      <lazy-card-row v-if="actives[i]">
+      <lazy-card-row v-if="actives[i]" style="margin: 0 -12px 0 -12px">
         <component :is="component" v-for="(component, j) in row" :key="j" />
       </lazy-card-row>
     </v-lazy>
@@ -74,7 +74,7 @@ export default options
 
 <style lang="scss" scoped>
 .DataBlock {
-  margin-top: -10px;
+  margin-top: 20px;
 
   .DataCard {
     @include largerThan($medium) {
