@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2021/01/12",
+            "url": "https://8092-okayama.jp/",
+            "text": "「岡山発見かるた」読み札募集中"
+        },
+        {
             "date": "2021/01/08",
             "url": "https://www.pref.okayama.jp/uploaded/attachment/285441.pdf",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
@@ -9,11 +14,6 @@
             "date": "2021/01/08",
             "url": "https://youtu.be/6lLdljE1p0Y",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2020/12/28",
-            "url": "https://youtu.be/eAYq2b7O8_A",
-            "text": "新型コロナウイルス感染症ミニ講座②（マスク着用の必要性について）"
         }
     ]
 }
