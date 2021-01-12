@@ -31,15 +31,15 @@ export default Vue.extend({
   font-weight: bold;
   @include font-size(14);
 
-  .svgIcon >>> path {
-    fill: $white;
+  .svgIcon {
+    fill: #fff;
   }
 
   &:hover {
     background-color: $white;
     color: $alert;
-    .svgIcon >>> path {
-      fill: $alert;
+    .svgIcon {
+      fill: $alert !important;
     }
   }
 
