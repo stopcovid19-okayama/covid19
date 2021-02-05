@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
+            "date": "2021/01/29",
+            "url": "https://www.pref.okayama.jp/page/698329.html",
+            "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
+        },
+        {
+            "date": "2021/01/29",
+            "url": "https://youtu.be/-U_3_jqh1Xk",
+            "text": "県民の皆さまへ知事からのメッセージ（動画）"
+        },
+        {
             "date": "2021/01/12",
             "url": "https://youtu.be/dXS6akRScXk",
             "text": "新型コロナウイルス感染症ミニ講座⑤（COVID-19世界と日本・岡山県での流行状況）"
-        },
-        {
-            "date": "2021/01/12",
-            "url": "https://8092-okayama.jp/",
-            "text": "「岡山発見かるた」読み札募集中"
-        },
-        {
-            "date": "2021/01/08",
-            "url": "https://www.pref.okayama.jp/page/698329.html",
-            "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
         }
     ]
 }
