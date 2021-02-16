@@ -40,6 +40,8 @@ import TokyoFeverConsultationCenterReportsNumberCard from '@/components/cards/To
 import MetroCard from '@/components/cards/MetroCard.vue'
 // 都庁来庁者数の推移
 import AgencyCard from '@/components/cards/AgencyCard.vue'
+// 治療中患者数の変化状況
+import ChangesPatientsNumberCard from '@/components/cards/ChangesPatientsNumberCard.vue'
 /* eslint-enable simple-import-sort/sort */
 
 import { getLinksLanguageAlternative } from '@/utils/i18nUtils'
@@ -68,6 +70,7 @@ export default {
     TokyoFeverConsultationCenterReportsNumberCard,
     MetroCard,
     AgencyCard,
+    ChangesPatientsNumberCard,
   },
   data() {
     let title, updatedAt, cardComponent
@@ -140,6 +143,9 @@ export default {
       */
       case 'monitoring-number-of-reports-to-covid19-consultation-desk':
         cardComponent = 'monitoring-consultation-desk-reports-number-card'
+        break
+      case 'changes-in-number-of-hospitalized-patients':
+        cardComponent = 'changes-patients-number-card'
         break
       /*
       case 'monitoring-items-overview':

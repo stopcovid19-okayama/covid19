@@ -9,6 +9,9 @@ import Vue from 'vue'
 // 検査陽性者の状況
 const ConfirmedCasesDetailsCard = () =>
   import('@/components/cards/ConfirmedCasesDetailsCard.vue')
+// 検査陽性者の状況
+const ChangesPatientsNumberCard = () =>
+  import('@/components/cards/ChangesPatientsNumberCard.vue')
 // 新規陽性者数
 const ConfirmedCasesNumberCard = () =>
   import('@/components/cards/ConfirmedCasesNumberCard.vue')
