@@ -1,11 +1,11 @@
 {
-    "last_update": "2021/02/22 15:01",
+    "last_update": "2021/02/22 18:01",
     "attr": "検査実施件数",
     "value": 12556,
     "children": [
         {
             "attr": "陽性者数",
-            "value": 2466,
+            "value": 2470,
             "children": [
                 [
                     {
