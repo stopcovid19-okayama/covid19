@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
-            "date": "2021/03/19",
+            "date": "2021/04/12",
+            "url": "https://www.pref.okayama.jp/page/706792.html",
+            "text": "岡山県医療従事者向けワクチン接種予約システムについて"
+        },
+        {
+            "date": "2021/04/09",
             "url": "https://www.pref.okayama.jp/page/698329.html",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
         },
         {
-            "date": "2021/03/19",
-            "url": "https://youtu.be/W-hm62ZshG4",
+            "date": "2021/04/09",
+            "url": "https://youtu.be/jKb0T4lU4DM",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2021/03/10",
-            "url": "https://www.pref.okayama.jp/page/697878.html",
-            "text": "ワクチン相談窓口について"
         }
     ]
 }
