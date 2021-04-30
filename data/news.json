@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2021/04/30",
+            "url": "https://www.pref.okayama.jp/page/715742.html",
+            "text": "岡山県時短要請協力金について"
+        },
+        {
             "date": "2021/04/23",
             "url": "https://www.pref.okayama.jp/page/698329.html",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
@@ -9,11 +14,6 @@
             "date": "2021/04/23",
             "url": "https://youtu.be/wJBh50ZJXbU",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2021/04/12",
-            "url": "https://www.pref.okayama.jp/page/706792.html",
-            "text": "岡山県医療従事者向けワクチン接種予約システムについて"
         }
     ]
 }
