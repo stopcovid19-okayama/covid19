@@ -47,14 +47,6 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
           echo "Pull Request Number - ${{ steps.cpr.outputs.pr_number }}"
-      - name: Notification Slack
-        uses: 8398a7/action-slack@v2
-        with:
-          status: ${{ job.status }}
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
   pr-master:
     runs-on: ubuntu-18.04
     steps:
@@ -94,12 +86,4 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
           echo "Pull Request Number - ${{ steps.cpr.outputs.pr_number }}"
-      - name: Notification Slack
-        uses: 8398a7/action-slack@v2
-        with:
-          status: ${{ job.status }}
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
 
