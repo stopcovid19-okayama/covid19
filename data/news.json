@@ -1,19 +1,19 @@
 {
     "newsItems": [
         {
-            "date": "2021/05/17",
-            "url": "https://shukatsutv.com/",
-            "text": "就活TV.com（県内大学生制作就活ポータルサイト）"
-        },
-        {
-            "date": "2021/05/14",
+            "date": "2021/05/28",
             "url": "https://www.pref.okayama.jp/page/698329.html",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
         },
         {
-            "date": "2021/05/14",
-            "url": "https://youtu.be/fdUpVOHgNYU",
+            "date": "2021/05/28",
+            "url": "https://youtu.be/9GyFGeLWNic",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
+        },
+        {
+            "date": "2021/05/17",
+            "url": "https://shukatsutv.com/",
+            "text": "就活TV.com（県内大学生制作就活ポータルサイト）"
         }
     ]
 }
