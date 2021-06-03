@@ -197,6 +197,11 @@ const config: NuxtConfig = {
     start_url: '/',
     splash_pages: null,
   },
+  pwa: {
+    workbox: {
+      enabled: false,
+    },
+  },
   generate: {
     fallback: true,
     routes() {
