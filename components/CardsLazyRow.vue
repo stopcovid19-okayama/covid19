@@ -10,9 +10,9 @@
       min-height="600"
       min-width="50%"
     >
-      <lazy-card-row v-if="actives[i]" style="margin: 0 -12px 0 -12px">
+      <CardRow v-if="actives[i]" style="margin: 0 -12px 0 -12px">
         <component :is="component" v-for="(component, j) in row" :key="j" />
-      </lazy-card-row>
+      </CardRow>
     </v-lazy>
   </div>
 </template>
@@ -20,6 +20,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { ThisTypedComponentOptionsWithRecordProps } from 'vue/types/options'
+const CardRow = () => import('~/components/cards/CardRow.vue');
 
 type Data = {
   actives: boolean[]
@@ -44,6 +45,9 @@ const options: ThisTypedComponentOptionsWithRecordProps<
   Computed,
   Props
 > = {
+  components: {
+    CardRow
+  },
   props: {
     rows: {
       type: Array,
