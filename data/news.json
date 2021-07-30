@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2021/07/30",
+            "url": "https://www.pref.okayama.jp/page/730214.html",
+            "text": "岡山県飲食店感染防止対策第三者認証制度について"
+        },
+        {
             "date": "2021/07/21",
             "url": "https://www.pref.okayama.jp/page/698329.html",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
@@ -9,11 +14,6 @@
             "date": "2021/07/21",
             "url": "https://youtu.be/ioOTBrfTevY",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2021/05/17",
-            "url": "https://shukatsutv.com/",
-            "text": "就活TV.com（県内大学生制作就活ポータルサイト）"
         }
     ]
 }
