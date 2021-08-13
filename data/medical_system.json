@@ -1,9 +1,9 @@
 {
-    "date": "2021/05/28 00:00",
+    "date": "2021/08/05 00:00",
     "items": {
-        "bed": 492,
+        "bed": 557,
         "stay_care_facility": 404,
-        "ventilator": 742,
+        "ventilator": 745,
         "ecmo": 35
     }
 }
