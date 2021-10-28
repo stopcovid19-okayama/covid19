@@ -1,6 +1,11 @@
 {
     "newsItems": [
         {
+            "date": "2021/10/28",
+            "url": "https://www.okayama-c.ed.jp/manabi-to-search/",
+            "text": "おかやま　まなびとサーチ公開"
+        },
+        {
             "date": "2021/10/01",
             "url": "https://www.pref.okayama.jp/page/698329.html",
             "text": "県民の皆さまへ知事からのメッセージ（テキスト版）"
@@ -9,11 +14,6 @@
             "date": "2021/10/01",
             "url": "https://youtu.be/ppJ1NFune8Y",
             "text": "県民の皆さまへ知事からのメッセージ（動画）"
-        },
-        {
-            "date": "2021/08/02",
-            "url": "https://www.okayama-ninsho.jp/",
-            "text": "岡山県飲食店感染防止対策第三者認証制度について"
         }
     ]
 }
